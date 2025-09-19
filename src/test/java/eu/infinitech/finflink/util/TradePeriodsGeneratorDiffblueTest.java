@@ -3,6 +3,7 @@ package eu.infinitech.finflink.util;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.InputStreamType;
 import eu.infinitech.finflink.structures.Trade;
@@ -17,17 +18,23 @@ import org.junit.jupiter.api.Test;
 class TradePeriodsGeneratorDiffblueTest {
   /**
    * Test {@link TradePeriodsGenerator#generateTradePeriods(InputStreamType, long, List)}.
+   *
    * <ul>
-   *   <li>Given {@link Trade#Trade()}.</li>
-   *   <li>Then return first ClosePrice is zero.</li>
+   *   <li>Given {@link Trade#Trade()}.
+   *   <li>Then return first ClosePrice is zero.
    * </ul>
-   * <p>
-   * Method under test: {@link TradePeriodsGenerator#generateTradePeriods(InputStreamType, long, List)}
+   *
+   * <p>Method under test: {@link TradePeriodsGenerator#generateTradePeriods(InputStreamType, long,
+   * List)}
    */
   @Test
-  @DisplayName("Test generateTradePeriods(InputStreamType, long, List); given Trade(); then return first ClosePrice is zero")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"List TradePeriodsGenerator.generateTradePeriods(InputStreamType, long, List)"})
+  @DisplayName(
+      "Test generateTradePeriods(InputStreamType, long, List); given Trade(); then return first ClosePrice is zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "List TradePeriodsGenerator.generateTradePeriods(InputStreamType, long, List)"
+  })
   void testGenerateTradePeriods_givenTrade_thenReturnFirstClosePriceIsZero() {
     // Arrange
     InputStreamType inputStreamType = InputStreamType.trade();
@@ -37,8 +44,8 @@ class TradePeriodsGeneratorDiffblueTest {
     tradingData.add(trade);
 
     // Act
-    List<TradePeriod> actualGenerateTradePeriodsResult = TradePeriodsGenerator.generateTradePeriods(inputStreamType,
-        10L, tradingData);
+    List<TradePeriod> actualGenerateTradePeriodsResult =
+        TradePeriodsGenerator.generateTradePeriods(inputStreamType, 10L, tradingData);
 
     // Assert
     assertEquals(1, actualGenerateTradePeriodsResult.size());
@@ -57,28 +64,33 @@ class TradePeriodsGeneratorDiffblueTest {
 
   /**
    * Test {@link TradePeriodsGenerator#generateTradePeriods(InputStreamType, long, List)}.
+   *
    * <ul>
-   *   <li>Then return first ClosePrice is ten.</li>
+   *   <li>Then return first ClosePrice is ten.
    * </ul>
-   * <p>
-   * Method under test: {@link TradePeriodsGenerator#generateTradePeriods(InputStreamType, long, List)}
+   *
+   * <p>Method under test: {@link TradePeriodsGenerator#generateTradePeriods(InputStreamType, long,
+   * List)}
    */
   @Test
-  @DisplayName("Test generateTradePeriods(InputStreamType, long, List); then return first ClosePrice is ten")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"List TradePeriodsGenerator.generateTradePeriods(InputStreamType, long, List)"})
+  @DisplayName(
+      "Test generateTradePeriods(InputStreamType, long, List); then return first ClosePrice is ten")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "List TradePeriodsGenerator.generateTradePeriods(InputStreamType, long, List)"
+  })
   void testGenerateTradePeriods_thenReturnFirstClosePriceIsTen() {
     // Arrange
     InputStreamType inputStreamType = InputStreamType.trade();
 
     ArrayList<TradingData> tradingData = new ArrayList<>();
     Trade trade = new Trade("Asset Symbol", 1L, 10.0d, 1L);
-
     tradingData.add(trade);
 
     // Act
-    List<TradePeriod> actualGenerateTradePeriodsResult = TradePeriodsGenerator.generateTradePeriods(inputStreamType,
-        10L, tradingData);
+    List<TradePeriod> actualGenerateTradePeriodsResult =
+        TradePeriodsGenerator.generateTradePeriods(inputStreamType, 10L, tradingData);
 
     // Assert
     assertEquals(1, actualGenerateTradePeriodsResult.size());
@@ -97,24 +109,30 @@ class TradePeriodsGeneratorDiffblueTest {
 
   /**
    * Test {@link TradePeriodsGenerator#generateTradePeriods(InputStreamType, long, List)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link TradePeriodsGenerator#generateTradePeriods(InputStreamType, long, List)}
+   *
+   * <p>Method under test: {@link TradePeriodsGenerator#generateTradePeriods(InputStreamType, long,
+   * List)}
    */
   @Test
-  @DisplayName("Test generateTradePeriods(InputStreamType, long, List); when ArrayList(); then return Empty")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"List TradePeriodsGenerator.generateTradePeriods(InputStreamType, long, List)"})
+  @DisplayName(
+      "Test generateTradePeriods(InputStreamType, long, List); when ArrayList(); then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "List TradePeriodsGenerator.generateTradePeriods(InputStreamType, long, List)"
+  })
   void testGenerateTradePeriods_whenArrayList_thenReturnEmpty() {
     // Arrange
     InputStreamType inputStreamType = InputStreamType.trade();
 
     // Act
-    List<TradePeriod> actualGenerateTradePeriodsResult = TradePeriodsGenerator.generateTradePeriods(inputStreamType,
-        10L, new ArrayList<>());
+    List<TradePeriod> actualGenerateTradePeriodsResult =
+        TradePeriodsGenerator.generateTradePeriods(inputStreamType, 10L, new ArrayList<>());
 
     // Assert
     assertTrue(actualGenerateTradePeriodsResult.isEmpty());

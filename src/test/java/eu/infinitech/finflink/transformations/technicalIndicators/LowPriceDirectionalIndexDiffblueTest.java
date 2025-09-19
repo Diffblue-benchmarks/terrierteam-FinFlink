@@ -3,6 +3,7 @@ package eu.infinitech.finflink.transformations.technicalIndicators;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.TradePeriod;
 import java.util.ArrayList;
@@ -16,12 +17,13 @@ import org.junit.jupiter.api.Test;
 class LowPriceDirectionalIndexDiffblueTest {
   /**
    * Test {@link LowPriceDirectionalIndex#LowPriceDirectionalIndex()}.
-   * <p>
-   * Method under test: {@link LowPriceDirectionalIndex#LowPriceDirectionalIndex()}
+   *
+   * <p>Method under test: {@link LowPriceDirectionalIndex#LowPriceDirectionalIndex()}
    */
   @Test
   @DisplayName("Test new LowPriceDirectionalIndex()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void LowPriceDirectionalIndex.<init>()"})
   void testNewLowPriceDirectionalIndex() {
     // Arrange and Act
@@ -34,20 +36,26 @@ class LowPriceDirectionalIndexDiffblueTest {
 
   /**
    * Test {@link LowPriceDirectionalIndex#LowPriceDirectionalIndex(Time)}.
+   *
    * <ul>
-   *   <li>Then return Name is {@code LowPriceDirectionalIndex}.</li>
+   *   <li>Then return Name is {@code LowPriceDirectionalIndex}.
    * </ul>
-   * <p>
-   * Method under test: {@link LowPriceDirectionalIndex#LowPriceDirectionalIndex(Time)}
+   *
+   * <p>Method under test: {@link LowPriceDirectionalIndex#LowPriceDirectionalIndex(Time)}
    */
   @Test
-  @DisplayName("Test new LowPriceDirectionalIndex(Time); then return Name is 'LowPriceDirectionalIndex'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new LowPriceDirectionalIndex(Time); then return Name is 'LowPriceDirectionalIndex'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void LowPriceDirectionalIndex.<init>(Time)"})
   void testNewLowPriceDirectionalIndex_thenReturnNameIsLowPriceDirectionalIndex() {
-    // Arrange and Act
-    LowPriceDirectionalIndex actualLowPriceDirectionalIndex = new LowPriceDirectionalIndex(
-        Time.of(3L, TimeUnit.NANOSECONDS));
+    // Arrange
+    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
+
+    // Act
+    LowPriceDirectionalIndex actualLowPriceDirectionalIndex =
+        new LowPriceDirectionalIndex(timePeriod);
 
     // Assert
     assertEquals("LowPriceDirectionalIndex", actualLowPriceDirectionalIndex.getName());
@@ -57,16 +65,18 @@ class LowPriceDirectionalIndexDiffblueTest {
 
   /**
    * Test {@link LowPriceDirectionalIndex#calculate(List)}.
+   *
    * <ul>
-   *   <li>Given {@code null}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code null}.</li>
+   *   <li>Given {@code null}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link LowPriceDirectionalIndex#calculate(List)}
+   *
+   * <p>Method under test: {@link LowPriceDirectionalIndex#calculate(List)}
    */
   @Test
   @DisplayName("Test calculate(List); given 'null'; when ArrayList() add 'null'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double LowPriceDirectionalIndex.calculate(List)"})
   void testCalculate_givenNull_whenArrayListAddNull() {
     // Arrange
@@ -81,15 +91,17 @@ class LowPriceDirectionalIndexDiffblueTest {
 
   /**
    * Test {@link LowPriceDirectionalIndex#calculate(List)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link LowPriceDirectionalIndex#calculate(List)}
+   *
+   * <p>Method under test: {@link LowPriceDirectionalIndex#calculate(List)}
    */
   @Test
   @DisplayName("Test calculate(List); when ArrayList()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double LowPriceDirectionalIndex.calculate(List)"})
   void testCalculate_whenArrayList() {
     // Arrange

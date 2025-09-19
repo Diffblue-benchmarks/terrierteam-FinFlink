@@ -3,6 +3,7 @@ package eu.infinitech.finflink.transformations.technicalIndicators;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.TradePeriod;
 import java.util.ArrayList;
@@ -16,12 +17,13 @@ import org.junit.jupiter.api.Test;
 class HighPriceDirectionalIndexDiffblueTest {
   /**
    * Test {@link HighPriceDirectionalIndex#HighPriceDirectionalIndex()}.
-   * <p>
-   * Method under test: {@link HighPriceDirectionalIndex#HighPriceDirectionalIndex()}
+   *
+   * <p>Method under test: {@link HighPriceDirectionalIndex#HighPriceDirectionalIndex()}
    */
   @Test
   @DisplayName("Test new HighPriceDirectionalIndex()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void HighPriceDirectionalIndex.<init>()"})
   void testNewHighPriceDirectionalIndex() {
     // Arrange and Act
@@ -34,20 +36,26 @@ class HighPriceDirectionalIndexDiffblueTest {
 
   /**
    * Test {@link HighPriceDirectionalIndex#HighPriceDirectionalIndex(Time)}.
+   *
    * <ul>
-   *   <li>Then return Name is {@code HighPriceDirectionalIndex}.</li>
+   *   <li>Then return Name is {@code HighPriceDirectionalIndex}.
    * </ul>
-   * <p>
-   * Method under test: {@link HighPriceDirectionalIndex#HighPriceDirectionalIndex(Time)}
+   *
+   * <p>Method under test: {@link HighPriceDirectionalIndex#HighPriceDirectionalIndex(Time)}
    */
   @Test
-  @DisplayName("Test new HighPriceDirectionalIndex(Time); then return Name is 'HighPriceDirectionalIndex'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new HighPriceDirectionalIndex(Time); then return Name is 'HighPriceDirectionalIndex'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void HighPriceDirectionalIndex.<init>(Time)"})
   void testNewHighPriceDirectionalIndex_thenReturnNameIsHighPriceDirectionalIndex() {
-    // Arrange and Act
-    HighPriceDirectionalIndex actualHighPriceDirectionalIndex = new HighPriceDirectionalIndex(
-        Time.of(3L, TimeUnit.NANOSECONDS));
+    // Arrange
+    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
+
+    // Act
+    HighPriceDirectionalIndex actualHighPriceDirectionalIndex =
+        new HighPriceDirectionalIndex(timePeriod);
 
     // Assert
     assertEquals("HighPriceDirectionalIndex", actualHighPriceDirectionalIndex.getName());
@@ -57,16 +65,18 @@ class HighPriceDirectionalIndexDiffblueTest {
 
   /**
    * Test {@link HighPriceDirectionalIndex#calculate(List)}.
+   *
    * <ul>
-   *   <li>Given {@code null}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code null}.</li>
+   *   <li>Given {@code null}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link HighPriceDirectionalIndex#calculate(List)}
+   *
+   * <p>Method under test: {@link HighPriceDirectionalIndex#calculate(List)}
    */
   @Test
   @DisplayName("Test calculate(List); given 'null'; when ArrayList() add 'null'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double HighPriceDirectionalIndex.calculate(List)"})
   void testCalculate_givenNull_whenArrayListAddNull() {
     // Arrange
@@ -81,15 +91,17 @@ class HighPriceDirectionalIndexDiffblueTest {
 
   /**
    * Test {@link HighPriceDirectionalIndex#calculate(List)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link HighPriceDirectionalIndex#calculate(List)}
+   *
+   * <p>Method under test: {@link HighPriceDirectionalIndex#calculate(List)}
    */
   @Test
   @DisplayName("Test calculate(List); when ArrayList()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double HighPriceDirectionalIndex.calculate(List)"})
   void testCalculate_whenArrayList() {
     // Arrange

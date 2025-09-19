@@ -2,6 +2,7 @@ package eu.infinitech.finflink.transformations.technicalIndicators;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.TradePeriod;
 import java.util.ArrayList;
@@ -15,19 +16,24 @@ import org.junit.jupiter.api.Test;
 class VortexPlusDiffblueTest {
   /**
    * Test {@link VortexPlus#VortexPlus(Time)}.
+   *
    * <ul>
-   *   <li>Then return Name is {@code VortexPlus}.</li>
+   *   <li>Then return Name is {@code VortexPlus}.
    * </ul>
-   * <p>
-   * Method under test: {@link VortexPlus#VortexPlus(Time)}
+   *
+   * <p>Method under test: {@link VortexPlus#VortexPlus(Time)}
    */
   @Test
   @DisplayName("Test new VortexPlus(Time); then return Name is 'VortexPlus'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void VortexPlus.<init>(Time)"})
   void testNewVortexPlus_thenReturnNameIsVortexPlus() {
-    // Arrange and Act
-    VortexPlus actualVortexPlus = new VortexPlus(Time.of(3L, TimeUnit.NANOSECONDS));
+    // Arrange
+    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
+
+    // Act
+    VortexPlus actualVortexPlus = new VortexPlus(timePeriod);
 
     // Assert
     assertEquals("VortexPlus", actualVortexPlus.getName());
@@ -37,21 +43,25 @@ class VortexPlusDiffblueTest {
 
   /**
    * Test {@link VortexPlus#calculate(List)}.
+   *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.</li>
-   *   <li>Then return {@link Double#NaN}.</li>
+   *   <li>Given {@link TradePeriod#TradePeriod()}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
+   *   <li>Then return {@link Double#NaN}.
    * </ul>
-   * <p>
-   * Method under test: {@link VortexPlus#calculate(List)}
+   *
+   * <p>Method under test: {@link VortexPlus#calculate(List)}
    */
   @Test
-  @DisplayName("Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return NaN")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return NaN")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double VortexPlus.calculate(List)"})
   void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnNaN() {
     // Arrange
-    VortexPlus vortexPlus = new VortexPlus(Time.of(3L, TimeUnit.NANOSECONDS));
+    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
+    VortexPlus vortexPlus = new VortexPlus(timePeriod);
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
     periodsToConsider.add(new TradePeriod());
@@ -63,21 +73,25 @@ class VortexPlusDiffblueTest {
 
   /**
    * Test {@link VortexPlus#calculate(List)}.
+   *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.</li>
-   *   <li>Then return zero.</li>
+   *   <li>Given {@link TradePeriod#TradePeriod()}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link VortexPlus#calculate(List)}
+   *
+   * <p>Method under test: {@link VortexPlus#calculate(List)}
    */
   @Test
-  @DisplayName("Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return zero")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double VortexPlus.calculate(List)"})
   void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnZero() {
     // Arrange
-    VortexPlus vortexPlus = new VortexPlus(Time.of(3L, TimeUnit.NANOSECONDS));
+    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
+    VortexPlus vortexPlus = new VortexPlus(timePeriod);
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
     periodsToConsider.add(new TradePeriod());
@@ -88,20 +102,23 @@ class VortexPlusDiffblueTest {
 
   /**
    * Test {@link VortexPlus#calculate(List)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return zero.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link VortexPlus#calculate(List)}
+   *
+   * <p>Method under test: {@link VortexPlus#calculate(List)}
    */
   @Test
   @DisplayName("Test calculate(List); when ArrayList(); then return zero")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double VortexPlus.calculate(List)"})
   void testCalculate_whenArrayList_thenReturnZero() {
     // Arrange
-    VortexPlus vortexPlus = new VortexPlus(Time.of(3L, TimeUnit.NANOSECONDS));
+    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
+    VortexPlus vortexPlus = new VortexPlus(timePeriod);
 
     // Act and Assert
     assertEquals(0.0d, vortexPlus.calculate(new ArrayList<>()));

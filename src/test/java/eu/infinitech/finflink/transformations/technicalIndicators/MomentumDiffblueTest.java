@@ -3,6 +3,7 @@ package eu.infinitech.finflink.transformations.technicalIndicators;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.TradePeriod;
 import java.util.ArrayList;
@@ -16,12 +17,13 @@ import org.junit.jupiter.api.Test;
 class MomentumDiffblueTest {
   /**
    * Test {@link Momentum#Momentum(int)}.
-   * <p>
-   * Method under test: {@link Momentum#Momentum(int)}
+   *
+   * <p>Method under test: {@link Momentum#Momentum(int)}
    */
   @Test
   @DisplayName("Test new Momentum(int)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void Momentum.<init>(int)"})
   void testNewMomentum() {
     // Arrange and Act
@@ -34,19 +36,24 @@ class MomentumDiffblueTest {
 
   /**
    * Test {@link Momentum#Momentum(Time, int)}.
+   *
    * <ul>
-   *   <li>Then return Name is {@code Momentum}.</li>
+   *   <li>Then return Name is {@code Momentum}.
    * </ul>
-   * <p>
-   * Method under test: {@link Momentum#Momentum(Time, int)}
+   *
+   * <p>Method under test: {@link Momentum#Momentum(Time, int)}
    */
   @Test
   @DisplayName("Test new Momentum(Time, int); then return Name is 'Momentum'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void Momentum.<init>(Time, int)"})
   void testNewMomentum_thenReturnNameIsMomentum() {
-    // Arrange and Act
-    Momentum actualMomentum = new Momentum(Time.of(3L, TimeUnit.NANOSECONDS), 10);
+    // Arrange
+    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
+
+    // Act
+    Momentum actualMomentum = new Momentum(timePeriod, 10);
 
     // Assert
     assertEquals("Momentum", actualMomentum.getName());
@@ -57,16 +64,18 @@ class MomentumDiffblueTest {
 
   /**
    * Test {@link Momentum#calculate(List)}.
+   *
    * <ul>
-   *   <li>Given {@link Momentum#Momentum(int)} with numPeriods is ten.</li>
-   *   <li>Then return zero.</li>
+   *   <li>Given {@link Momentum#Momentum(int)} with numPeriods is ten.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link Momentum#calculate(List)}
+   *
+   * <p>Method under test: {@link Momentum#calculate(List)}
    */
   @Test
   @DisplayName("Test calculate(List); given Momentum(int) with numPeriods is ten; then return zero")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double Momentum.calculate(List)"})
   void testCalculate_givenMomentumWithNumPeriodsIsTen_thenReturnZero() {
     // Arrange
@@ -81,16 +90,18 @@ class MomentumDiffblueTest {
 
   /**
    * Test {@link Momentum#calculate(List)}.
+   *
    * <ul>
-   *   <li>Given {@link Momentum#Momentum(int)} with numPeriods is ten.</li>
-   *   <li>Then return zero.</li>
+   *   <li>Given {@link Momentum#Momentum(int)} with numPeriods is ten.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link Momentum#calculate(List)}
+   *
+   * <p>Method under test: {@link Momentum#calculate(List)}
    */
   @Test
   @DisplayName("Test calculate(List); given Momentum(int) with numPeriods is ten; then return zero")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double Momentum.calculate(List)"})
   void testCalculate_givenMomentumWithNumPeriodsIsTen_thenReturnZero2() {
     // Arrange
@@ -106,17 +117,20 @@ class MomentumDiffblueTest {
 
   /**
    * Test {@link Momentum#calculate(List)}.
+   *
    * <ul>
-   *   <li>Given {@link Momentum#Momentum(int)} with numPeriods is ten.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return zero.</li>
+   *   <li>Given {@link Momentum#Momentum(int)} with numPeriods is ten.
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link Momentum#calculate(List)}
+   *
+   * <p>Method under test: {@link Momentum#calculate(List)}
    */
   @Test
-  @DisplayName("Test calculate(List); given Momentum(int) with numPeriods is ten; when ArrayList(); then return zero")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test calculate(List); given Momentum(int) with numPeriods is ten; when ArrayList(); then return zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double Momentum.calculate(List)"})
   void testCalculate_givenMomentumWithNumPeriodsIsTen_whenArrayList_thenReturnZero() {
     // Arrange
@@ -128,16 +142,19 @@ class MomentumDiffblueTest {
 
   /**
    * Test {@link Momentum#calculate(List)}.
+   *
    * <ul>
-   *   <li>Given {@link Momentum#Momentum(int)} with numPeriods is zero.</li>
-   *   <li>Then return zero.</li>
+   *   <li>Given {@link Momentum#Momentum(int)} with numPeriods is zero.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link Momentum#calculate(List)}
+   *
+   * <p>Method under test: {@link Momentum#calculate(List)}
    */
   @Test
-  @DisplayName("Test calculate(List); given Momentum(int) with numPeriods is zero; then return zero")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test calculate(List); given Momentum(int) with numPeriods is zero; then return zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double Momentum.calculate(List)"})
   void testCalculate_givenMomentumWithNumPeriodsIsZero_thenReturnZero() {
     // Arrange

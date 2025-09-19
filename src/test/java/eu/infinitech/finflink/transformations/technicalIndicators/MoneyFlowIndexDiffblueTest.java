@@ -2,6 +2,7 @@ package eu.infinitech.finflink.transformations.technicalIndicators;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.TradePeriod;
 import java.util.ArrayList;
@@ -15,19 +16,24 @@ import org.junit.jupiter.api.Test;
 class MoneyFlowIndexDiffblueTest {
   /**
    * Test {@link MoneyFlowIndex#MoneyFlowIndex(Time)}.
+   *
    * <ul>
-   *   <li>Then return Name is {@code MoneyFlowIndex}.</li>
+   *   <li>Then return Name is {@code MoneyFlowIndex}.
    * </ul>
-   * <p>
-   * Method under test: {@link MoneyFlowIndex#MoneyFlowIndex(Time)}
+   *
+   * <p>Method under test: {@link MoneyFlowIndex#MoneyFlowIndex(Time)}
    */
   @Test
   @DisplayName("Test new MoneyFlowIndex(Time); then return Name is 'MoneyFlowIndex'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void MoneyFlowIndex.<init>(Time)"})
   void testNewMoneyFlowIndex_thenReturnNameIsMoneyFlowIndex() {
-    // Arrange and Act
-    MoneyFlowIndex actualMoneyFlowIndex = new MoneyFlowIndex(Time.of(3L, TimeUnit.NANOSECONDS));
+    // Arrange
+    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
+
+    // Act
+    MoneyFlowIndex actualMoneyFlowIndex = new MoneyFlowIndex(timePeriod);
 
     // Assert
     assertEquals("MoneyFlowIndex", actualMoneyFlowIndex.getName());
@@ -37,20 +43,23 @@ class MoneyFlowIndexDiffblueTest {
 
   /**
    * Test {@link MoneyFlowIndex#calculate(List)}.
+   *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()} ClosePrice is three.</li>
-   *   <li>Then return {@link Double#NaN}.</li>
+   *   <li>Given {@link TradePeriod#TradePeriod()} ClosePrice is three.
+   *   <li>Then return {@link Double#NaN}.
    * </ul>
-   * <p>
-   * Method under test: {@link MoneyFlowIndex#calculate(List)}
+   *
+   * <p>Method under test: {@link MoneyFlowIndex#calculate(List)}
    */
   @Test
   @DisplayName("Test calculate(List); given TradePeriod() ClosePrice is three; then return NaN")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double MoneyFlowIndex.calculate(List)"})
   void testCalculate_givenTradePeriodClosePriceIsThree_thenReturnNaN() {
     // Arrange
-    MoneyFlowIndex moneyFlowIndex = new MoneyFlowIndex(Time.of(3L, TimeUnit.NANOSECONDS));
+    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
+    MoneyFlowIndex moneyFlowIndex = new MoneyFlowIndex(timePeriod);
 
     TradePeriod tradePeriod = new TradePeriod();
     tradePeriod.setClosePrice(3.0d);
@@ -65,20 +74,23 @@ class MoneyFlowIndexDiffblueTest {
 
   /**
    * Test {@link MoneyFlowIndex#calculate(List)}.
+   *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()} ClosePrice is three.</li>
-   *   <li>Then return {@link Double#NaN}.</li>
+   *   <li>Given {@link TradePeriod#TradePeriod()} ClosePrice is three.
+   *   <li>Then return {@link Double#NaN}.
    * </ul>
-   * <p>
-   * Method under test: {@link MoneyFlowIndex#calculate(List)}
+   *
+   * <p>Method under test: {@link MoneyFlowIndex#calculate(List)}
    */
   @Test
   @DisplayName("Test calculate(List); given TradePeriod() ClosePrice is three; then return NaN")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double MoneyFlowIndex.calculate(List)"})
   void testCalculate_givenTradePeriodClosePriceIsThree_thenReturnNaN2() {
     // Arrange
-    MoneyFlowIndex moneyFlowIndex = new MoneyFlowIndex(Time.of(3L, TimeUnit.NANOSECONDS));
+    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
+    MoneyFlowIndex moneyFlowIndex = new MoneyFlowIndex(timePeriod);
 
     TradePeriod tradePeriod = new TradePeriod();
     tradePeriod.setClosePrice(3.0d);
@@ -93,21 +105,25 @@ class MoneyFlowIndexDiffblueTest {
 
   /**
    * Test {@link MoneyFlowIndex#calculate(List)}.
+   *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.</li>
-   *   <li>Then return {@link Double#NaN}.</li>
+   *   <li>Given {@link TradePeriod#TradePeriod()}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
+   *   <li>Then return {@link Double#NaN}.
    * </ul>
-   * <p>
-   * Method under test: {@link MoneyFlowIndex#calculate(List)}
+   *
+   * <p>Method under test: {@link MoneyFlowIndex#calculate(List)}
    */
   @Test
-  @DisplayName("Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return NaN")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return NaN")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double MoneyFlowIndex.calculate(List)"})
   void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnNaN() {
     // Arrange
-    MoneyFlowIndex moneyFlowIndex = new MoneyFlowIndex(Time.of(3L, TimeUnit.NANOSECONDS));
+    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
+    MoneyFlowIndex moneyFlowIndex = new MoneyFlowIndex(timePeriod);
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
     periodsToConsider.add(new TradePeriod());
@@ -119,21 +135,25 @@ class MoneyFlowIndexDiffblueTest {
 
   /**
    * Test {@link MoneyFlowIndex#calculate(List)}.
+   *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.</li>
-   *   <li>Then return zero.</li>
+   *   <li>Given {@link TradePeriod#TradePeriod()}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link MoneyFlowIndex#calculate(List)}
+   *
+   * <p>Method under test: {@link MoneyFlowIndex#calculate(List)}
    */
   @Test
-  @DisplayName("Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return zero")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double MoneyFlowIndex.calculate(List)"})
   void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnZero() {
     // Arrange
-    MoneyFlowIndex moneyFlowIndex = new MoneyFlowIndex(Time.of(3L, TimeUnit.NANOSECONDS));
+    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
+    MoneyFlowIndex moneyFlowIndex = new MoneyFlowIndex(timePeriod);
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
     periodsToConsider.add(new TradePeriod());
@@ -144,20 +164,23 @@ class MoneyFlowIndexDiffblueTest {
 
   /**
    * Test {@link MoneyFlowIndex#calculate(List)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return zero.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link MoneyFlowIndex#calculate(List)}
+   *
+   * <p>Method under test: {@link MoneyFlowIndex#calculate(List)}
    */
   @Test
   @DisplayName("Test calculate(List); when ArrayList(); then return zero")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double MoneyFlowIndex.calculate(List)"})
   void testCalculate_whenArrayList_thenReturnZero() {
     // Arrange
-    MoneyFlowIndex moneyFlowIndex = new MoneyFlowIndex(Time.of(3L, TimeUnit.NANOSECONDS));
+    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
+    MoneyFlowIndex moneyFlowIndex = new MoneyFlowIndex(timePeriod);
 
     // Act and Assert
     assertEquals(0.0d, moneyFlowIndex.calculate(new ArrayList<>()));

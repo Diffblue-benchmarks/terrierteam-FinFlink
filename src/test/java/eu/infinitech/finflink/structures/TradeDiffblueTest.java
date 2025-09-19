@@ -1,6 +1,7 @@
 package eu.infinitech.finflink.structures;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -9,8 +10,9 @@ import org.junit.jupiter.api.Test;
 class TradeDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Trade#Trade()}
    *   <li>{@link Trade#setAssetSymbol(String)}
@@ -25,10 +27,19 @@ class TradeDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void Trade.<init>()", "String Trade.getAssetSymbol()", "double Trade.getPrice()",
-      "long Trade.getUnixDate()", "long Trade.getVolume()", "void Trade.setAssetSymbol(String)",
-      "void Trade.setPrice(double)", "void Trade.setUnixDate(long)", "void Trade.setVolume(long)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void Trade.<init>()",
+    "String Trade.getAssetSymbol()",
+    "double Trade.getPrice()",
+    "long Trade.getUnixDate()",
+    "long Trade.getVolume()",
+    "void Trade.setAssetSymbol(String)",
+    "void Trade.setPrice(double)",
+    "void Trade.setUnixDate(long)",
+    "void Trade.setVolume(long)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     Trade actualTrade = new Trade();
@@ -49,12 +60,13 @@ class TradeDiffblueTest {
 
   /**
    * Test {@link Trade#Trade(String, long, double, long)}.
-   * <p>
-   * Method under test: {@link Trade#Trade(String, long, double, long)}
+   *
+   * <p>Method under test: {@link Trade#Trade(String, long, double, long)}
    */
   @Test
   @DisplayName("Test new Trade(String, long, double, long)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void Trade.<init>(String, long, double, long)"})
   void testNewTrade() {
     // Arrange and Act
@@ -69,35 +81,45 @@ class TradeDiffblueTest {
 
   /**
    * Test {@link Trade#compareTo(TradingData)} with {@code TradingData}.
-   * <p>
-   * Method under test: {@link Trade#compareTo(TradingData)}
+   *
+   * <p>Method under test: {@link Trade#compareTo(TradingData)}
    */
   @Test
   @DisplayName("Test compareTo(TradingData) with 'TradingData'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int Trade.compareTo(TradingData)"})
   void testCompareToWithTradingData() {
     // Arrange
     Trade trade = new Trade("Asset Symbol", 1L, 10.0d, 1L);
+    PricePoint o = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
 
-    // Act and Assert
-    assertEquals(0, trade.compareTo(new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1)));
+    // Act
+    int actualCompareToResult = trade.compareTo(o);
+
+    // Assert
+    assertEquals(0, actualCompareToResult);
   }
 
   /**
    * Test {@link Trade#compareTo(TradingData)} with {@code TradingData}.
-   * <p>
-   * Method under test: {@link Trade#compareTo(TradingData)}
+   *
+   * <p>Method under test: {@link Trade#compareTo(TradingData)}
    */
   @Test
   @DisplayName("Test compareTo(TradingData) with 'TradingData'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int Trade.compareTo(TradingData)"})
   void testCompareToWithTradingData2() {
     // Arrange
     Trade trade = new Trade("Asset Symbol", 1L, 10.0d, 1L);
+    Trade o = new Trade("Asset Symbol", 1L, 10.0d, 1L);
 
-    // Act and Assert
-    assertEquals(0, trade.compareTo(new Trade("Asset Symbol", 1L, 10.0d, 1L)));
+    // Act
+    int actualCompareToResult = trade.compareTo(o);
+
+    // Assert
+    assertEquals(0, actualCompareToResult);
   }
 }

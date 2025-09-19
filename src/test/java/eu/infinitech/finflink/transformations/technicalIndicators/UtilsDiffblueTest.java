@@ -2,6 +2,7 @@ package eu.infinitech.finflink.transformations.technicalIndicators;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.TradePeriod;
 import java.util.ArrayList;
@@ -15,17 +16,19 @@ import org.junit.jupiter.api.Test;
 class UtilsDiffblueTest {
   /**
    * Test {@link Utils#sum(List)}.
+   *
    * <ul>
-   *   <li>Given ten.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add ten.</li>
-   *   <li>Then return ten.</li>
+   *   <li>Given ten.
+   *   <li>When {@link ArrayList#ArrayList()} add ten.
+   *   <li>Then return ten.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#sum(List)}
+   *
+   * <p>Method under test: {@link Utils#sum(List)}
    */
   @Test
   @DisplayName("Test sum(List); given ten; when ArrayList() add ten; then return ten")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double Utils.sum(List)"})
   void testSum_givenTen_whenArrayListAddTen_thenReturnTen() {
     // Arrange
@@ -38,17 +41,19 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#sum(List)}.
+   *
    * <ul>
-   *   <li>Given zero.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add zero.</li>
-   *   <li>Then return ten.</li>
+   *   <li>Given zero.
+   *   <li>When {@link ArrayList#ArrayList()} add zero.
+   *   <li>Then return ten.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#sum(List)}
+   *
+   * <p>Method under test: {@link Utils#sum(List)}
    */
   @Test
   @DisplayName("Test sum(List); given zero; when ArrayList() add zero; then return ten")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double Utils.sum(List)"})
   void testSum_givenZero_whenArrayListAddZero_thenReturnTen() {
     // Arrange
@@ -62,16 +67,18 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#sum(List)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return zero.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#sum(List)}
+   *
+   * <p>Method under test: {@link Utils#sum(List)}
    */
   @Test
   @DisplayName("Test sum(List); when ArrayList(); then return zero")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double Utils.sum(List)"})
   void testSum_whenArrayList_thenReturnZero() {
     // Arrange, Act and Assert
@@ -80,17 +87,19 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#mean(List)}.
+   *
    * <ul>
-   *   <li>Given ten.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add ten.</li>
-   *   <li>Then return ten.</li>
+   *   <li>Given ten.
+   *   <li>When {@link ArrayList#ArrayList()} add ten.
+   *   <li>Then return ten.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#mean(List)}
+   *
+   * <p>Method under test: {@link Utils#mean(List)}
    */
   @Test
   @DisplayName("Test mean(List); given ten; when ArrayList() add ten; then return ten")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double Utils.mean(List)"})
   void testMean_givenTen_whenArrayListAddTen_thenReturnTen() {
     // Arrange
@@ -103,17 +112,19 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#mean(List)}.
+   *
    * <ul>
-   *   <li>Given zero.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add zero.</li>
-   *   <li>Then return five.</li>
+   *   <li>Given zero.
+   *   <li>When {@link ArrayList#ArrayList()} add zero.
+   *   <li>Then return five.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#mean(List)}
+   *
+   * <p>Method under test: {@link Utils#mean(List)}
    */
   @Test
   @DisplayName("Test mean(List); given zero; when ArrayList() add zero; then return five")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double Utils.mean(List)"})
   void testMean_givenZero_whenArrayListAddZero_thenReturnFive() {
     // Arrange
@@ -127,16 +138,18 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#mean(List)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@link Double#NaN}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return {@link Double#NaN}.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#mean(List)}
+   *
+   * <p>Method under test: {@link Utils#mean(List)}
    */
   @Test
   @DisplayName("Test mean(List); when ArrayList(); then return NaN")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double Utils.mean(List)"})
   void testMean_whenArrayList_thenReturnNaN() {
     // Arrange, Act and Assert
@@ -145,17 +158,19 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#std(List)}.
+   *
    * <ul>
-   *   <li>Given ten.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add ten.</li>
-   *   <li>Then return zero.</li>
+   *   <li>Given ten.
+   *   <li>When {@link ArrayList#ArrayList()} add ten.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#std(List)}
+   *
+   * <p>Method under test: {@link Utils#std(List)}
    */
   @Test
   @DisplayName("Test std(List); given ten; when ArrayList() add ten; then return zero")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double Utils.std(List)"})
   void testStd_givenTen_whenArrayListAddTen_thenReturnZero() {
     // Arrange
@@ -168,17 +183,19 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#std(List)}.
+   *
    * <ul>
-   *   <li>Given zero.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add zero.</li>
-   *   <li>Then return five.</li>
+   *   <li>Given zero.
+   *   <li>When {@link ArrayList#ArrayList()} add zero.
+   *   <li>Then return five.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#std(List)}
+   *
+   * <p>Method under test: {@link Utils#std(List)}
    */
   @Test
   @DisplayName("Test std(List); given zero; when ArrayList() add zero; then return five")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double Utils.std(List)"})
   void testStd_givenZero_whenArrayListAddZero_thenReturnFive() {
     // Arrange
@@ -192,16 +209,18 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#std(List)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@link Double#NaN}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return {@link Double#NaN}.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#std(List)}
+   *
+   * <p>Method under test: {@link Utils#std(List)}
    */
   @Test
   @DisplayName("Test std(List); when ArrayList(); then return NaN")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double Utils.std(List)"})
   void testStd_whenArrayList_thenReturnNaN() {
     // Arrange, Act and Assert
@@ -210,17 +229,20 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#cumSum(List)}.
+   *
    * <ul>
-   *   <li>Given {@code 0.5}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 0.5}.</li>
-   *   <li>Then return size is two.</li>
+   *   <li>Given {@code 0.5}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 0.5}.
+   *   <li>Then return size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#cumSum(List)}
+   *
+   * <p>Method under test: {@link Utils#cumSum(List)}
    */
   @Test
-  @DisplayName("Test cumSum(List); given '0.5'; when ArrayList() add '0.5'; then return size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test cumSum(List); given '0.5'; when ArrayList() add '0.5'; then return size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List Utils.cumSum(List)"})
   void testCumSum_given05_whenArrayListAdd05_thenReturnSizeIsTwo() {
     // Arrange
@@ -239,17 +261,19 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#cumSum(List)}.
+   *
    * <ul>
-   *   <li>Given ten.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add ten.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
+   *   <li>Given ten.
+   *   <li>When {@link ArrayList#ArrayList()} add ten.
+   *   <li>Then return {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#cumSum(List)}
+   *
+   * <p>Method under test: {@link Utils#cumSum(List)}
    */
   @Test
   @DisplayName("Test cumSum(List); given ten; when ArrayList() add ten; then return ArrayList()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List Utils.cumSum(List)"})
   void testCumSum_givenTen_whenArrayListAddTen_thenReturnArrayList() {
     // Arrange
@@ -265,16 +289,18 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#cumSum(List)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#cumSum(List)}
+   *
+   * <p>Method under test: {@link Utils#cumSum(List)}
    */
   @Test
   @DisplayName("Test cumSum(List); when ArrayList(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List Utils.cumSum(List)"})
   void testCumSum_whenArrayList_thenReturnEmpty() {
     // Arrange and Act
@@ -286,17 +312,19 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#ewm(List, int)}.
+   *
    * <ul>
-   *   <li>Given one.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add one.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
+   *   <li>Given one.
+   *   <li>When {@link ArrayList#ArrayList()} add one.
+   *   <li>Then return {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#ewm(List, int)}
+   *
+   * <p>Method under test: {@link Utils#ewm(List, int)}
    */
   @Test
   @DisplayName("Test ewm(List, int); given one; when ArrayList() add one; then return ArrayList()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List Utils.ewm(List, int)"})
   void testEwm_givenOne_whenArrayListAddOne_thenReturnArrayList() {
     // Arrange
@@ -313,17 +341,19 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#ewm(List, int)}.
+   *
    * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add two.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
+   *   <li>Given two.
+   *   <li>When {@link ArrayList#ArrayList()} add two.
+   *   <li>Then return {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#ewm(List, int)}
+   *
+   * <p>Method under test: {@link Utils#ewm(List, int)}
    */
   @Test
   @DisplayName("Test ewm(List, int); given two; when ArrayList() add two; then return ArrayList()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List Utils.ewm(List, int)"})
   void testEwm_givenTwo_whenArrayListAddTwo_thenReturnArrayList() {
     // Arrange
@@ -339,16 +369,18 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#ewm(List, int)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#ewm(List, int)}
+   *
+   * <p>Method under test: {@link Utils#ewm(List, int)}
    */
   @Test
   @DisplayName("Test ewm(List, int); when ArrayList(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List Utils.ewm(List, int)"})
   void testEwm_whenArrayList_thenReturnEmpty() {
     // Arrange and Act
@@ -360,17 +392,20 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#trueRange(List)}.
+   *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>Given {@link TradePeriod#TradePeriod()}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#trueRange(List)}
+   *
+   * <p>Method under test: {@link Utils#trueRange(List)}
    */
   @Test
-  @DisplayName("Test trueRange(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test trueRange(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List Utils.trueRange(List)"})
   void testTrueRange_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnSizeIsOne() {
     // Arrange
@@ -387,17 +422,20 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#trueRange(List)}.
+   *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.</li>
-   *   <li>Then return size is two.</li>
+   *   <li>Given {@link TradePeriod#TradePeriod()}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
+   *   <li>Then return size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#trueRange(List)}
+   *
+   * <p>Method under test: {@link Utils#trueRange(List)}
    */
   @Test
-  @DisplayName("Test trueRange(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test trueRange(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List Utils.trueRange(List)"})
   void testTrueRange_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnSizeIsTwo() {
     // Arrange
@@ -416,16 +454,18 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#trueRange(List)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#trueRange(List)}
+   *
+   * <p>Method under test: {@link Utils#trueRange(List)}
    */
   @Test
   @DisplayName("Test trueRange(List); when ArrayList(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List Utils.trueRange(List)"})
   void testTrueRange_whenArrayList_thenReturnEmpty() {
     // Arrange and Act
@@ -437,17 +477,19 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#diff(List)}.
+   *
    * <ul>
-   *   <li>Given {@code 0.5}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 0.5}.</li>
-   *   <li>Then return size is two.</li>
+   *   <li>Given {@code 0.5}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 0.5}.
+   *   <li>Then return size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#diff(List)}
+   *
+   * <p>Method under test: {@link Utils#diff(List)}
    */
   @Test
   @DisplayName("Test diff(List); given '0.5'; when ArrayList() add '0.5'; then return size is two")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List Utils.diff(List)"})
   void testDiff_given05_whenArrayListAdd05_thenReturnSizeIsTwo() {
     // Arrange
@@ -466,17 +508,19 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#diff(List)}.
+   *
    * <ul>
-   *   <li>Given ten.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add ten.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>Given ten.
+   *   <li>When {@link ArrayList#ArrayList()} add ten.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#diff(List)}
+   *
+   * <p>Method under test: {@link Utils#diff(List)}
    */
   @Test
   @DisplayName("Test diff(List); given ten; when ArrayList() add ten; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List Utils.diff(List)"})
   void testDiff_givenTen_whenArrayListAddTen_thenReturnSizeIsOne() {
     // Arrange
@@ -493,16 +537,18 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#diff(List)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#diff(List)}
+   *
+   * <p>Method under test: {@link Utils#diff(List)}
    */
   @Test
   @DisplayName("Test diff(List); when ArrayList(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List Utils.diff(List)"})
   void testDiff_whenArrayList_thenReturnEmpty() {
     // Arrange and Act
@@ -514,16 +560,18 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#truePrice(TradePeriod)}.
+   *
    * <ul>
-   *   <li>When {@link TradePeriod#TradePeriod()}.</li>
-   *   <li>Then return zero.</li>
+   *   <li>When {@link TradePeriod#TradePeriod()}.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#truePrice(TradePeriod)}
+   *
+   * <p>Method under test: {@link Utils#truePrice(TradePeriod)}
    */
   @Test
   @DisplayName("Test truePrice(TradePeriod); when TradePeriod(); then return zero")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double Utils.truePrice(TradePeriod)"})
   void testTruePrice_whenTradePeriod_thenReturnZero() {
     // Arrange, Act and Assert
@@ -532,16 +580,18 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#sliding(List, long)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#sliding(List, long)}
+   *
+   * <p>Method under test: {@link Utils#sliding(List, long)}
    */
   @Test
   @DisplayName("Test sliding(List, long); given '42'; when ArrayList() add '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Stream Utils.sliding(List, long)"})
   void testSliding_given42_whenArrayListAdd42() {
     // Arrange
@@ -557,16 +607,18 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#sliding(List, long)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#sliding(List, long)}
+   *
+   * <p>Method under test: {@link Utils#sliding(List, long)}
    */
   @Test
   @DisplayName("Test sliding(List, long); given '42'; when ArrayList() add '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Stream Utils.sliding(List, long)"})
   void testSliding_given42_whenArrayListAdd422() {
     // Arrange
@@ -583,15 +635,17 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#sliding(List, long)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#sliding(List, long)}
+   *
+   * <p>Method under test: {@link Utils#sliding(List, long)}
    */
   @Test
   @DisplayName("Test sliding(List, long); when ArrayList()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Stream Utils.sliding(List, long)"})
   void testSliding_whenArrayList() {
     // Arrange and Act
@@ -603,16 +657,19 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#expanding(List)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then return limit five collect toList size is one.</li>
+   *   <li>Given {@code 42}.
+   *   <li>Then return limit five collect toList size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#expanding(List)}
+   *
+   * <p>Method under test: {@link Utils#expanding(List)}
    */
   @Test
-  @DisplayName("Test expanding(List); given '42'; then return limit five collect toList size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test expanding(List); given '42'; then return limit five collect toList size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Stream Utils.expanding(List)"})
   void testExpanding_given42_thenReturnLimitFiveCollectToListSizeIsOne() {
     // Arrange
@@ -631,17 +688,20 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#expanding(List)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return limit five collect toList Empty.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return limit five collect toList Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#expanding(List)}
+   *
+   * <p>Method under test: {@link Utils#expanding(List)}
    */
   @Test
-  @DisplayName("Test expanding(List); given '42'; when ArrayList() add '42'; then return limit five collect toList Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test expanding(List); given '42'; when ArrayList() add '42'; then return limit five collect toList Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Stream Utils.expanding(List)"})
   void testExpanding_given42_whenArrayListAdd42_thenReturnLimitFiveCollectToListEmpty() {
     // Arrange
@@ -657,16 +717,19 @@ class UtilsDiffblueTest {
 
   /**
    * Test {@link Utils#expanding(List)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return limit five collect toList Empty.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return limit five collect toList Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link Utils#expanding(List)}
+   *
+   * <p>Method under test: {@link Utils#expanding(List)}
    */
   @Test
-  @DisplayName("Test expanding(List); when ArrayList(); then return limit five collect toList Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test expanding(List); when ArrayList(); then return limit five collect toList Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Stream Utils.expanding(List)"})
   void testExpanding_whenArrayList_thenReturnLimitFiveCollectToListEmpty() {
     // Arrange and Act

@@ -3,6 +3,7 @@ package eu.infinitech.finflink.transformations.technicalIndicators;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.TradePeriod;
 import java.util.ArrayList;
@@ -16,16 +17,18 @@ import org.junit.jupiter.api.Test;
 class HighPriceDirectionalMomentumDiffblueTest {
   /**
    * Test {@link HighPriceDirectionalMomentum#HighPriceDirectionalMomentum()}.
-   * <p>
-   * Method under test: {@link HighPriceDirectionalMomentum#HighPriceDirectionalMomentum()}
+   *
+   * <p>Method under test: {@link HighPriceDirectionalMomentum#HighPriceDirectionalMomentum()}
    */
   @Test
   @DisplayName("Test new HighPriceDirectionalMomentum()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void HighPriceDirectionalMomentum.<init>()"})
   void testNewHighPriceDirectionalMomentum() {
     // Arrange and Act
-    HighPriceDirectionalMomentum actualHighPriceDirectionalMomentum = new HighPriceDirectionalMomentum();
+    HighPriceDirectionalMomentum actualHighPriceDirectionalMomentum =
+        new HighPriceDirectionalMomentum();
 
     // Assert
     assertNull(actualHighPriceDirectionalMomentum.getIndicatorRequirements());
@@ -34,20 +37,26 @@ class HighPriceDirectionalMomentumDiffblueTest {
 
   /**
    * Test {@link HighPriceDirectionalMomentum#HighPriceDirectionalMomentum(Time)}.
+   *
    * <ul>
-   *   <li>Then return Name is {@code HighPriceDirectionalMomentum}.</li>
+   *   <li>Then return Name is {@code HighPriceDirectionalMomentum}.
    * </ul>
-   * <p>
-   * Method under test: {@link HighPriceDirectionalMomentum#HighPriceDirectionalMomentum(Time)}
+   *
+   * <p>Method under test: {@link HighPriceDirectionalMomentum#HighPriceDirectionalMomentum(Time)}
    */
   @Test
-  @DisplayName("Test new HighPriceDirectionalMomentum(Time); then return Name is 'HighPriceDirectionalMomentum'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new HighPriceDirectionalMomentum(Time); then return Name is 'HighPriceDirectionalMomentum'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void HighPriceDirectionalMomentum.<init>(Time)"})
   void testNewHighPriceDirectionalMomentum_thenReturnNameIsHighPriceDirectionalMomentum() {
-    // Arrange and Act
-    HighPriceDirectionalMomentum actualHighPriceDirectionalMomentum = new HighPriceDirectionalMomentum(
-        Time.of(3L, TimeUnit.NANOSECONDS));
+    // Arrange
+    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
+
+    // Act
+    HighPriceDirectionalMomentum actualHighPriceDirectionalMomentum =
+        new HighPriceDirectionalMomentum(timePeriod);
 
     // Assert
     assertEquals("HighPriceDirectionalMomentum", actualHighPriceDirectionalMomentum.getName());
@@ -57,16 +66,18 @@ class HighPriceDirectionalMomentumDiffblueTest {
 
   /**
    * Test {@link HighPriceDirectionalMomentum#calculate(List)}.
+   *
    * <ul>
-   *   <li>Given {@code null}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code null}.</li>
+   *   <li>Given {@code null}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link HighPriceDirectionalMomentum#calculate(List)}
+   *
+   * <p>Method under test: {@link HighPriceDirectionalMomentum#calculate(List)}
    */
   @Test
   @DisplayName("Test calculate(List); given 'null'; when ArrayList() add 'null'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double HighPriceDirectionalMomentum.calculate(List)"})
   void testCalculate_givenNull_whenArrayListAddNull() {
     // Arrange
@@ -81,15 +92,17 @@ class HighPriceDirectionalMomentumDiffblueTest {
 
   /**
    * Test {@link HighPriceDirectionalMomentum#calculate(List)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link HighPriceDirectionalMomentum#calculate(List)}
+   *
+   * <p>Method under test: {@link HighPriceDirectionalMomentum#calculate(List)}
    */
   @Test
   @DisplayName("Test calculate(List); when ArrayList()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double HighPriceDirectionalMomentum.calculate(List)"})
   void testCalculate_whenArrayList() {
     // Arrange

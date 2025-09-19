@@ -3,6 +3,7 @@ package eu.infinitech.finflink.structures;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +14,9 @@ import org.junit.jupiter.api.Test;
 class TechnicalIndicatorsDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link TechnicalIndicators#TechnicalIndicators()}
    *   <li>{@link TechnicalIndicators#setIndicators(List)}
@@ -23,9 +25,14 @@ class TechnicalIndicatorsDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void TechnicalIndicators.<init>()", "void TechnicalIndicators.<init>(List)",
-      "List TechnicalIndicators.getIndicators()", "void TechnicalIndicators.setIndicators(List)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void TechnicalIndicators.<init>()",
+    "void TechnicalIndicators.<init>(List)",
+    "List TechnicalIndicators.getIndicators()",
+    "void TechnicalIndicators.setIndicators(List)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     TechnicalIndicators actualTechnicalIndicators = new TechnicalIndicators();
@@ -40,11 +47,13 @@ class TechnicalIndicatorsDiffblueTest {
 
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link TechnicalIndicators#TechnicalIndicators(List)}
    *   <li>{@link TechnicalIndicators#setIndicators(List)}
@@ -53,9 +62,14 @@ class TechnicalIndicatorsDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when ArrayList()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void TechnicalIndicators.<init>()", "void TechnicalIndicators.<init>(List)",
-      "List TechnicalIndicators.getIndicators()", "void TechnicalIndicators.setIndicators(List)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void TechnicalIndicators.<init>()",
+    "void TechnicalIndicators.<init>(List)",
+    "List TechnicalIndicators.getIndicators()",
+    "void TechnicalIndicators.setIndicators(List)"
+  })
   void testGettersAndSetters_whenArrayList() {
     // Arrange and Act
     TechnicalIndicators actualTechnicalIndicators = new TechnicalIndicators(new ArrayList<>());
@@ -70,41 +84,44 @@ class TechnicalIndicatorsDiffblueTest {
 
   /**
    * Test {@link TechnicalIndicators#toString()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@link TechnicalIndicator#TechnicalIndicator()}.</li>
-   *   <li>Then return {@code [null:0.0]}.</li>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@link TechnicalIndicator#TechnicalIndicator()}.
+   *   <li>Then return {@code [null:0.0]}.
    * </ul>
-   * <p>
-   * Method under test: {@link TechnicalIndicators#toString()}
+   *
+   * <p>Method under test: {@link TechnicalIndicators#toString()}
    */
   @Test
-  @DisplayName("Test toString(); given ArrayList() add TechnicalIndicator(); then return '[null:0.0]'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test toString(); given ArrayList() add TechnicalIndicator(); then return '[null:0.0]'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.lang.String TechnicalIndicators.toString()"})
   void testToString_givenArrayListAddTechnicalIndicator_thenReturnNull00() {
     // Arrange
     ArrayList<TechnicalIndicator> indicators = new ArrayList<>();
     indicators.add(new TechnicalIndicator());
 
-    TechnicalIndicators technicalIndicators = new TechnicalIndicators();
-    technicalIndicators.setIndicators(indicators);
-
     // Act and Assert
-    assertEquals("[null:0.0]", technicalIndicators.toString());
+    assertEquals("[null:0.0]", new TechnicalIndicators(indicators).toString());
   }
 
   /**
    * Test {@link TechnicalIndicators#toString()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@link TechnicalIndicator#TechnicalIndicator()}.</li>
-   *   <li>Then return {@code [null:0.0, null:0.0]}.</li>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@link TechnicalIndicator#TechnicalIndicator()}.
+   *   <li>Then return {@code [null:0.0, null:0.0]}.
    * </ul>
-   * <p>
-   * Method under test: {@link TechnicalIndicators#toString()}
+   *
+   * <p>Method under test: {@link TechnicalIndicators#toString()}
    */
   @Test
-  @DisplayName("Test toString(); given ArrayList() add TechnicalIndicator(); then return '[null:0.0, null:0.0]'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test toString(); given ArrayList() add TechnicalIndicator(); then return '[null:0.0, null:0.0]'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.lang.String TechnicalIndicators.toString()"})
   void testToString_givenArrayListAddTechnicalIndicator_thenReturnNull00Null00() {
     // Arrange
@@ -112,27 +129,26 @@ class TechnicalIndicatorsDiffblueTest {
     indicators.add(new TechnicalIndicator());
     indicators.add(new TechnicalIndicator());
 
-    TechnicalIndicators technicalIndicators = new TechnicalIndicators();
-    technicalIndicators.setIndicators(indicators);
-
     // Act and Assert
-    assertEquals("[null:0.0, null:0.0]", technicalIndicators.toString());
+    assertEquals("[null:0.0, null:0.0]", new TechnicalIndicators(indicators).toString());
   }
 
   /**
    * Test {@link TechnicalIndicators#toString()}.
+   *
    * <ul>
-   *   <li>Then return {@code []}.</li>
+   *   <li>Then return {@code []}.
    * </ul>
-   * <p>
-   * Method under test: {@link TechnicalIndicators#toString()}
+   *
+   * <p>Method under test: {@link TechnicalIndicators#toString()}
    */
   @Test
   @DisplayName("Test toString(); then return '[]'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.lang.String TechnicalIndicators.toString()"})
   void testToString_thenReturnLeftSquareBracketRightSquareBracket() {
     // Arrange, Act and Assert
-    assertEquals("[]", (new TechnicalIndicators()).toString());
+    assertEquals("[]", new TechnicalIndicators().toString());
   }
 }

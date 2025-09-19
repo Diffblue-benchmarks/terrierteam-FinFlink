@@ -2,6 +2,7 @@ package eu.infinitech.finflink.structures;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.InputStreamType.Type;
 import org.junit.jupiter.api.DisplayName;
@@ -11,12 +12,14 @@ import org.junit.jupiter.api.Test;
 class InputStreamTypeDiffblueTest {
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@code Asset}.</li>
-   *   <li>Then return {@code Asset}.</li>
+   *   <li>When {@code Asset}.
+   *   <li>Then return {@code Asset}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link InputStreamType#InputStreamType(Type, String)}
    *   <li>{@link InputStreamType#getAsset()}
@@ -25,9 +28,14 @@ class InputStreamTypeDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when 'Asset'; then return 'Asset'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void InputStreamType.<init>(Type)", "void InputStreamType.<init>(Type, String)",
-      "String InputStreamType.getAsset()", "Type InputStreamType.getType()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void InputStreamType.<init>(Type)",
+    "void InputStreamType.<init>(Type, String)",
+    "String InputStreamType.getAsset()",
+    "Type InputStreamType.getType()"
+  })
   void testGettersAndSetters_whenAsset_thenReturnAsset() {
     // Arrange and Act
     InputStreamType actualInputStreamType = new InputStreamType(Type.Trade, "Asset");
@@ -40,12 +48,14 @@ class InputStreamTypeDiffblueTest {
 
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@code Trade}.</li>
-   *   <li>Then return Asset is {@code null}.</li>
+   *   <li>When {@code Trade}.
+   *   <li>Then return Asset is {@code null}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link InputStreamType#InputStreamType(Type)}
    *   <li>{@link InputStreamType#getAsset()}
@@ -54,9 +64,14 @@ class InputStreamTypeDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when 'Trade'; then return Asset is 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void InputStreamType.<init>(Type)", "void InputStreamType.<init>(Type, String)",
-      "String InputStreamType.getAsset()", "Type InputStreamType.getType()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void InputStreamType.<init>(Type)",
+    "void InputStreamType.<init>(Type, String)",
+    "String InputStreamType.getAsset()",
+    "Type InputStreamType.getType()"
+  })
   void testGettersAndSetters_whenTrade_thenReturnAssetIsNull() {
     // Arrange and Act
     InputStreamType actualInputStreamType = new InputStreamType(Type.Trade);
@@ -69,12 +84,13 @@ class InputStreamTypeDiffblueTest {
 
   /**
    * Test {@link InputStreamType#trade()}.
-   * <p>
-   * Method under test: {@link InputStreamType#trade()}
+   *
+   * <p>Method under test: {@link InputStreamType#trade()}
    */
   @Test
   @DisplayName("Test trade()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"InputStreamType InputStreamType.trade()"})
   void testTrade() {
     // Arrange and Act
@@ -87,12 +103,13 @@ class InputStreamTypeDiffblueTest {
 
   /**
    * Test {@link InputStreamType#pricePoint(String)}.
-   * <p>
-   * Method under test: {@link InputStreamType#pricePoint(String)}
+   *
+   * <p>Method under test: {@link InputStreamType#pricePoint(String)}
    */
   @Test
   @DisplayName("Test pricePoint(String)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"InputStreamType InputStreamType.pricePoint(String)"})
   void testPricePoint() {
     // Arrange and Act
