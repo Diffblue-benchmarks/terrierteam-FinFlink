@@ -68,23 +68,23 @@ class LowPriceDirectionalMomentumDiffblueTest {
    * Test {@link LowPriceDirectionalMomentum#calculate(List)}.
    *
    * <ul>
-   *   <li>Given {@code null}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code null}.
+   *   <li>Given {@link TradePeriod#TradePeriod()}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
    * </ul>
    *
    * <p>Method under test: {@link LowPriceDirectionalMomentum#calculate(List)}
    */
   @Test
-  @DisplayName("Test calculate(List); given 'null'; when ArrayList() add 'null'")
+  @DisplayName("Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod()")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"double LowPriceDirectionalMomentum.calculate(List)"})
-  void testCalculate_givenNull_whenArrayListAddNull() {
+  void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod() {
     // Arrange
     LowPriceDirectionalMomentum lowPriceDirectionalMomentum = new LowPriceDirectionalMomentum();
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(null);
+    periodsToConsider.add(new TradePeriod());
 
     // Act and Assert
     assertEquals(0.0d, lowPriceDirectionalMomentum.calculate(periodsToConsider));
