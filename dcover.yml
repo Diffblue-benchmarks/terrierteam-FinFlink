@@ -1,0 +1,15 @@
+---
+# Diffblue Cover configuration file
+# This file configures sandboxing policies for Diffblue Cover test generation
+
+# Allow access to sun.misc package for QuestDB client library
+# The QuestDB Sender class requires access to sun.misc.Unsafe for performance optimizations
+sandbox:
+  permissions:
+    # Allow reading sun.misc package
+    - permission: java.lang.RuntimePermission
+      name: accessClassInPackage.sun.misc
+
+    # Allow suppressing access checks which is often needed alongside sun.misc access
+    - permission: java.lang.reflect.ReflectPermission
+      name: suppressAccessChecks
