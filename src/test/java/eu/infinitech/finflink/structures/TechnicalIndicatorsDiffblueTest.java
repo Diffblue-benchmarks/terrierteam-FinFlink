@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
+import eu.infinitech.finflink.sinks.TechnicalIndicatorsFactory;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -103,8 +104,12 @@ class TechnicalIndicatorsDiffblueTest {
     ArrayList<TechnicalIndicator> indicators = new ArrayList<>();
     indicators.add(new TechnicalIndicator());
 
+    TechnicalIndicators createTechnicalIndicatorsResult =
+        TechnicalIndicatorsFactory.createTechnicalIndicators();
+    createTechnicalIndicatorsResult.setIndicators(indicators);
+
     // Act and Assert
-    assertEquals("[null:0.0]", new TechnicalIndicators(indicators).toString());
+    assertEquals("[null:0.0]", createTechnicalIndicatorsResult.toString());
   }
 
   /**
@@ -129,8 +134,12 @@ class TechnicalIndicatorsDiffblueTest {
     indicators.add(new TechnicalIndicator());
     indicators.add(new TechnicalIndicator());
 
+    TechnicalIndicators createTechnicalIndicatorsResult =
+        TechnicalIndicatorsFactory.createTechnicalIndicators();
+    createTechnicalIndicatorsResult.setIndicators(indicators);
+
     // Act and Assert
-    assertEquals("[null:0.0, null:0.0]", new TechnicalIndicators(indicators).toString());
+    assertEquals("[null:0.0, null:0.0]", createTechnicalIndicatorsResult.toString());
   }
 
   /**
@@ -149,6 +158,6 @@ class TechnicalIndicatorsDiffblueTest {
   @MethodsUnderTest({"java.lang.String TechnicalIndicators.toString()"})
   void testToString_thenReturnLeftSquareBracketRightSquareBracket() {
     // Arrange, Act and Assert
-    assertEquals("[]", new TechnicalIndicators().toString());
+    assertEquals("[]", TechnicalIndicatorsFactory.createTechnicalIndicators().toString());
   }
 }

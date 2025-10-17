@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.TradePeriod;
+import eu.infinitech.finflink.structures.TradePeriodFactory;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -18,27 +18,25 @@ class ReturnsDiffblueTest {
    * Test {@link Returns#Returns(Time, int)}.
    *
    * <ul>
+   *   <li>When createTime.
    *   <li>Then return Name is {@code Returns}.
    * </ul>
    *
    * <p>Method under test: {@link Returns#Returns(Time, int)}
    */
   @Test
-  @DisplayName("Test new Returns(Time, int); then return Name is 'Returns'")
+  @DisplayName("Test new Returns(Time, int); when createTime; then return Name is 'Returns'")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"void Returns.<init>(Time, int)"})
-  void testNewReturns_thenReturnNameIsReturns() {
-    // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-
-    // Act
-    Returns actualReturns = new Returns(timePeriod, 10);
+  void testNewReturns_whenCreateTime_thenReturnNameIsReturns() {
+    // Arrange and Act
+    Returns actualReturns = new Returns(TimeFactory.createTime(), 10);
 
     // Assert
     assertEquals("Returns", actualReturns.getName());
-    assertEquals(0L, actualReturns.getTimePeriod());
     assertEquals(10, actualReturns.numPeriods);
+    assertEquals(1000L, actualReturns.getTimePeriod());
     assertTrue(actualReturns.getProperties().isEmpty());
   }
 
@@ -46,88 +44,76 @@ class ReturnsDiffblueTest {
    * Test {@link Returns#calculate(List)}.
    *
    * <ul>
-   *   <li>Given {@link Returns#Returns(Time, int)} with timePeriod is {@link Time} and numPeriods
-   *       is ten.
-   *   <li>Then return zero.
-   * </ul>
-   *
-   * <p>Method under test: {@link Returns#calculate(List)}
-   */
-  @Test
-  @DisplayName(
-      "Test calculate(List); given Returns(Time, int) with timePeriod is Time and numPeriods is ten; then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"double Returns.calculate(List)"})
-  void testCalculate_givenReturnsWithTimePeriodIsTimeAndNumPeriodsIsTen_thenReturnZero() {
-    // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-    Returns returns = new Returns(timePeriod, 10);
-
-    ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(new TradePeriod());
-
-    // Act and Assert
-    assertEquals(0.0d, returns.calculate(periodsToConsider));
-  }
-
-  /**
-   * Test {@link Returns#calculate(List)}.
-   *
-   * <ul>
-   *   <li>Given {@link Returns#Returns(Time, int)} with timePeriod is {@link Time} and numPeriods
-   *       is ten.
-   *   <li>Then return zero.
-   * </ul>
-   *
-   * <p>Method under test: {@link Returns#calculate(List)}
-   */
-  @Test
-  @DisplayName(
-      "Test calculate(List); given Returns(Time, int) with timePeriod is Time and numPeriods is ten; then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"double Returns.calculate(List)"})
-  void testCalculate_givenReturnsWithTimePeriodIsTimeAndNumPeriodsIsTen_thenReturnZero2() {
-    // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-    Returns returns = new Returns(timePeriod, 10);
-
-    ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(new TradePeriod());
-    periodsToConsider.add(new TradePeriod());
-
-    // Act and Assert
-    assertEquals(0.0d, returns.calculate(periodsToConsider));
-  }
-
-  /**
-   * Test {@link Returns#calculate(List)}.
-   *
-   * <ul>
-   *   <li>Given {@link Returns#Returns(Time, int)} with timePeriod is {@link Time} and numPeriods
-   *       is zero.
    *   <li>Then return {@link Double#NaN}.
    * </ul>
    *
    * <p>Method under test: {@link Returns#calculate(List)}
    */
   @Test
-  @DisplayName(
-      "Test calculate(List); given Returns(Time, int) with timePeriod is Time and numPeriods is zero; then return NaN")
+  @DisplayName("Test calculate(List); then return NaN")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"double Returns.calculate(List)"})
-  void testCalculate_givenReturnsWithTimePeriodIsTimeAndNumPeriodsIsZero_thenReturnNaN() {
+  void testCalculate_thenReturnNaN() {
     // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-    Returns returns = new Returns(timePeriod, 0);
+    Returns returns = new Returns(TimeFactory.createTime(), 0);
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(new TradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
 
     // Act and Assert
     assertEquals(Double.NaN, returns.calculate(periodsToConsider));
+  }
+
+  /**
+   * Test {@link Returns#calculate(List)}.
+   *
+   * <ul>
+   *   <li>Then return zero.
+   * </ul>
+   *
+   * <p>Method under test: {@link Returns#calculate(List)}
+   */
+  @Test
+  @DisplayName("Test calculate(List); then return zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"double Returns.calculate(List)"})
+  void testCalculate_thenReturnZero() {
+    // Arrange
+    Returns returns = new Returns(TimeFactory.createTime(), 10);
+
+    ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
+
+    // Act and Assert
+    assertEquals(0.0d, returns.calculate(periodsToConsider));
+  }
+
+  /**
+   * Test {@link Returns#calculate(List)}.
+   *
+   * <ul>
+   *   <li>Then return zero.
+   * </ul>
+   *
+   * <p>Method under test: {@link Returns#calculate(List)}
+   */
+  @Test
+  @DisplayName("Test calculate(List); then return zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"double Returns.calculate(List)"})
+  void testCalculate_thenReturnZero2() {
+    // Arrange
+    Returns returns = new Returns(TimeFactory.createTime(), 10);
+
+    ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
+
+    // Act and Assert
+    assertEquals(0.0d, returns.calculate(periodsToConsider));
   }
 
   /**
@@ -147,8 +133,7 @@ class ReturnsDiffblueTest {
   @MethodsUnderTest({"double Returns.calculate(List)"})
   void testCalculate_whenArrayList_thenReturnZero() {
     // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-    Returns returns = new Returns(timePeriod, 10);
+    Returns returns = new Returns(TimeFactory.createTime(), 10);
 
     // Act and Assert
     assertEquals(0.0d, returns.calculate(new ArrayList<>()));

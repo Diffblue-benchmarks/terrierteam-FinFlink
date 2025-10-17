@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.TradePeriod;
+import eu.infinitech.finflink.structures.TradePeriodFactory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -394,23 +395,21 @@ class UtilsDiffblueTest {
    * Test {@link Utils#trueRange(List)}.
    *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
+   *   <li>Given createTradePeriod.
    *   <li>Then return size is one.
    * </ul>
    *
    * <p>Method under test: {@link Utils#trueRange(List)}
    */
   @Test
-  @DisplayName(
-      "Test trueRange(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return size is one")
+  @DisplayName("Test trueRange(List); given createTradePeriod; then return size is one")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"List Utils.trueRange(List)"})
-  void testTrueRange_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnSizeIsOne() {
+  void testTrueRange_givenCreateTradePeriod_thenReturnSizeIsOne() {
     // Arrange
     ArrayList<TradePeriod> in = new ArrayList<>();
-    in.add(new TradePeriod());
+    in.add(TradePeriodFactory.createTradePeriod());
 
     // Act
     List<Double> actualTrueRangeResult = Utils.trueRange(in);
@@ -424,24 +423,22 @@ class UtilsDiffblueTest {
    * Test {@link Utils#trueRange(List)}.
    *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
+   *   <li>Given createTradePeriod.
    *   <li>Then return size is two.
    * </ul>
    *
    * <p>Method under test: {@link Utils#trueRange(List)}
    */
   @Test
-  @DisplayName(
-      "Test trueRange(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return size is two")
+  @DisplayName("Test trueRange(List); given createTradePeriod; then return size is two")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"List Utils.trueRange(List)"})
-  void testTrueRange_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnSizeIsTwo() {
+  void testTrueRange_givenCreateTradePeriod_thenReturnSizeIsTwo() {
     // Arrange
     ArrayList<TradePeriod> in = new ArrayList<>();
-    in.add(new TradePeriod());
-    in.add(new TradePeriod());
+    in.add(TradePeriodFactory.createTradePeriod());
+    in.add(TradePeriodFactory.createTradePeriod());
 
     // Act
     List<Double> actualTrueRangeResult = Utils.trueRange(in);
@@ -562,41 +559,42 @@ class UtilsDiffblueTest {
    * Test {@link Utils#truePrice(TradePeriod)}.
    *
    * <ul>
-   *   <li>When {@link TradePeriod#TradePeriod()}.
+   *   <li>When createTradePeriod.
    *   <li>Then return zero.
    * </ul>
    *
    * <p>Method under test: {@link Utils#truePrice(TradePeriod)}
    */
   @Test
-  @DisplayName("Test truePrice(TradePeriod); when TradePeriod(); then return zero")
+  @DisplayName("Test truePrice(TradePeriod); when createTradePeriod; then return zero")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"double Utils.truePrice(TradePeriod)"})
-  void testTruePrice_whenTradePeriod_thenReturnZero() {
+  void testTruePrice_whenCreateTradePeriod_thenReturnZero() {
     // Arrange, Act and Assert
-    assertEquals(0.0d, Utils.truePrice(new TradePeriod()));
+    assertEquals(0.0d, Utils.truePrice(TradePeriodFactory.createTradePeriod()));
   }
 
   /**
    * Test {@link Utils#sliding(List, long)}.
    *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Given createTrueRange.
+   *   <li>When {@link ArrayList#ArrayList()} add createTrueRange.
    * </ul>
    *
    * <p>Method under test: {@link Utils#sliding(List, long)}
    */
   @Test
-  @DisplayName("Test sliding(List, long); given '42'; when ArrayList() add '42'")
+  @DisplayName(
+      "Test sliding(List, long); given createTrueRange; when ArrayList() add createTrueRange")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"Stream Utils.sliding(List, long)"})
-  void testSliding_given42_whenArrayListAdd42() {
+  void testSliding_givenCreateTrueRange_whenArrayListAddCreateTrueRange() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
-    list.add("42");
+    list.add(TrueRangeFactory.createTrueRange());
 
     // Act
     Stream<List<Object>> actualSlidingResult = Utils.sliding(list, 3L);
@@ -609,22 +607,23 @@ class UtilsDiffblueTest {
    * Test {@link Utils#sliding(List, long)}.
    *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Given createTrueRange.
+   *   <li>When {@link ArrayList#ArrayList()} add createTrueRange.
    * </ul>
    *
    * <p>Method under test: {@link Utils#sliding(List, long)}
    */
   @Test
-  @DisplayName("Test sliding(List, long); given '42'; when ArrayList() add '42'")
+  @DisplayName(
+      "Test sliding(List, long); given createTrueRange; when ArrayList() add createTrueRange")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"Stream Utils.sliding(List, long)"})
-  void testSliding_given42_whenArrayListAdd422() {
+  void testSliding_givenCreateTrueRange_whenArrayListAddCreateTrueRange2() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
-    list.add("42");
-    list.add("42");
+    list.add(TrueRangeFactory.createTrueRange());
+    list.add(TrueRangeFactory.createTrueRange());
 
     // Act
     Stream<List<Object>> actualSlidingResult = Utils.sliding(list, 3L);
@@ -659,7 +658,35 @@ class UtilsDiffblueTest {
    * Test {@link Utils#expanding(List)}.
    *
    * <ul>
-   *   <li>Given {@code 42}.
+   *   <li>Given createTrueRange.
+   *   <li>Then return limit five collect toList Empty.
+   * </ul>
+   *
+   * <p>Method under test: {@link Utils#expanding(List)}
+   */
+  @Test
+  @DisplayName(
+      "Test expanding(List); given createTrueRange; then return limit five collect toList Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Stream Utils.expanding(List)"})
+  void testExpanding_givenCreateTrueRange_thenReturnLimitFiveCollectToListEmpty() {
+    // Arrange
+    ArrayList<Object> list = new ArrayList<>();
+    list.add(TrueRangeFactory.createTrueRange());
+
+    // Act
+    Stream<List<Object>> actualExpandingResult = Utils.expanding(list);
+
+    // Assert
+    assertTrue(actualExpandingResult.limit(5).collect(Collectors.toList()).isEmpty());
+  }
+
+  /**
+   * Test {@link Utils#expanding(List)}.
+   *
+   * <ul>
+   *   <li>Given createTrueRange.
    *   <li>Then return limit five collect toList size is one.
    * </ul>
    *
@@ -667,15 +694,15 @@ class UtilsDiffblueTest {
    */
   @Test
   @DisplayName(
-      "Test expanding(List); given '42'; then return limit five collect toList size is one")
+      "Test expanding(List); given createTrueRange; then return limit five collect toList size is one")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"Stream Utils.expanding(List)"})
-  void testExpanding_given42_thenReturnLimitFiveCollectToListSizeIsOne() {
+  void testExpanding_givenCreateTrueRange_thenReturnLimitFiveCollectToListSizeIsOne() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
-    list.add("42");
-    list.add("42");
+    list.add(TrueRangeFactory.createTrueRange());
+    list.add(TrueRangeFactory.createTrueRange());
 
     // Act
     Stream<List<Object>> actualExpandingResult = Utils.expanding(list);
@@ -684,35 +711,6 @@ class UtilsDiffblueTest {
     List<List<Object>> collectResult = actualExpandingResult.limit(5).collect(Collectors.toList());
     assertEquals(1, collectResult.size());
     assertTrue(collectResult.get(0).isEmpty());
-  }
-
-  /**
-   * Test {@link Utils#expanding(List)}.
-   *
-   * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return limit five collect toList Empty.
-   * </ul>
-   *
-   * <p>Method under test: {@link Utils#expanding(List)}
-   */
-  @Test
-  @DisplayName(
-      "Test expanding(List); given '42'; when ArrayList() add '42'; then return limit five collect toList Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Stream Utils.expanding(List)"})
-  void testExpanding_given42_whenArrayListAdd42_thenReturnLimitFiveCollectToListEmpty() {
-    // Arrange
-    ArrayList<Object> list = new ArrayList<>();
-    list.add("42");
-
-    // Act
-    Stream<List<Object>> actualExpandingResult = Utils.expanding(list);
-
-    // Assert
-    assertTrue(actualExpandingResult.limit(5).collect(Collectors.toList()).isEmpty());
   }
 
   /**

@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.TradePeriod;
+import eu.infinitech.finflink.structures.TradePeriodFactory;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -26,12 +26,9 @@ class AccumulationDistributionIndexDiffblueTest {
   @ManagedByDiffblue
   @MethodsUnderTest({"void AccumulationDistributionIndex.<init>(Time)"})
   void testNewAccumulationDistributionIndex() {
-    // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-
-    // Act
+    // Arrange and Act
     AccumulationDistributionIndex actualAccumulationDistributionIndex =
-        new AccumulationDistributionIndex(timePeriod);
+        new AccumulationDistributionIndex(TimeFactory.createTime());
 
     // Assert
     assertEquals("AccumulationDistributionIndex", actualAccumulationDistributionIndex.getName());
@@ -54,18 +51,15 @@ class AccumulationDistributionIndexDiffblueTest {
   @ManagedByDiffblue
   @MethodsUnderTest({"void AccumulationDistributionIndex.<init>(Time, int, int)"})
   void testNewAccumulationDistributionIndex2() {
-    // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-
-    // Act
+    // Arrange and Act
     AccumulationDistributionIndex actualAccumulationDistributionIndex =
-        new AccumulationDistributionIndex(timePeriod, 1, 1);
+        new AccumulationDistributionIndex(TimeFactory.createTime(), 1, 1);
 
     // Assert
     assertEquals("AccumulationDistributionIndex", actualAccumulationDistributionIndex.getName());
-    assertEquals(0L, actualAccumulationDistributionIndex.getTimePeriod());
     assertEquals(1, actualAccumulationDistributionIndex.longSpan);
     assertEquals(1, actualAccumulationDistributionIndex.shortSpan);
+    assertEquals(1000L, actualAccumulationDistributionIndex.getTimePeriod());
     assertTrue(actualAccumulationDistributionIndex.getProperties().isEmpty());
   }
 
@@ -73,28 +67,25 @@ class AccumulationDistributionIndexDiffblueTest {
    * Test {@link AccumulationDistributionIndex#calculate(List)}.
    *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
+   *   <li>Given createTradePeriod.
    *   <li>Then return {@link Double#NaN}.
    * </ul>
    *
    * <p>Method under test: {@link AccumulationDistributionIndex#calculate(List)}
    */
   @Test
-  @DisplayName(
-      "Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return NaN")
+  @DisplayName("Test calculate(List); given createTradePeriod; then return NaN")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"double AccumulationDistributionIndex.calculate(List)"})
-  void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnNaN() {
+  void testCalculate_givenCreateTradePeriod_thenReturnNaN() {
     // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
     AccumulationDistributionIndex accumulationDistributionIndex =
-        new AccumulationDistributionIndex(timePeriod);
+        new AccumulationDistributionIndex(TimeFactory.createTime());
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(new TradePeriod());
-    periodsToConsider.add(new TradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
 
     // Act and Assert
     assertEquals(Double.NaN, accumulationDistributionIndex.calculate(periodsToConsider));
@@ -104,27 +95,24 @@ class AccumulationDistributionIndexDiffblueTest {
    * Test {@link AccumulationDistributionIndex#calculate(List)}.
    *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
+   *   <li>Given createTradePeriod.
    *   <li>Then return zero.
    * </ul>
    *
    * <p>Method under test: {@link AccumulationDistributionIndex#calculate(List)}
    */
   @Test
-  @DisplayName(
-      "Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return zero")
+  @DisplayName("Test calculate(List); given createTradePeriod; then return zero")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"double AccumulationDistributionIndex.calculate(List)"})
-  void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnZero() {
+  void testCalculate_givenCreateTradePeriod_thenReturnZero() {
     // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
     AccumulationDistributionIndex accumulationDistributionIndex =
-        new AccumulationDistributionIndex(timePeriod);
+        new AccumulationDistributionIndex(TimeFactory.createTime());
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(new TradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
 
     // Act and Assert
     assertEquals(0.0d, accumulationDistributionIndex.calculate(periodsToConsider));
@@ -147,9 +135,8 @@ class AccumulationDistributionIndexDiffblueTest {
   @MethodsUnderTest({"double AccumulationDistributionIndex.calculate(List)"})
   void testCalculate_whenArrayList_thenReturnZero() {
     // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
     AccumulationDistributionIndex accumulationDistributionIndex =
-        new AccumulationDistributionIndex(timePeriod);
+        new AccumulationDistributionIndex(TimeFactory.createTime());
 
     // Act and Assert
     assertEquals(0.0d, accumulationDistributionIndex.calculate(new ArrayList<>()));

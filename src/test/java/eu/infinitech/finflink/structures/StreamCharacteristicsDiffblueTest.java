@@ -9,8 +9,7 @@ import eu.infinitech.finflink.transformations.technicalIndicators.AccumulationDi
 import eu.infinitech.finflink.transformations.technicalIndicators.AverageDirectionalIndex;
 import eu.infinitech.finflink.transformations.technicalIndicators.HighPriceDirectionalMomentum;
 import eu.infinitech.finflink.transformations.technicalIndicators.TechnicalIndicatorGenerator;
-import java.util.concurrent.TimeUnit;
-import org.apache.flink.streaming.api.windowing.time.Time;
+import eu.infinitech.finflink.transformations.technicalIndicators.TimeFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -101,12 +100,11 @@ class StreamCharacteristicsDiffblueTest {
   void testMeetsRequirementsWithTechnicalIndicatorGenerator() {
     // Arrange
     StreamCharacteristics streamCharacteristics = new StreamCharacteristics();
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
 
     // Act
     boolean actualMeetsRequirementsResult =
         streamCharacteristics.meetsRequirements(
-            new AccumulationDistributionIndex(timePeriod, 1, 1));
+            new AccumulationDistributionIndex(TimeFactory.createTime(), 1, 1));
 
     // Assert
     assertFalse(actualMeetsRequirementsResult);
@@ -130,11 +128,11 @@ class StreamCharacteristicsDiffblueTest {
   void testMeetsRequirementsWithTechnicalIndicatorGenerator2() {
     // Arrange
     StreamCharacteristics streamCharacteristics = new StreamCharacteristics();
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
 
     // Act
     boolean actualMeetsRequirementsResult =
-        streamCharacteristics.meetsRequirements(new AverageDirectionalIndex(timePeriod));
+        streamCharacteristics.meetsRequirements(
+            new AverageDirectionalIndex(TimeFactory.createTime()));
 
     // Assert
     assertFalse(actualMeetsRequirementsResult);
@@ -158,11 +156,11 @@ class StreamCharacteristicsDiffblueTest {
   void testMeetsRequirementsWithTechnicalIndicatorGenerator3() {
     // Arrange
     StreamCharacteristics streamCharacteristics = new StreamCharacteristics();
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
 
     // Act
     boolean actualMeetsRequirementsResult =
-        streamCharacteristics.meetsRequirements(new HighPriceDirectionalMomentum(timePeriod));
+        streamCharacteristics.meetsRequirements(
+            new HighPriceDirectionalMomentum(TimeFactory.createTime()));
 
     // Assert
     assertFalse(actualMeetsRequirementsResult);

@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.TradePeriod;
+import eu.infinitech.finflink.structures.TradePeriodFactory;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -30,16 +30,13 @@ class DetrendedCloseOscillatorDiffblueTest {
   @ManagedByDiffblue
   @MethodsUnderTest({"void DetrendedCloseOscillator.<init>(Time)"})
   void testNewDetrendedCloseOscillator_thenReturnNameIsDetrendedCloseOscillator() {
-    // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-
-    // Act
+    // Arrange and Act
     DetrendedCloseOscillator actualDetrendedCloseOscillator =
-        new DetrendedCloseOscillator(timePeriod);
+        new DetrendedCloseOscillator(TimeFactory.createTime());
 
     // Assert
     assertEquals("DetrendedCloseOscillator", actualDetrendedCloseOscillator.getName());
-    assertEquals(0L, actualDetrendedCloseOscillator.getTimePeriod());
+    assertEquals(1000L, actualDetrendedCloseOscillator.getTimePeriod());
     assertTrue(actualDetrendedCloseOscillator.getProperties().isEmpty());
   }
 
@@ -47,26 +44,24 @@ class DetrendedCloseOscillatorDiffblueTest {
    * Test {@link DetrendedCloseOscillator#calculate(List)}.
    *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
+   *   <li>Given createTradePeriod.
    *   <li>Then return zero.
    * </ul>
    *
    * <p>Method under test: {@link DetrendedCloseOscillator#calculate(List)}
    */
   @Test
-  @DisplayName(
-      "Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return zero")
+  @DisplayName("Test calculate(List); given createTradePeriod; then return zero")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"double DetrendedCloseOscillator.calculate(List)"})
-  void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnZero() {
+  void testCalculate_givenCreateTradePeriod_thenReturnZero() {
     // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-    DetrendedCloseOscillator detrendedCloseOscillator = new DetrendedCloseOscillator(timePeriod);
+    DetrendedCloseOscillator detrendedCloseOscillator =
+        new DetrendedCloseOscillator(TimeFactory.createTime());
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(new TradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
 
     // Act and Assert
     assertEquals(0.0d, detrendedCloseOscillator.calculate(periodsToConsider));
@@ -76,27 +71,25 @@ class DetrendedCloseOscillatorDiffblueTest {
    * Test {@link DetrendedCloseOscillator#calculate(List)}.
    *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
+   *   <li>Given createTradePeriod.
    *   <li>Then return zero.
    * </ul>
    *
    * <p>Method under test: {@link DetrendedCloseOscillator#calculate(List)}
    */
   @Test
-  @DisplayName(
-      "Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return zero")
+  @DisplayName("Test calculate(List); given createTradePeriod; then return zero")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"double DetrendedCloseOscillator.calculate(List)"})
-  void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnZero2() {
+  void testCalculate_givenCreateTradePeriod_thenReturnZero2() {
     // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-    DetrendedCloseOscillator detrendedCloseOscillator = new DetrendedCloseOscillator(timePeriod);
+    DetrendedCloseOscillator detrendedCloseOscillator =
+        new DetrendedCloseOscillator(TimeFactory.createTime());
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(new TradePeriod());
-    periodsToConsider.add(new TradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
 
     // Act and Assert
     assertEquals(0.0d, detrendedCloseOscillator.calculate(periodsToConsider));
@@ -106,28 +99,26 @@ class DetrendedCloseOscillatorDiffblueTest {
    * Test {@link DetrendedCloseOscillator#calculate(List)}.
    *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
+   *   <li>Given createTradePeriod.
    *   <li>Then return zero.
    * </ul>
    *
    * <p>Method under test: {@link DetrendedCloseOscillator#calculate(List)}
    */
   @Test
-  @DisplayName(
-      "Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return zero")
+  @DisplayName("Test calculate(List); given createTradePeriod; then return zero")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"double DetrendedCloseOscillator.calculate(List)"})
-  void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnZero3() {
+  void testCalculate_givenCreateTradePeriod_thenReturnZero3() {
     // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-    DetrendedCloseOscillator detrendedCloseOscillator = new DetrendedCloseOscillator(timePeriod);
+    DetrendedCloseOscillator detrendedCloseOscillator =
+        new DetrendedCloseOscillator(TimeFactory.createTime());
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(new TradePeriod());
-    periodsToConsider.add(new TradePeriod());
-    periodsToConsider.add(new TradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
 
     // Act and Assert
     assertEquals(0.0d, detrendedCloseOscillator.calculate(periodsToConsider));
@@ -150,8 +141,8 @@ class DetrendedCloseOscillatorDiffblueTest {
   @MethodsUnderTest({"double DetrendedCloseOscillator.calculate(List)"})
   void testCalculate_whenArrayList_thenReturnZero() {
     // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-    DetrendedCloseOscillator detrendedCloseOscillator = new DetrendedCloseOscillator(timePeriod);
+    DetrendedCloseOscillator detrendedCloseOscillator =
+        new DetrendedCloseOscillator(TimeFactory.createTime());
 
     // Act and Assert
     assertEquals(0.0d, detrendedCloseOscillator.calculate(new ArrayList<>()));

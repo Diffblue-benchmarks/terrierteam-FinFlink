@@ -12,6 +12,28 @@ import org.junit.jupiter.api.Test;
 
 class ToPricePointDiffblueTest {
   /**
+   * Test {@link ToPricePoint#ToPricePoint(String)}.
+   *
+   * <ul>
+   *   <li>Then return {@link ToPricePoint#assetSymbol} is {@code AAPL,1000000,150.5,1000}.
+   * </ul>
+   *
+   * <p>Method under test: {@link ToPricePoint#ToPricePoint(String)}
+   */
+  @Test
+  @DisplayName(
+      "Test new ToPricePoint(String); then return assetSymbol is 'AAPL,1000000,150.5,1000'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void ToPricePoint.<init>()", "void ToPricePoint.<init>(String)"})
+  void testNewToPricePoint_thenReturnAssetSymbolIsAapl100000015051000() {
+    // Arrange, Act and Assert
+    assertEquals(
+        "AAPL,1000000,150.5,1000",
+        new ToPricePoint(ToTradeFactory.createTradeDataString()).assetSymbol);
+  }
+
+  /**
    * Test {@link ToPricePoint#ToPricePoint()}.
    *
    * <ul>
@@ -28,26 +50,6 @@ class ToPricePointDiffblueTest {
   void testNewToPricePoint_thenReturnAssetSymbolIsNull() {
     // Arrange, Act and Assert
     assertNull(new ToPricePoint().assetSymbol);
-  }
-
-  /**
-   * Test {@link ToPricePoint#ToPricePoint(String)}.
-   *
-   * <ul>
-   *   <li>When {@code Asset Symbol}.
-   *   <li>Then return {@code Asset Symbol}.
-   * </ul>
-   *
-   * <p>Method under test: {@link ToPricePoint#ToPricePoint(String)}
-   */
-  @Test
-  @DisplayName("Test new ToPricePoint(String); when 'Asset Symbol'; then return 'Asset Symbol'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void ToPricePoint.<init>()", "void ToPricePoint.<init>(String)"})
-  void testNewToPricePoint_whenAssetSymbol_thenReturnAssetSymbol() {
-    // Arrange, Act and Assert
-    assertEquals("Asset Symbol", new ToPricePoint("Asset Symbol").assetSymbol);
   }
 
   /**
@@ -85,22 +87,24 @@ class ToPricePointDiffblueTest {
    *
    * <ul>
    *   <li>When {@code Date}.
-   *   <li>Then return {@code Asset Symbol}.
+   *   <li>Then return AssetSymbol is {@code AAPL,1000000,150.5,1000}.
    * </ul>
    *
    * <p>Method under test: {@link ToPricePoint#map(String)}
    */
   @Test
-  @DisplayName("Test map(String) with 'String'; when 'Date'; then return 'Asset Symbol'")
+  @DisplayName(
+      "Test map(String) with 'String'; when 'Date'; then return AssetSymbol is 'AAPL,1000000,150.5,1000'")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"PricePoint ToPricePoint.map(String)"})
-  void testMapWithString_whenDate_thenReturnAssetSymbol() throws Exception {
+  void testMapWithString_whenDate_thenReturnAssetSymbolIsAapl100000015051000() throws Exception {
     // Arrange and Act
-    PricePoint actualMapResult = new ToPricePoint("Asset Symbol").map("Date");
+    PricePoint actualMapResult =
+        new ToPricePoint(ToTradeFactory.createTradeDataString()).map("Date");
 
     // Assert
-    assertEquals("Asset Symbol", actualMapResult.getAssetSymbol());
+    assertEquals("AAPL,1000000,150.5,1000", actualMapResult.getAssetSymbol());
     assertEquals(0.0d, actualMapResult.getClosePrice());
     assertEquals(0.0d, actualMapResult.getHighPrice());
     assertEquals(0.0d, actualMapResult.getLowPrice());

@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.Trade;
+import eu.infinitech.finflink.transformations.data.ToTradeFactory;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -57,35 +58,34 @@ class TrueRangeDiffblueTest {
   @MethodsUnderTest({"java.lang.Double TrueRange.getResult()"})
   void testGetResult() {
     // Arrange
-    TrueRange trueRange = new TrueRange();
-    Trade value = new Trade("Asset Symbol", -1L, 10.0d, 1L);
-    trueRange.add(value);
-    Trade value2 = new Trade("Asset Symbol", 2L, 10.0d, 2L);
-    trueRange.add(value2);
+    TrueRange createTrueRangeResult = TrueRangeFactory.createTrueRange();
+    Trade value = new Trade(ToTradeFactory.createTradeDataString(), -1L, 10.0d, 1L);
+    createTrueRangeResult.add(value);
+    Trade value2 = new Trade(ToTradeFactory.createTradeDataString(), 2L, 10.0d, 2L);
+    createTrueRangeResult.add(value2);
 
     // Act and Assert
-    assertEquals(0.0d, trueRange.getResult().doubleValue());
+    assertEquals(0.0d, createTrueRangeResult.getResult().doubleValue());
   }
 
   /**
    * Test {@link TrueRange#getResult()}.
    *
    * <ul>
-   *   <li>Given {@link TrueRange} (default constructor).
+   *   <li>Given createTrueRange.
    *   <li>Then return doubleValue is zero.
    * </ul>
    *
    * <p>Method under test: {@link TrueRange#getResult()}
    */
   @Test
-  @DisplayName(
-      "Test getResult(); given TrueRange (default constructor); then return doubleValue is zero")
+  @DisplayName("Test getResult(); given createTrueRange; then return doubleValue is zero")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"java.lang.Double TrueRange.getResult()"})
-  void testGetResult_givenTrueRange_thenReturnDoubleValueIsZero() {
+  void testGetResult_givenCreateTrueRange_thenReturnDoubleValueIsZero() {
     // Arrange, Act and Assert
-    assertEquals(0.0d, new TrueRange().getResult().doubleValue());
+    assertEquals(0.0d, TrueRangeFactory.createTrueRange().getResult().doubleValue());
   }
 
   /**
@@ -104,14 +104,14 @@ class TrueRangeDiffblueTest {
   @MethodsUnderTest({"java.lang.Double TrueRange.getResult()"})
   void testGetResult_thenReturnDoubleValueIsTen() {
     // Arrange
-    TrueRange trueRange = new TrueRange();
-    Trade value = new Trade("Asset Symbol", 1L, 10.0d, 1L);
-    trueRange.add(value);
-    Trade value2 = new Trade("Asset Symbol", 2L, 10.0d, 2L);
-    trueRange.add(value2);
+    TrueRange createTrueRangeResult = TrueRangeFactory.createTrueRange();
+    Trade value = new Trade(ToTradeFactory.createTradeDataString(), 1L, 10.0d, 1L);
+    createTrueRangeResult.add(value);
+    Trade value2 = new Trade(ToTradeFactory.createTradeDataString(), 2L, 10.0d, 2L);
+    createTrueRangeResult.add(value2);
 
     // Act and Assert
-    assertEquals(10.0d, trueRange.getResult().doubleValue());
+    assertEquals(10.0d, createTrueRangeResult.getResult().doubleValue());
   }
 
   /**
@@ -126,14 +126,14 @@ class TrueRangeDiffblueTest {
   @MethodsUnderTest({"void TrueRange.add(Trade)"})
   void testAdd() {
     // Arrange
-    TrueRange trueRange = new TrueRange();
-    Trade value = new Trade("Asset Symbol", 1L, 10.0d, 1L);
+    TrueRange createTrueRangeResult = TrueRangeFactory.createTrueRange();
+    Trade value = new Trade(ToTradeFactory.createTradeDataString(), 1L, 10.0d, 1L);
 
     // Act
-    trueRange.add(value);
+    createTrueRangeResult.add(value);
 
     // Assert
-    IndicatorState getResult = trueRange.get();
+    IndicatorState getResult = createTrueRangeResult.get();
     assertTrue(getResult instanceof TrueRange);
     IndicatorState getResult2 = getResult.get();
     assertTrue(getResult2 instanceof TrueRange);
@@ -149,7 +149,7 @@ class TrueRangeDiffblueTest {
     assertTrue(getResult7 instanceof TrueRange);
     IndicatorState getResult8 = getResult7.get();
     assertTrue(getResult8 instanceof TrueRange);
-    List<Trade> trades = trueRange.getTrades();
+    List<Trade> trades = createTrueRangeResult.getTrades();
     assertEquals(1, trades.size());
     assertEquals(((TrueRange) getResult8).getTrades(), ((TrueRange) getResult8).getTrades());
     assertSame(value, trades.get(0));
@@ -167,7 +167,7 @@ class TrueRangeDiffblueTest {
   @MethodsUnderTest({"IndicatorState TrueRange.get()"})
   void testGet() {
     // Arrange and Act
-    IndicatorState actualGetResult = new TrueRange().get();
+    IndicatorState actualGetResult = TrueRangeFactory.createTrueRange().get();
 
     // Assert
     assertTrue(actualGetResult instanceof TrueRange);

@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.Trade;
+import eu.infinitech.finflink.transformations.data.ToTradeFactory;
 import java.util.function.Supplier;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -19,23 +20,23 @@ class TechnicalIndicatorDiffblueTest {
    * IndicatorState}.
    *
    * <ul>
-   *   <li>When {@link TrueRange} (default constructor).
-   *   <li>Then return {@link TrueRange} (default constructor).
+   *   <li>When createTrueRange.
+   *   <li>Then return createTrueRange.
    * </ul>
    *
    * <p>Method under test: {@link TechnicalIndicator#add(Trade, IndicatorState)}
    */
   @Test
   @DisplayName(
-      "Test add(Trade, IndicatorState) with 'Trade', 'IndicatorState'; when TrueRange (default constructor); then return TrueRange (default constructor)")
+      "Test add(Trade, IndicatorState) with 'Trade', 'IndicatorState'; when createTrueRange; then return createTrueRange")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"IndicatorState TechnicalIndicator.add(Trade, IndicatorState)"})
-  void testAddWithTradeIndicatorState_whenTrueRange_thenReturnTrueRange() {
+  void testAddWithTradeIndicatorState_whenCreateTrueRange_thenReturnCreateTrueRange() {
     // Arrange
     TechnicalIndicator<IndicatorState> technicalIndicator = new TechnicalIndicator<>();
-    Trade value = new Trade("Asset Symbol", 1L, 10.0d, 1L);
-    TrueRange accumulator = new TrueRange();
+    Trade value = new Trade(ToTradeFactory.createTradeDataString(), 1L, 10.0d, 1L);
+    TrueRange accumulator = TrueRangeFactory.createTrueRange();
 
     // Act
     IndicatorState actualAddResult = technicalIndicator.add(value, accumulator);
@@ -48,7 +49,7 @@ class TechnicalIndicatorDiffblueTest {
    * Test {@link TechnicalIndicator#getResult(IndicatorState)} with {@code IndicatorState}.
    *
    * <ul>
-   *   <li>When {@link TrueRange} (default constructor).
+   *   <li>When createTrueRange.
    *   <li>Then return doubleValue is zero.
    * </ul>
    *
@@ -56,16 +57,17 @@ class TechnicalIndicatorDiffblueTest {
    */
   @Test
   @DisplayName(
-      "Test getResult(IndicatorState) with 'IndicatorState'; when TrueRange (default constructor); then return doubleValue is zero")
+      "Test getResult(IndicatorState) with 'IndicatorState'; when createTrueRange; then return doubleValue is zero")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"java.lang.Double TechnicalIndicator.getResult(IndicatorState)"})
-  void testGetResultWithIndicatorState_whenTrueRange_thenReturnDoubleValueIsZero() {
+  void testGetResultWithIndicatorState_whenCreateTrueRange_thenReturnDoubleValueIsZero() {
     // Arrange
     TechnicalIndicator<IndicatorState> technicalIndicator = new TechnicalIndicator<>();
 
     // Act and Assert
-    assertEquals(0.0d, technicalIndicator.getResult(new TrueRange()).doubleValue());
+    assertEquals(
+        0.0d, technicalIndicator.getResult(TrueRangeFactory.createTrueRange()).doubleValue());
   }
 
   /**
@@ -73,25 +75,25 @@ class TechnicalIndicatorDiffblueTest {
    * IndicatorState}, {@code IndicatorState}.
    *
    * <ul>
-   *   <li>When {@link TrueRange} (default constructor).
-   *   <li>Then return {@link TrueRange} (default constructor).
+   *   <li>Then return createTrueRange.
    * </ul>
    *
    * <p>Method under test: {@link TechnicalIndicator#merge(IndicatorState, IndicatorState)}
    */
   @Test
   @DisplayName(
-      "Test merge(IndicatorState, IndicatorState) with 'IndicatorState', 'IndicatorState'; when TrueRange (default constructor); then return TrueRange (default constructor)")
+      "Test merge(IndicatorState, IndicatorState) with 'IndicatorState', 'IndicatorState'; then return createTrueRange")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"IndicatorState TechnicalIndicator.merge(IndicatorState, IndicatorState)"})
-  void testMergeWithIndicatorStateIndicatorState_whenTrueRange_thenReturnTrueRange() {
+  void testMergeWithIndicatorStateIndicatorState_thenReturnCreateTrueRange() {
     // Arrange
     TechnicalIndicator<IndicatorState> technicalIndicator = new TechnicalIndicator<>();
-    TrueRange a = new TrueRange();
+    TrueRange a = TrueRangeFactory.createTrueRange();
 
     // Act
-    IndicatorState actualMergeResult = technicalIndicator.merge(a, new TrueRange());
+    IndicatorState actualMergeResult =
+        technicalIndicator.merge(a, TrueRangeFactory.createTrueRange());
 
     // Assert
     assertSame(a, actualMergeResult);
@@ -101,24 +103,21 @@ class TechnicalIndicatorDiffblueTest {
    * Test {@link TechnicalIndicator#createAccumulator()}.
    *
    * <ul>
-   *   <li>Given {@link Supplier} {@link Supplier#get()} return {@link TrueRange} (default
-   *       constructor).
-   *   <li>Then return {@link TrueRange} (default constructor).
+   *   <li>Then return createTrueRange.
    * </ul>
    *
    * <p>Method under test: {@link TechnicalIndicator#createAccumulator()}
    */
   @Test
-  @DisplayName(
-      "Test createAccumulator(); given Supplier get() return TrueRange (default constructor); then return TrueRange (default constructor)")
+  @DisplayName("Test createAccumulator(); then return createTrueRange")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"IndicatorState TechnicalIndicator.createAccumulator()"})
-  void testCreateAccumulator_givenSupplierGetReturnTrueRange_thenReturnTrueRange() {
+  void testCreateAccumulator_thenReturnCreateTrueRange() {
     // Arrange
     Supplier<IndicatorState> supplier = mock(Supplier.class);
-    TrueRange trueRange = new TrueRange();
-    when(supplier.get()).thenReturn(trueRange);
+    TrueRange createTrueRangeResult = TrueRangeFactory.createTrueRange();
+    when(supplier.get()).thenReturn(createTrueRangeResult);
     TechnicalIndicator<IndicatorState> technicalIndicator = new TechnicalIndicator<>(supplier);
 
     // Act
@@ -126,6 +125,6 @@ class TechnicalIndicatorDiffblueTest {
 
     // Assert
     verify(supplier).get();
-    assertSame(trueRange, actualCreateAccumulatorResult);
+    assertSame(createTrueRangeResult, actualCreateAccumulatorResult);
   }
 }

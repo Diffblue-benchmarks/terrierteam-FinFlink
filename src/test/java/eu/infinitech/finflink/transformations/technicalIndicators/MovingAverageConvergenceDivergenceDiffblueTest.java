@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.TradePeriod;
+import eu.infinitech.finflink.structures.TradePeriodFactory;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -27,12 +27,9 @@ class MovingAverageConvergenceDivergenceDiffblueTest {
   @ManagedByDiffblue
   @MethodsUnderTest({"void MovingAverageConvergenceDivergence.<init>(Time)"})
   void testNewMovingAverageConvergenceDivergence() {
-    // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-
-    // Act
+    // Arrange and Act
     MovingAverageConvergenceDivergence actualMovingAverageConvergenceDivergence =
-        new MovingAverageConvergenceDivergence(timePeriod);
+        new MovingAverageConvergenceDivergence(TimeFactory.createTime());
 
     // Assert
     assertEquals(
@@ -57,19 +54,16 @@ class MovingAverageConvergenceDivergenceDiffblueTest {
   @ManagedByDiffblue
   @MethodsUnderTest({"void MovingAverageConvergenceDivergence.<init>(Time, int, int)"})
   void testNewMovingAverageConvergenceDivergence2() {
-    // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-
-    // Act
+    // Arrange and Act
     MovingAverageConvergenceDivergence actualMovingAverageConvergenceDivergence =
-        new MovingAverageConvergenceDivergence(timePeriod, 1, 1);
+        new MovingAverageConvergenceDivergence(TimeFactory.createTime(), 1, 1);
 
     // Assert
     assertEquals(
         "MovingAverageConvergenceDivergence", actualMovingAverageConvergenceDivergence.getName());
-    assertEquals(0L, actualMovingAverageConvergenceDivergence.getTimePeriod());
     assertEquals(1, actualMovingAverageConvergenceDivergence.longSpan);
     assertEquals(1, actualMovingAverageConvergenceDivergence.shortSpan);
+    assertEquals(1000L, actualMovingAverageConvergenceDivergence.getTimePeriod());
     assertTrue(actualMovingAverageConvergenceDivergence.getProperties().isEmpty());
   }
 
@@ -77,27 +71,24 @@ class MovingAverageConvergenceDivergenceDiffblueTest {
    * Test {@link MovingAverageConvergenceDivergence#calculate(List)}.
    *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
+   *   <li>Given createTradePeriod.
    *   <li>Then return zero.
    * </ul>
    *
    * <p>Method under test: {@link MovingAverageConvergenceDivergence#calculate(List)}
    */
   @Test
-  @DisplayName(
-      "Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return zero")
+  @DisplayName("Test calculate(List); given createTradePeriod; then return zero")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"double MovingAverageConvergenceDivergence.calculate(List)"})
-  void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnZero() {
+  void testCalculate_givenCreateTradePeriod_thenReturnZero() {
     // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
     MovingAverageConvergenceDivergence movingAverageConvergenceDivergence =
-        new MovingAverageConvergenceDivergence(timePeriod);
+        new MovingAverageConvergenceDivergence(TimeFactory.createTime());
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(new TradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
 
     // Act and Assert
     assertEquals(0.0d, movingAverageConvergenceDivergence.calculate(periodsToConsider));
@@ -107,28 +98,25 @@ class MovingAverageConvergenceDivergenceDiffblueTest {
    * Test {@link MovingAverageConvergenceDivergence#calculate(List)}.
    *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
+   *   <li>Given createTradePeriod.
    *   <li>Then return zero.
    * </ul>
    *
    * <p>Method under test: {@link MovingAverageConvergenceDivergence#calculate(List)}
    */
   @Test
-  @DisplayName(
-      "Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return zero")
+  @DisplayName("Test calculate(List); given createTradePeriod; then return zero")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"double MovingAverageConvergenceDivergence.calculate(List)"})
-  void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnZero2() {
+  void testCalculate_givenCreateTradePeriod_thenReturnZero2() {
     // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
     MovingAverageConvergenceDivergence movingAverageConvergenceDivergence =
-        new MovingAverageConvergenceDivergence(timePeriod);
+        new MovingAverageConvergenceDivergence(TimeFactory.createTime());
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(new TradePeriod());
-    periodsToConsider.add(new TradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
 
     // Act and Assert
     assertEquals(0.0d, movingAverageConvergenceDivergence.calculate(periodsToConsider));
@@ -151,9 +139,8 @@ class MovingAverageConvergenceDivergenceDiffblueTest {
   @MethodsUnderTest({"double MovingAverageConvergenceDivergence.calculate(List)"})
   void testCalculate_whenArrayList_thenReturnZero() {
     // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
     MovingAverageConvergenceDivergence movingAverageConvergenceDivergence =
-        new MovingAverageConvergenceDivergence(timePeriod);
+        new MovingAverageConvergenceDivergence(TimeFactory.createTime());
 
     // Act and Assert
     assertEquals(0.0d, movingAverageConvergenceDivergence.calculate(new ArrayList<>()));

@@ -7,11 +7,39 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.IndicatorRequirements;
+import org.apache.flink.streaming.api.windowing.time.Time;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 class TechnicalIndicatorGeneratorDiffblueTest {
+  /**
+   * Test {@link TechnicalIndicatorGenerator#setTimePeriodLength(Time)}.
+   *
+   * <ul>
+   *   <li>Then {@link AverageDirectionalIndex#AverageDirectionalIndex()} TimePeriod is one
+   *       thousand.
+   * </ul>
+   *
+   * <p>Method under test: {@link TechnicalIndicatorGenerator#setTimePeriodLength(Time)}
+   */
+  @Test
+  @DisplayName(
+      "Test setTimePeriodLength(Time); then AverageDirectionalIndex() TimePeriod is one thousand")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TechnicalIndicatorGenerator.setTimePeriodLength(Time)"})
+  void testSetTimePeriodLength_thenAverageDirectionalIndexTimePeriodIsOneThousand() {
+    // Arrange
+    AverageDirectionalIndex averageDirectionalIndex = new AverageDirectionalIndex();
+
+    // Act
+    averageDirectionalIndex.setTimePeriodLength(TimeFactory.createTime());
+
+    // Assert
+    assertEquals(1000L, averageDirectionalIndex.getTimePeriod());
+  }
+
   /**
    * Test {@link TechnicalIndicatorGenerator#getTimePeriod()}.
    *
@@ -76,6 +104,33 @@ class TechnicalIndicatorGeneratorDiffblueTest {
 
     // Assert
     assertEquals(10L, averageDirectionalIndex.getTimePeriod());
+  }
+
+  /**
+   * Test {@link TechnicalIndicatorGenerator#setTimePeriod(Time)} with {@code Time}.
+   *
+   * <ul>
+   *   <li>Then {@link AverageDirectionalIndex#AverageDirectionalIndex()} TimePeriod is one
+   *       thousand.
+   * </ul>
+   *
+   * <p>Method under test: {@link TechnicalIndicatorGenerator#setTimePeriod(Time)}
+   */
+  @Test
+  @DisplayName(
+      "Test setTimePeriod(Time) with 'Time'; then AverageDirectionalIndex() TimePeriod is one thousand")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TechnicalIndicatorGenerator.setTimePeriod(Time)"})
+  void testSetTimePeriodWithTime_thenAverageDirectionalIndexTimePeriodIsOneThousand() {
+    // Arrange
+    AverageDirectionalIndex averageDirectionalIndex = new AverageDirectionalIndex();
+
+    // Act
+    averageDirectionalIndex.setTimePeriod(TimeFactory.createTime());
+
+    // Assert
+    assertEquals(1000L, averageDirectionalIndex.getTimePeriod());
   }
 
   /**

@@ -9,6 +9,7 @@ import eu.infinitech.finflink.structures.InputStreamType;
 import eu.infinitech.finflink.structures.PricePoint;
 import eu.infinitech.finflink.structures.TradePeriod;
 import eu.infinitech.finflink.structures.TradingData;
+import eu.infinitech.finflink.transformations.data.ToTradeFactory;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -31,7 +32,8 @@ class TradePeriodsGeneratorDiffblueTest {
   })
   void testGenerateTradePeriods() {
     // Arrange
-    InputStreamType inputStreamType = InputStreamType.pricePoint("Asset");
+    InputStreamType inputStreamType =
+        InputStreamType.pricePoint(ToTradeFactory.createTradeDataString());
 
     ArrayList<TradingData> tradingData = new ArrayList<>();
     PricePoint pricePoint = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
@@ -71,7 +73,8 @@ class TradePeriodsGeneratorDiffblueTest {
   })
   void testGenerateTradePeriods_thenReturnFirstHighPriceIsMin_value() {
     // Arrange
-    InputStreamType inputStreamType = InputStreamType.pricePoint("Asset");
+    InputStreamType inputStreamType =
+        InputStreamType.pricePoint(ToTradeFactory.createTradeDataString());
 
     ArrayList<TradingData> tradingData = new ArrayList<>();
     PricePoint pricePoint =
@@ -112,7 +115,8 @@ class TradePeriodsGeneratorDiffblueTest {
   })
   void testGenerateTradePeriods_thenReturnFirstLowPriceIsMax_value() {
     // Arrange
-    InputStreamType inputStreamType = InputStreamType.pricePoint("Asset");
+    InputStreamType inputStreamType =
+        InputStreamType.pricePoint(ToTradeFactory.createTradeDataString());
 
     ArrayList<TradingData> tradingData = new ArrayList<>();
     PricePoint pricePoint =
@@ -154,7 +158,8 @@ class TradePeriodsGeneratorDiffblueTest {
   })
   void testGenerateTradePeriods_whenArrayList_thenReturnEmpty() {
     // Arrange
-    InputStreamType inputStreamType = InputStreamType.pricePoint("Asset");
+    InputStreamType inputStreamType =
+        InputStreamType.pricePoint(ToTradeFactory.createTradeDataString());
 
     // Act
     List<TradePeriod> actualGenerateTradePeriodsResult =

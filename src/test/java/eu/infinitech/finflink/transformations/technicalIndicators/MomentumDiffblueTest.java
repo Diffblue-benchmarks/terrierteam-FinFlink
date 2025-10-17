@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.TradePeriod;
+import eu.infinitech.finflink.structures.TradePeriodFactory;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -38,27 +38,25 @@ class MomentumDiffblueTest {
    * Test {@link Momentum#Momentum(Time, int)}.
    *
    * <ul>
+   *   <li>When createTime.
    *   <li>Then return Name is {@code Momentum}.
    * </ul>
    *
    * <p>Method under test: {@link Momentum#Momentum(Time, int)}
    */
   @Test
-  @DisplayName("Test new Momentum(Time, int); then return Name is 'Momentum'")
+  @DisplayName("Test new Momentum(Time, int); when createTime; then return Name is 'Momentum'")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"void Momentum.<init>(Time, int)"})
-  void testNewMomentum_thenReturnNameIsMomentum() {
-    // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-
-    // Act
-    Momentum actualMomentum = new Momentum(timePeriod, 10);
+  void testNewMomentum_whenCreateTime_thenReturnNameIsMomentum() {
+    // Arrange and Act
+    Momentum actualMomentum = new Momentum(TimeFactory.createTime(), 10);
 
     // Assert
     assertEquals("Momentum", actualMomentum.getName());
-    assertEquals(0L, actualMomentum.getTimePeriod());
     assertEquals(10, actualMomentum.numPeriods);
+    assertEquals(1000L, actualMomentum.getTimePeriod());
     assertTrue(actualMomentum.getProperties().isEmpty());
   }
 
@@ -82,7 +80,7 @@ class MomentumDiffblueTest {
     Momentum momentum = new Momentum(10);
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(new TradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
 
     // Act and Assert
     assertEquals(0.0d, momentum.calculate(periodsToConsider));
@@ -108,8 +106,8 @@ class MomentumDiffblueTest {
     Momentum momentum = new Momentum(10);
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(new TradePeriod());
-    periodsToConsider.add(new TradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
 
     // Act and Assert
     assertEquals(0.0d, momentum.calculate(periodsToConsider));
@@ -161,7 +159,7 @@ class MomentumDiffblueTest {
     Momentum momentum = new Momentum(0);
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(new TradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
 
     // Act and Assert
     assertEquals(0.0d, momentum.calculate(periodsToConsider));

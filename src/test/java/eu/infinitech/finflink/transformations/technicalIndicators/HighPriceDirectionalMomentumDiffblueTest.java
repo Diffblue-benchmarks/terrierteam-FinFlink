@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.TradePeriod;
+import eu.infinitech.finflink.structures.TradePeriodFactory;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -51,16 +51,13 @@ class HighPriceDirectionalMomentumDiffblueTest {
   @ManagedByDiffblue
   @MethodsUnderTest({"void HighPriceDirectionalMomentum.<init>(Time)"})
   void testNewHighPriceDirectionalMomentum_thenReturnNameIsHighPriceDirectionalMomentum() {
-    // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-
-    // Act
+    // Arrange and Act
     HighPriceDirectionalMomentum actualHighPriceDirectionalMomentum =
-        new HighPriceDirectionalMomentum(timePeriod);
+        new HighPriceDirectionalMomentum(TimeFactory.createTime());
 
     // Assert
     assertEquals("HighPriceDirectionalMomentum", actualHighPriceDirectionalMomentum.getName());
-    assertEquals(0L, actualHighPriceDirectionalMomentum.getTimePeriod());
+    assertEquals(1000L, actualHighPriceDirectionalMomentum.getTimePeriod());
     assertTrue(actualHighPriceDirectionalMomentum.getProperties().isEmpty());
   }
 
@@ -68,23 +65,145 @@ class HighPriceDirectionalMomentumDiffblueTest {
    * Test {@link HighPriceDirectionalMomentum#calculate(List)}.
    *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
+   *   <li>Given createTradePeriod HighPrice is one.
+   *   <li>Then return minus one.
    * </ul>
    *
    * <p>Method under test: {@link HighPriceDirectionalMomentum#calculate(List)}
    */
   @Test
-  @DisplayName("Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod()")
+  @DisplayName(
+      "Test calculate(List); given createTradePeriod HighPrice is one; then return minus one")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"double HighPriceDirectionalMomentum.calculate(List)"})
-  void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod() {
+  void testCalculate_givenCreateTradePeriodHighPriceIsOne_thenReturnMinusOne() {
+    // Arrange
+    HighPriceDirectionalMomentum highPriceDirectionalMomentum = new HighPriceDirectionalMomentum();
+
+    TradePeriod createTradePeriodResult = TradePeriodFactory.createTradePeriod();
+    createTradePeriodResult.setHighPrice(1.0d);
+
+    ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
+    periodsToConsider.add(createTradePeriodResult);
+    periodsToConsider.add(1, TradePeriodFactory.createTradePeriod());
+
+    // Act and Assert
+    assertEquals(-1.0d, highPriceDirectionalMomentum.calculate(periodsToConsider));
+  }
+
+  /**
+   * Test {@link HighPriceDirectionalMomentum#calculate(List)}.
+   *
+   * <ul>
+   *   <li>Given createTradePeriod HighPrice is one.
+   *   <li>Then return zero.
+   * </ul>
+   *
+   * <p>Method under test: {@link HighPriceDirectionalMomentum#calculate(List)}
+   */
+  @Test
+  @DisplayName("Test calculate(List); given createTradePeriod HighPrice is one; then return zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"double HighPriceDirectionalMomentum.calculate(List)"})
+  void testCalculate_givenCreateTradePeriodHighPriceIsOne_thenReturnZero() {
+    // Arrange
+    HighPriceDirectionalMomentum highPriceDirectionalMomentum = new HighPriceDirectionalMomentum();
+
+    TradePeriod createTradePeriodResult = TradePeriodFactory.createTradePeriod();
+    createTradePeriodResult.setHighPrice(1.0d);
+
+    ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
+    periodsToConsider.add(1, createTradePeriodResult);
+
+    // Act and Assert
+    assertEquals(0.0d, highPriceDirectionalMomentum.calculate(periodsToConsider));
+  }
+
+  /**
+   * Test {@link HighPriceDirectionalMomentum#calculate(List)}.
+   *
+   * <ul>
+   *   <li>Given createTradePeriod.
+   *   <li>Then return zero.
+   * </ul>
+   *
+   * <p>Method under test: {@link HighPriceDirectionalMomentum#calculate(List)}
+   */
+  @Test
+  @DisplayName("Test calculate(List); given createTradePeriod; then return zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"double HighPriceDirectionalMomentum.calculate(List)"})
+  void testCalculate_givenCreateTradePeriod_thenReturnZero() {
     // Arrange
     HighPriceDirectionalMomentum highPriceDirectionalMomentum = new HighPriceDirectionalMomentum();
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(new TradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
+
+    // Act and Assert
+    assertEquals(0.0d, highPriceDirectionalMomentum.calculate(periodsToConsider));
+  }
+
+  /**
+   * Test {@link HighPriceDirectionalMomentum#calculate(List)}.
+   *
+   * <ul>
+   *   <li>Given one.
+   *   <li>When {@link ArrayList#ArrayList()} add one and createTradePeriod.
+   *   <li>Then return zero.
+   * </ul>
+   *
+   * <p>Method under test: {@link HighPriceDirectionalMomentum#calculate(List)}
+   */
+  @Test
+  @DisplayName(
+      "Test calculate(List); given one; when ArrayList() add one and createTradePeriod; then return zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"double HighPriceDirectionalMomentum.calculate(List)"})
+  void testCalculate_givenOne_whenArrayListAddOneAndCreateTradePeriod_thenReturnZero() {
+    // Arrange
+    HighPriceDirectionalMomentum highPriceDirectionalMomentum = new HighPriceDirectionalMomentum();
+
+    ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
+    periodsToConsider.add(1, TradePeriodFactory.createTradePeriod());
+
+    // Act and Assert
+    assertEquals(0.0d, highPriceDirectionalMomentum.calculate(periodsToConsider));
+  }
+
+  /**
+   * Test {@link HighPriceDirectionalMomentum#calculate(List)}.
+   *
+   * <ul>
+   *   <li>Given one.
+   *   <li>When {@link ArrayList#ArrayList()} add one and createTradePeriod.
+   *   <li>Then return zero.
+   * </ul>
+   *
+   * <p>Method under test: {@link HighPriceDirectionalMomentum#calculate(List)}
+   */
+  @Test
+  @DisplayName(
+      "Test calculate(List); given one; when ArrayList() add one and createTradePeriod; then return zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"double HighPriceDirectionalMomentum.calculate(List)"})
+  void testCalculate_givenOne_whenArrayListAddOneAndCreateTradePeriod_thenReturnZero2() {
+    // Arrange
+    HighPriceDirectionalMomentum highPriceDirectionalMomentum = new HighPriceDirectionalMomentum();
+
+    ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
+    periodsToConsider.add(1, TradePeriodFactory.createTradePeriod());
 
     // Act and Assert
     assertEquals(0.0d, highPriceDirectionalMomentum.calculate(periodsToConsider));
@@ -95,16 +214,17 @@ class HighPriceDirectionalMomentumDiffblueTest {
    *
    * <ul>
    *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return zero.
    * </ul>
    *
    * <p>Method under test: {@link HighPriceDirectionalMomentum#calculate(List)}
    */
   @Test
-  @DisplayName("Test calculate(List); when ArrayList()")
+  @DisplayName("Test calculate(List); when ArrayList(); then return zero")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"double HighPriceDirectionalMomentum.calculate(List)"})
-  void testCalculate_whenArrayList() {
+  void testCalculate_whenArrayList_thenReturnZero() {
     // Arrange
     HighPriceDirectionalMomentum highPriceDirectionalMomentum = new HighPriceDirectionalMomentum();
 

@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.TradePeriod;
+import eu.infinitech.finflink.structures.TradePeriodFactory;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -18,26 +18,24 @@ class ForceIndexDiffblueTest {
    * Test {@link ForceIndex#ForceIndex(Time)}.
    *
    * <ul>
+   *   <li>When createTime.
    *   <li>Then return Name is {@code ForceIndex}.
    * </ul>
    *
    * <p>Method under test: {@link ForceIndex#ForceIndex(Time)}
    */
   @Test
-  @DisplayName("Test new ForceIndex(Time); then return Name is 'ForceIndex'")
+  @DisplayName("Test new ForceIndex(Time); when createTime; then return Name is 'ForceIndex'")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"void ForceIndex.<init>(Time)"})
-  void testNewForceIndex_thenReturnNameIsForceIndex() {
-    // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-
-    // Act
-    ForceIndex actualForceIndex = new ForceIndex(timePeriod);
+  void testNewForceIndex_whenCreateTime_thenReturnNameIsForceIndex() {
+    // Arrange and Act
+    ForceIndex actualForceIndex = new ForceIndex(TimeFactory.createTime());
 
     // Assert
     assertEquals("ForceIndex", actualForceIndex.getName());
-    assertEquals(0L, actualForceIndex.getTimePeriod());
+    assertEquals(1000L, actualForceIndex.getTimePeriod());
     assertTrue(actualForceIndex.getProperties().isEmpty());
   }
 
@@ -45,26 +43,23 @@ class ForceIndexDiffblueTest {
    * Test {@link ForceIndex#calculate(List)}.
    *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
+   *   <li>Given createTradePeriod.
    *   <li>Then return zero.
    * </ul>
    *
    * <p>Method under test: {@link ForceIndex#calculate(List)}
    */
   @Test
-  @DisplayName(
-      "Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return zero")
+  @DisplayName("Test calculate(List); given createTradePeriod; then return zero")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"double ForceIndex.calculate(List)"})
-  void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnZero() {
+  void testCalculate_givenCreateTradePeriod_thenReturnZero() {
     // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-    ForceIndex forceIndex = new ForceIndex(timePeriod);
+    ForceIndex forceIndex = new ForceIndex(TimeFactory.createTime());
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(new TradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
 
     // Act and Assert
     assertEquals(0.0d, forceIndex.calculate(periodsToConsider));
@@ -74,27 +69,24 @@ class ForceIndexDiffblueTest {
    * Test {@link ForceIndex#calculate(List)}.
    *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
+   *   <li>Given createTradePeriod.
    *   <li>Then return zero.
    * </ul>
    *
    * <p>Method under test: {@link ForceIndex#calculate(List)}
    */
   @Test
-  @DisplayName(
-      "Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return zero")
+  @DisplayName("Test calculate(List); given createTradePeriod; then return zero")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"double ForceIndex.calculate(List)"})
-  void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnZero2() {
+  void testCalculate_givenCreateTradePeriod_thenReturnZero2() {
     // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-    ForceIndex forceIndex = new ForceIndex(timePeriod);
+    ForceIndex forceIndex = new ForceIndex(TimeFactory.createTime());
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(new TradePeriod());
-    periodsToConsider.add(new TradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
 
     // Act and Assert
     assertEquals(0.0d, forceIndex.calculate(periodsToConsider));
@@ -117,8 +109,7 @@ class ForceIndexDiffblueTest {
   @MethodsUnderTest({"double ForceIndex.calculate(List)"})
   void testCalculate_whenArrayList_thenReturnZero() {
     // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-    ForceIndex forceIndex = new ForceIndex(timePeriod);
+    ForceIndex forceIndex = new ForceIndex(TimeFactory.createTime());
 
     // Act and Assert
     assertEquals(0.0d, forceIndex.calculate(new ArrayList<>()));

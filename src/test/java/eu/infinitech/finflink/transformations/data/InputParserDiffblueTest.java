@@ -14,7 +14,7 @@ class InputParserDiffblueTest {
    * Test {@link InputParser#selectMapper(InputStreamType)}.
    *
    * <ul>
-   *   <li>When pricePoint {@code Asset}.
+   *   <li>When pricePoint createTradeDataString.
    *   <li>Then return {@link ToPricePoint}.
    * </ul>
    *
@@ -22,18 +22,19 @@ class InputParserDiffblueTest {
    */
   @Test
   @DisplayName(
-      "Test selectMapper(InputStreamType); when pricePoint 'Asset'; then return ToPricePoint")
+      "Test selectMapper(InputStreamType); when pricePoint createTradeDataString; then return ToPricePoint")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"InputMapper InputParser.selectMapper(InputStreamType)"})
-  void testSelectMapper_whenPricePointAsset_thenReturnToPricePoint() {
+  void testSelectMapper_whenPricePointCreateTradeDataString_thenReturnToPricePoint() {
     // Arrange and Act
     InputMapper actualSelectMapperResult =
-        InputParser.selectMapper(InputStreamType.pricePoint("Asset"));
+        InputParser.selectMapper(
+            InputStreamType.pricePoint(ToTradeFactory.createTradeDataString()));
 
     // Assert
     assertTrue(actualSelectMapperResult instanceof ToPricePoint);
-    assertEquals("Asset", ((ToPricePoint) actualSelectMapperResult).assetSymbol);
+    assertEquals("AAPL,1000000,150.5,1000", ((ToPricePoint) actualSelectMapperResult).assetSymbol);
   }
 
   /**
