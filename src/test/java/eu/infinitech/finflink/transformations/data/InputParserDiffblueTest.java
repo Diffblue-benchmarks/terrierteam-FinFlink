@@ -1,11 +1,10 @@
 package eu.infinitech.finflink.transformations.data;
 
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.InputStreamType;
-import eu.infinitech.finflink.structures.InputStreamType.Type;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -15,7 +14,7 @@ class InputParserDiffblueTest {
    * Test {@link InputParser#selectMapper(InputStreamType)}.
    *
    * <ul>
-   *   <li>When {@link InputStreamType#InputStreamType(Type)} with type is {@code PricePoint}.
+   *   <li>When pricePoint {@code Asset}.
    *   <li>Then return {@link ToPricePoint}.
    * </ul>
    *
@@ -23,18 +22,18 @@ class InputParserDiffblueTest {
    */
   @Test
   @DisplayName(
-      "Test selectMapper(InputStreamType); when InputStreamType(Type) with type is 'PricePoint'; then return ToPricePoint")
+      "Test selectMapper(InputStreamType); when pricePoint 'Asset'; then return ToPricePoint")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"InputMapper InputParser.selectMapper(InputStreamType)"})
-  void testSelectMapper_whenInputStreamTypeWithTypeIsPricePoint_thenReturnToPricePoint() {
+  void testSelectMapper_whenPricePointAsset_thenReturnToPricePoint() {
     // Arrange and Act
     InputMapper actualSelectMapperResult =
-        InputParser.selectMapper(new InputStreamType(Type.PricePoint));
+        InputParser.selectMapper(InputStreamType.pricePoint("Asset"));
 
     // Assert
     assertTrue(actualSelectMapperResult instanceof ToPricePoint);
-    assertNull(((ToPricePoint) actualSelectMapperResult).assetSymbol);
+    assertEquals("Asset", ((ToPricePoint) actualSelectMapperResult).assetSymbol);
   }
 
   /**
