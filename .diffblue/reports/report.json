@@ -3,19 +3,19 @@
     "reportVersion" : "2.8"
   },
   "run" : {
-    "version" : "2025.10.02-RC1-2bc25d3-licensed",
-    "creationTimestamp" : "2025-10-16T14:39:42.907531Z",
+    "version" : "2025.10.02-RC2-1dd3d17-licensed",
+    "creationTimestamp" : "2025-10-20T09:56:00.949864Z",
     "command" : "dcover create --coverage-reports --upload http://localhost:8080 --project-name terrierteam-FinFlink --name with-diffblue-tests",
-    "totalTime" : 2066.815,
-    "environmentDetectionTime" : 3.906,
-    "indexingTime" : 0.372,
-    "entryPointsTime" : 3.869,
-    "generationTime" : 2014.777,
-    "timeToFirstTest" : 64.555,
-    "timeToLastTest" : 2047.741,
-    "indexQueryTime" : 9.757,
-    "verificationTime" : 20.18,
-    "validationTime" : 8.048
+    "totalTime" : 1915.874,
+    "environmentDetectionTime" : 3.764,
+    "indexingTime" : 0.36,
+    "entryPointsTime" : 3.722,
+    "generationTime" : 1863.605,
+    "timeToFirstTest" : 63.885,
+    "timeToLastTest" : 1896.619,
+    "indexQueryTime" : 9.737,
+    "verificationTime" : 20.176,
+    "validationTime" : 7.995
   },
   "codes" : {
     "R000" : "Success",
