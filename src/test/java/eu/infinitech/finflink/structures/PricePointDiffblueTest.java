@@ -66,7 +66,7 @@ class PricePointDiffblueTest {
   void testGettersAndSetters() {
     // Arrange and Act
     PricePoint actualPricePoint = new PricePoint();
-    actualPricePoint.setAssetSymbol("Asset Symbol");
+    actualPricePoint.setAssetSymbol("\"BTCUSD\"");
     actualPricePoint.setClosePrice(10.0d);
     actualPricePoint.setHighPrice(10.0d);
     actualPricePoint.setIgnore(true);
@@ -85,7 +85,7 @@ class PricePointDiffblueTest {
     long actualVolume = actualPricePoint.getVolume();
 
     // Assert
-    assertEquals("Asset Symbol", actualAssetSymbol);
+    assertEquals("\"BTCUSD\"", actualAssetSymbol);
     assertEquals(10.0d, actualClosePrice);
     assertEquals(10.0d, actualHighPrice);
     assertEquals(10.0d, actualLowPrice);
@@ -139,10 +139,10 @@ class PricePointDiffblueTest {
   void testNewPricePoint2() {
     // Arrange and Act
     PricePoint actualPricePoint =
-        new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1, "Asset Symbol");
+        new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1, "\"BTCUSD\"");
 
     // Assert
-    assertEquals("Asset Symbol", actualPricePoint.getAssetSymbol());
+    assertEquals("\"BTCUSD\"", actualPricePoint.getAssetSymbol());
     assertEquals(10.0d, actualPricePoint.getClosePrice());
     assertEquals(10.0d, actualPricePoint.getHighPrice());
     assertEquals(10.0d, actualPricePoint.getLowPrice());
@@ -166,7 +166,7 @@ class PricePointDiffblueTest {
   void testCompareToWithTradingData() {
     // Arrange
     PricePoint pricePoint = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
-    Trade tradingData = new Trade("Asset Symbol", 1L, 10.0d, 1L);
+    Trade tradingData = new Trade("\"BTCUSD\"", 1L, 10.0d, 1L);
 
     // Act
     int actualCompareToResult = pricePoint.compareTo(tradingData);

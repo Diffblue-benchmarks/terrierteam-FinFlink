@@ -34,20 +34,21 @@ class ToPricePointDiffblueTest {
    * Test {@link ToPricePoint#ToPricePoint(String)}.
    *
    * <ul>
-   *   <li>When {@code Asset Symbol}.
-   *   <li>Then return {@code Asset Symbol}.
+   *   <li>When {@code "BTCUSD"}.
+   *   <li>Then return {@link ToPricePoint#assetSymbol} is {@code "BTCUSD"}.
    * </ul>
    *
    * <p>Method under test: {@link ToPricePoint#ToPricePoint(String)}
    */
   @Test
-  @DisplayName("Test new ToPricePoint(String); when 'Asset Symbol'; then return 'Asset Symbol'")
+  @DisplayName(
+      "Test new ToPricePoint(String); when '\"BTCUSD\"'; then return assetSymbol is '\"BTCUSD\"'")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"void ToPricePoint.<init>()", "void ToPricePoint.<init>(String)"})
-  void testNewToPricePoint_whenAssetSymbol_thenReturnAssetSymbol() {
+  void testNewToPricePoint_whenBtcusd_thenReturnAssetSymbolIsBtcusd() {
     // Arrange, Act and Assert
-    assertEquals("Asset Symbol", new ToPricePoint("Asset Symbol").assetSymbol);
+    assertEquals("\"BTCUSD\"", new ToPricePoint("\"BTCUSD\"").assetSymbol);
   }
 
   /**
@@ -85,22 +86,23 @@ class ToPricePointDiffblueTest {
    *
    * <ul>
    *   <li>When {@code Date}.
-   *   <li>Then return {@code Asset Symbol}.
+   *   <li>Then return AssetSymbol is {@code "BTCUSD"}.
    * </ul>
    *
    * <p>Method under test: {@link ToPricePoint#map(String)}
    */
   @Test
-  @DisplayName("Test map(String) with 'String'; when 'Date'; then return 'Asset Symbol'")
+  @DisplayName(
+      "Test map(String) with 'String'; when 'Date'; then return AssetSymbol is '\"BTCUSD\"'")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"PricePoint ToPricePoint.map(String)"})
-  void testMapWithString_whenDate_thenReturnAssetSymbol() throws Exception {
+  void testMapWithString_whenDate_thenReturnAssetSymbolIsBtcusd() throws Exception {
     // Arrange and Act
-    PricePoint actualMapResult = new ToPricePoint("Asset Symbol").map("Date");
+    PricePoint actualMapResult = new ToPricePoint("\"BTCUSD\"").map("Date");
 
     // Assert
-    assertEquals("Asset Symbol", actualMapResult.getAssetSymbol());
+    assertEquals("\"BTCUSD\"", actualMapResult.getAssetSymbol());
     assertEquals(0.0d, actualMapResult.getClosePrice());
     assertEquals(0.0d, actualMapResult.getHighPrice());
     assertEquals(0.0d, actualMapResult.getLowPrice());

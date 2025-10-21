@@ -85,7 +85,7 @@ class TradePeriodsGeneratorDiffblueTest {
     InputStreamType inputStreamType = InputStreamType.trade();
 
     ArrayList<TradingData> tradingData = new ArrayList<>();
-    Trade trade = new Trade("Asset Symbol", 1L, 10.0d, 1L);
+    Trade trade = new Trade("\"BTCUSD\"", 1L, 10.0d, 1L);
     tradingData.add(trade);
 
     // Act

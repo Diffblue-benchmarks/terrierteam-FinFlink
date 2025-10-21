@@ -14,8 +14,8 @@ class InputStreamTypeDiffblueTest {
    * Test getters and setters.
    *
    * <ul>
-   *   <li>When {@code Asset}.
-   *   <li>Then return {@code Asset}.
+   *   <li>When {@code "EUR/USD"}.
+   *   <li>Then return Asset is {@code "EUR/USD"}.
    * </ul>
    *
    * <p>Methods under test:
@@ -27,7 +27,7 @@ class InputStreamTypeDiffblueTest {
    * </ul>
    */
   @Test
-  @DisplayName("Test getters and setters; when 'Asset'; then return 'Asset'")
+  @DisplayName("Test getters and setters; when '\"EUR/USD\"'; then return Asset is '\"EUR/USD\"'")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({
@@ -36,13 +36,13 @@ class InputStreamTypeDiffblueTest {
     "String InputStreamType.getAsset()",
     "Type InputStreamType.getType()"
   })
-  void testGettersAndSetters_whenAsset_thenReturnAsset() {
+  void testGettersAndSetters_whenEurUsd_thenReturnAssetIsEurUsd() {
     // Arrange and Act
-    InputStreamType actualInputStreamType = new InputStreamType(Type.Trade, "Asset");
+    InputStreamType actualInputStreamType = new InputStreamType(Type.Trade, "\"EUR/USD\"");
     String actualAsset = actualInputStreamType.getAsset();
 
     // Assert
-    assertEquals("Asset", actualAsset);
+    assertEquals("\"EUR/USD\"", actualAsset);
     assertEquals(Type.Trade, actualInputStreamType.getType());
   }
 
@@ -113,10 +113,10 @@ class InputStreamTypeDiffblueTest {
   @MethodsUnderTest({"InputStreamType InputStreamType.pricePoint(String)"})
   void testPricePoint() {
     // Arrange and Act
-    InputStreamType actualPricePointResult = InputStreamType.pricePoint("Asset");
+    InputStreamType actualPricePointResult = InputStreamType.pricePoint("\"NASDAQ:MSFT\"");
 
     // Assert
-    assertEquals("Asset", actualPricePointResult.getAsset());
+    assertEquals("\"NASDAQ:MSFT\"", actualPricePointResult.getAsset());
     assertEquals(Type.PricePoint, actualPricePointResult.getType());
   }
 }

@@ -34,7 +34,7 @@ class TechnicalIndicatorDiffblueTest {
   void testAddWithTradeIndicatorState_whenTrueRange_thenReturnTrueRange() {
     // Arrange
     TechnicalIndicator<IndicatorState> technicalIndicator = new TechnicalIndicator<>();
-    Trade value = new Trade("Asset Symbol", 1L, 10.0d, 1L);
+    Trade value = new Trade("\"BTCUSD\"", 1L, 10.0d, 1L);
     TrueRange accumulator = new TrueRange();
 
     // Act
