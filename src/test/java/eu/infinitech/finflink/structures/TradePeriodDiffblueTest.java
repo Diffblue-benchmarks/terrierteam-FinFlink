@@ -3,7 +3,6 @@ package eu.infinitech.finflink.structures;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.InputStreamType.Type;
 import java.util.ArrayList;
@@ -15,9 +14,8 @@ import org.junit.jupiter.api.Test;
 class TradePeriodDiffblueTest {
   /**
    * Test getters and setters.
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link TradePeriod#TradePeriod()}
    *   <li>{@link TradePeriod#setClosePrice(double)}
@@ -40,27 +38,14 @@ class TradePeriodDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void TradePeriod.<init>()",
-    "double TradePeriod.getClosePrice()",
-    "double TradePeriod.getHighPrice()",
-    "double TradePeriod.getLowPrice()",
-    "double TradePeriod.getOpenPrice()",
-    "long TradePeriod.getStartTime()",
-    "long TradePeriod.getStopTime()",
-    "List TradePeriod.getTradingData()",
-    "long TradePeriod.getVolume()",
-    "void TradePeriod.setClosePrice(double)",
-    "void TradePeriod.setHighPrice(double)",
-    "void TradePeriod.setLowPrice(double)",
-    "void TradePeriod.setOpenPrice(double)",
-    "void TradePeriod.setStartTime(long)",
-    "void TradePeriod.setStopTime(long)",
-    "void TradePeriod.setTradingData(List)",
-    "void TradePeriod.setVolume(long)"
-  })
+  @Tag("MaintainedByDiffblue")
+  @MethodsUnderTest({"void TradePeriod.<init>()", "double TradePeriod.getClosePrice()",
+      "double TradePeriod.getHighPrice()", "double TradePeriod.getLowPrice()", "double TradePeriod.getOpenPrice()",
+      "long TradePeriod.getStartTime()", "long TradePeriod.getStopTime()", "List TradePeriod.getTradingData()",
+      "long TradePeriod.getVolume()", "void TradePeriod.setClosePrice(double)", "void TradePeriod.setHighPrice(double)",
+      "void TradePeriod.setLowPrice(double)", "void TradePeriod.setOpenPrice(double)",
+      "void TradePeriod.setStartTime(long)", "void TradePeriod.setStopTime(long)",
+      "void TradePeriod.setTradingData(List)", "void TradePeriod.setVolume(long)"})
   void testGettersAndSetters() {
     // Arrange and Act
     TradePeriod actualTradePeriod = new TradePeriod();
@@ -95,13 +80,12 @@ class TradePeriodDiffblueTest {
 
   /**
    * Test {@link TradePeriod#TradePeriod(InputStreamType, List)}.
-   *
-   * <p>Method under test: {@link TradePeriod#TradePeriod(InputStreamType, List)}
+   * <p>
+   * Method under test: {@link TradePeriod#TradePeriod(InputStreamType, List)}
    */
   @Test
   @DisplayName("Test new TradePeriod(InputStreamType, List)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"void TradePeriod.<init>(InputStreamType, List)"})
   void testNewTradePeriod() {
     // Arrange
@@ -109,64 +93,53 @@ class TradePeriodDiffblueTest {
 
     ArrayList<TradingData> tradingData = new ArrayList<>();
     Trade trade = new Trade("Asset Symbol", 1L, 10.0d, 1L);
+
     tradingData.add(trade);
 
-    // Act
-    TradePeriod actualTradePeriod = new TradePeriod(inputStreamType, tradingData);
-
-    // Assert
-    List<TradingData> tradingData2 = actualTradePeriod.getTradingData();
+    // Act and Assert
+    List<TradingData> tradingData2 = (new TradePeriod(inputStreamType, tradingData)).getTradingData();
     assertEquals(1, tradingData2.size());
     assertSame(trade, tradingData2.get(0));
   }
 
   /**
    * Test {@link TradePeriod#TradePeriod(InputStreamType, List, int, int)}.
-   *
-   * <p>Method under test: {@link TradePeriod#TradePeriod(InputStreamType, List, int, int)}
+   * <p>
+   * Method under test: {@link TradePeriod#TradePeriod(InputStreamType, List, int, int)}
    */
   @Test
   @DisplayName("Test new TradePeriod(InputStreamType, List, int, int)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"void TradePeriod.<init>(InputStreamType, List, int, int)"})
   void testNewTradePeriod2() {
     // Arrange
     InputStreamType inputStreamType = InputStreamType.trade();
 
     ArrayList<TradingData> tradingData = new ArrayList<>();
-    PricePoint pricePoint = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
-    tradingData.add(pricePoint);
+    tradingData.add(new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1));
     Trade trade = new Trade("Asset Symbol", 1L, 10.0d, 1L);
+
     tradingData.add(trade);
-    PricePoint pricePoint2 = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
-    tradingData.add(pricePoint2);
 
-    // Act
-    TradePeriod actualTradePeriod = new TradePeriod(inputStreamType, tradingData, 2, 1);
-
-    // Assert
-    List<TradingData> tradingData2 = actualTradePeriod.getTradingData();
+    // Act and Assert
+    List<TradingData> tradingData2 = (new TradePeriod(inputStreamType, tradingData, 2, 1)).getTradingData();
     assertEquals(1, tradingData2.size());
     assertSame(trade, tradingData2.get(0));
   }
 
   /**
    * Test {@link TradePeriod#TradePeriod(InputStreamType, List)}.
-   *
    * <ul>
-   *   <li>Given {@link Trade#Trade()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link Trade#Trade()}.
-   *   <li>Then return ClosePrice is zero.
+   *   <li>Given {@link Trade#Trade()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@link Trade#Trade()}.</li>
+   *   <li>Then return ClosePrice is zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TradePeriod#TradePeriod(InputStreamType, List)}
+   * <p>
+   * Method under test: {@link TradePeriod#TradePeriod(InputStreamType, List)}
    */
   @Test
-  @DisplayName(
-      "Test new TradePeriod(InputStreamType, List); given Trade(); when ArrayList() add Trade(); then return ClosePrice is zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @DisplayName("Test new TradePeriod(InputStreamType, List); given Trade(); when ArrayList() add Trade(); then return ClosePrice is zero")
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"void TradePeriod.<init>(InputStreamType, List)"})
   void testNewTradePeriod_givenTrade_whenArrayListAddTrade_thenReturnClosePriceIsZero() {
     // Arrange
@@ -194,32 +167,26 @@ class TradePeriodDiffblueTest {
 
   /**
    * Test {@link TradePeriod#TradePeriod(InputStreamType, List, int, int)}.
-   *
    * <ul>
-   *   <li>Given {@link Trade#Trade()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link Trade#Trade()}.
-   *   <li>Then return ClosePrice is zero.
+   *   <li>Given {@link Trade#Trade()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@link Trade#Trade()}.</li>
+   *   <li>Then return ClosePrice is zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TradePeriod#TradePeriod(InputStreamType, List, int, int)}
+   * <p>
+   * Method under test: {@link TradePeriod#TradePeriod(InputStreamType, List, int, int)}
    */
   @Test
-  @DisplayName(
-      "Test new TradePeriod(InputStreamType, List, int, int); given Trade(); when ArrayList() add Trade(); then return ClosePrice is zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @DisplayName("Test new TradePeriod(InputStreamType, List, int, int); given Trade(); when ArrayList() add Trade(); then return ClosePrice is zero")
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"void TradePeriod.<init>(InputStreamType, List, int, int)"})
   void testNewTradePeriod_givenTrade_whenArrayListAddTrade_thenReturnClosePriceIsZero2() {
     // Arrange
     InputStreamType inputStreamType = InputStreamType.trade();
 
     ArrayList<TradingData> tradingData = new ArrayList<>();
-    PricePoint pricePoint = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
-    tradingData.add(pricePoint);
+    tradingData.add(new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1));
     Trade trade = new Trade();
     tradingData.add(trade);
-    PricePoint pricePoint2 = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
-    tradingData.add(pricePoint2);
 
     // Act
     TradePeriod actualTradePeriod = new TradePeriod(inputStreamType, tradingData, 2, 1);
@@ -239,18 +206,15 @@ class TradePeriodDiffblueTest {
 
   /**
    * Test {@link TradePeriod#TradePeriod(InputStreamType, List)}.
-   *
    * <ul>
-   *   <li>Then return {@link TradePeriod#inputStreamType} Asset is {@code Asset}.
+   *   <li>Then return {@link TradePeriod#inputStreamType} Asset is {@code Asset}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TradePeriod#TradePeriod(InputStreamType, List)}
+   * <p>
+   * Method under test: {@link TradePeriod#TradePeriod(InputStreamType, List)}
    */
   @Test
-  @DisplayName(
-      "Test new TradePeriod(InputStreamType, List); then return inputStreamType Asset is 'Asset'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @DisplayName("Test new TradePeriod(InputStreamType, List); then return inputStreamType Asset is 'Asset'")
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"void TradePeriod.<init>(InputStreamType, List)"})
   void testNewTradePeriod_thenReturnInputStreamTypeAssetIsAsset() {
     // Arrange
@@ -258,6 +222,7 @@ class TradePeriodDiffblueTest {
 
     ArrayList<TradingData> tradingData = new ArrayList<>();
     PricePoint pricePoint = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
+
     tradingData.add(pricePoint);
 
     // Act
@@ -274,27 +239,25 @@ class TradePeriodDiffblueTest {
 
   /**
    * Test {@link TradePeriod#TradePeriod(InputStreamType, List)}.
-   *
    * <ul>
-   *   <li>Then return TradingData size is two.
+   *   <li>Then return TradingData size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TradePeriod#TradePeriod(InputStreamType, List)}
+   * <p>
+   * Method under test: {@link TradePeriod#TradePeriod(InputStreamType, List)}
    */
   @Test
   @DisplayName("Test new TradePeriod(InputStreamType, List); then return TradingData size is two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"void TradePeriod.<init>(InputStreamType, List)"})
   void testNewTradePeriod_thenReturnTradingDataSizeIsTwo() {
     // Arrange
     InputStreamType inputStreamType = InputStreamType.pricePoint("Asset");
 
     ArrayList<TradingData> tradingData = new ArrayList<>();
+    tradingData.add(new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1));
     PricePoint pricePoint = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
+
     tradingData.add(pricePoint);
-    PricePoint pricePoint2 = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
-    tradingData.add(pricePoint2);
 
     // Act
     TradePeriod actualTradePeriod = new TradePeriod(inputStreamType, tradingData);
@@ -303,22 +266,20 @@ class TradePeriodDiffblueTest {
     List<TradingData> tradingData2 = actualTradePeriod.getTradingData();
     assertEquals(2, tradingData2.size());
     assertEquals(2L, actualTradePeriod.getVolume());
-    assertSame(pricePoint2, tradingData2.get(1));
+    assertSame(pricePoint, tradingData2.get(1));
   }
 
   /**
    * Test {@link TradePeriod#TradePeriod(InputStreamType, List)}.
-   *
    * <ul>
-   *   <li>Then TradingData first return {@link Trade}.
+   *   <li>Then TradingData first return {@link Trade}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TradePeriod#TradePeriod(InputStreamType, List)}
+   * <p>
+   * Method under test: {@link TradePeriod#TradePeriod(InputStreamType, List)}
    */
   @Test
   @DisplayName("Test new TradePeriod(InputStreamType, List); then TradingData first return Trade")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"void TradePeriod.<init>(InputStreamType, List)"})
   void testNewTradePeriod_thenTradingDataFirstReturnTrade() {
     // Arrange
@@ -326,6 +287,7 @@ class TradePeriodDiffblueTest {
 
     ArrayList<TradingData> tradingData = new ArrayList<>();
     Trade trade = new Trade("Asset Symbol", 1L, Double.MAX_VALUE, 1L);
+
     tradingData.add(trade);
 
     // Act
@@ -346,29 +308,26 @@ class TradePeriodDiffblueTest {
 
   /**
    * Test {@link TradePeriod#TradePeriod(InputStreamType, List, int, int)}.
-   *
    * <ul>
-   *   <li>When pricePoint {@code Asset}.
-   *   <li>Then return {@link TradePeriod#inputStreamType} Asset is {@code Asset}.
+   *   <li>When pricePoint {@code Asset}.</li>
+   *   <li>Then return {@link TradePeriod#inputStreamType} Asset is {@code Asset}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TradePeriod#TradePeriod(InputStreamType, List, int, int)}
+   * <p>
+   * Method under test: {@link TradePeriod#TradePeriod(InputStreamType, List, int, int)}
    */
   @Test
-  @DisplayName(
-      "Test new TradePeriod(InputStreamType, List, int, int); when pricePoint 'Asset'; then return inputStreamType Asset is 'Asset'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @DisplayName("Test new TradePeriod(InputStreamType, List, int, int); when pricePoint 'Asset'; then return inputStreamType Asset is 'Asset'")
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"void TradePeriod.<init>(InputStreamType, List, int, int)"})
   void testNewTradePeriod_whenPricePointAsset_thenReturnInputStreamTypeAssetIsAsset() {
     // Arrange
     InputStreamType inputStreamType = InputStreamType.pricePoint("Asset");
 
     ArrayList<TradingData> tradingData = new ArrayList<>();
+    tradingData.add(new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1));
     PricePoint pricePoint = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
+
     tradingData.add(pricePoint);
-    PricePoint pricePoint2 = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
-    tradingData.add(pricePoint2);
 
     // Act
     TradePeriod actualTradePeriod = new TradePeriod(inputStreamType, tradingData, 2, 1);
@@ -380,38 +339,33 @@ class TradePeriodDiffblueTest {
     assertEquals(1, tradingData2.size());
     assertEquals(1L, actualTradePeriod.getVolume());
     assertEquals(Type.PricePoint, inputStreamType2.getType());
-    assertSame(pricePoint2, tradingData2.get(0));
+    assertSame(pricePoint, tradingData2.get(0));
   }
 
   /**
    * Test {@link TradePeriod#TradePeriod(InputStreamType, List, int, int)}.
-   *
    * <ul>
-   *   <li>When pricePoint {@code Asset}.
-   *   <li>Then return TradingData size is two.
+   *   <li>When pricePoint {@code Asset}.</li>
+   *   <li>Then return TradingData size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TradePeriod#TradePeriod(InputStreamType, List, int, int)}
+   * <p>
+   * Method under test: {@link TradePeriod#TradePeriod(InputStreamType, List, int, int)}
    */
   @Test
-  @DisplayName(
-      "Test new TradePeriod(InputStreamType, List, int, int); when pricePoint 'Asset'; then return TradingData size is two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @DisplayName("Test new TradePeriod(InputStreamType, List, int, int); when pricePoint 'Asset'; then return TradingData size is two")
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"void TradePeriod.<init>(InputStreamType, List, int, int)"})
   void testNewTradePeriod_whenPricePointAsset_thenReturnTradingDataSizeIsTwo() {
     // Arrange
     InputStreamType inputStreamType = InputStreamType.pricePoint("Asset");
 
     ArrayList<TradingData> tradingData = new ArrayList<>();
+    tradingData.add(new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1));
+    tradingData.add(new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1));
+    tradingData.add(new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1));
     PricePoint pricePoint = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
+
     tradingData.add(pricePoint);
-    PricePoint pricePoint2 = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
-    tradingData.add(pricePoint2);
-    PricePoint pricePoint3 = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
-    tradingData.add(pricePoint3);
-    PricePoint pricePoint4 = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
-    tradingData.add(pricePoint4);
 
     // Act
     TradePeriod actualTradePeriod = new TradePeriod(inputStreamType, tradingData, 2, 1);
@@ -420,26 +374,24 @@ class TradePeriodDiffblueTest {
     List<TradingData> tradingData2 = actualTradePeriod.getTradingData();
     assertEquals(2, tradingData2.size());
     assertEquals(2L, actualTradePeriod.getVolume());
-    assertSame(pricePoint4, tradingData2.get(1));
+    assertSame(pricePoint, tradingData2.get(1));
   }
 
   /**
    * Test {@link TradePeriod#usingPricePoints(List)}.
-   *
-   * <p>Method under test: {@link TradePeriod#usingPricePoints(List)}
+   * <p>
+   * Method under test: {@link TradePeriod#usingPricePoints(List)}
    */
   @Test
   @DisplayName("Test usingPricePoints(List)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"void TradePeriod.usingPricePoints(List)"})
   void testUsingPricePoints() {
     // Arrange
     TradePeriod tradePeriod = new TradePeriod();
 
     ArrayList<PricePoint> pricePoints = new ArrayList<>();
-    PricePoint pricePoint = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
-    pricePoints.add(pricePoint);
+    pricePoints.add(new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1));
 
     // Act
     tradePeriod.usingPricePoints(pricePoints);
@@ -456,26 +408,22 @@ class TradePeriodDiffblueTest {
 
   /**
    * Test {@link TradePeriod#usingPricePoints(List)}.
-   *
    * <ul>
-   *   <li>Then {@link TradePeriod#TradePeriod()} HighPrice is {@link Double#MIN_VALUE}.
+   *   <li>Then {@link TradePeriod#TradePeriod()} HighPrice is {@link Double#MIN_VALUE}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TradePeriod#usingPricePoints(List)}
+   * <p>
+   * Method under test: {@link TradePeriod#usingPricePoints(List)}
    */
   @Test
   @DisplayName("Test usingPricePoints(List); then TradePeriod() HighPrice is MIN_VALUE")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"void TradePeriod.usingPricePoints(List)"})
   void testUsingPricePoints_thenTradePeriodHighPriceIsMin_value() {
     // Arrange
     TradePeriod tradePeriod = new TradePeriod();
 
     ArrayList<PricePoint> pricePoints = new ArrayList<>();
-    PricePoint pricePoint =
-        new PricePoint(1L, 10.0d, Double.MIN_VALUE, 10.0d, 10.0d, 1L, (short) 1);
-    pricePoints.add(pricePoint);
+    pricePoints.add(new PricePoint(1L, 10.0d, Double.MIN_VALUE, 10.0d, 10.0d, 1L, (short) 1));
 
     // Act
     tradePeriod.usingPricePoints(pricePoints);
@@ -492,26 +440,22 @@ class TradePeriodDiffblueTest {
 
   /**
    * Test {@link TradePeriod#usingPricePoints(List)}.
-   *
    * <ul>
-   *   <li>Then {@link TradePeriod#TradePeriod()} LowPrice is {@link Double#MAX_VALUE}.
+   *   <li>Then {@link TradePeriod#TradePeriod()} LowPrice is {@link Double#MAX_VALUE}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TradePeriod#usingPricePoints(List)}
+   * <p>
+   * Method under test: {@link TradePeriod#usingPricePoints(List)}
    */
   @Test
   @DisplayName("Test usingPricePoints(List); then TradePeriod() LowPrice is MAX_VALUE")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"void TradePeriod.usingPricePoints(List)"})
   void testUsingPricePoints_thenTradePeriodLowPriceIsMax_value() {
     // Arrange
     TradePeriod tradePeriod = new TradePeriod();
 
     ArrayList<PricePoint> pricePoints = new ArrayList<>();
-    PricePoint pricePoint =
-        new PricePoint(1L, 10.0d, 10.0d, Double.MAX_VALUE, 10.0d, 1L, (short) 1);
-    pricePoints.add(pricePoint);
+    pricePoints.add(new PricePoint(1L, 10.0d, 10.0d, Double.MAX_VALUE, 10.0d, 1L, (short) 1));
 
     // Act
     tradePeriod.usingPricePoints(pricePoints);
@@ -528,25 +472,22 @@ class TradePeriodDiffblueTest {
 
   /**
    * Test {@link TradePeriod#usingTrades(List)}.
-   *
    * <ul>
-   *   <li>Then {@link TradePeriod#TradePeriod()} ClosePrice is {@link Double#MAX_VALUE}.
+   *   <li>Then {@link TradePeriod#TradePeriod()} ClosePrice is {@link Double#MAX_VALUE}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TradePeriod#usingTrades(List)}
+   * <p>
+   * Method under test: {@link TradePeriod#usingTrades(List)}
    */
   @Test
   @DisplayName("Test usingTrades(List); then TradePeriod() ClosePrice is MAX_VALUE")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"void TradePeriod.usingTrades(List)"})
   void testUsingTrades_thenTradePeriodClosePriceIsMax_value() {
     // Arrange
     TradePeriod tradePeriod = new TradePeriod();
 
     ArrayList<Trade> trades = new ArrayList<>();
-    Trade trade = new Trade("Asset Symbol", 1L, Double.MAX_VALUE, 1L);
-    trades.add(trade);
+    trades.add(new Trade("Asset Symbol", 1L, Double.MAX_VALUE, 1L));
 
     // Act
     tradePeriod.usingTrades(trades);
@@ -560,25 +501,22 @@ class TradePeriodDiffblueTest {
 
   /**
    * Test {@link TradePeriod#usingTrades(List)}.
-   *
    * <ul>
-   *   <li>Then {@link TradePeriod#TradePeriod()} ClosePrice is {@link Double#MIN_VALUE}.
+   *   <li>Then {@link TradePeriod#TradePeriod()} ClosePrice is {@link Double#MIN_VALUE}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TradePeriod#usingTrades(List)}
+   * <p>
+   * Method under test: {@link TradePeriod#usingTrades(List)}
    */
   @Test
   @DisplayName("Test usingTrades(List); then TradePeriod() ClosePrice is MIN_VALUE")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"void TradePeriod.usingTrades(List)"})
   void testUsingTrades_thenTradePeriodClosePriceIsMin_value() {
     // Arrange
     TradePeriod tradePeriod = new TradePeriod();
 
     ArrayList<Trade> trades = new ArrayList<>();
-    Trade trade = new Trade("Asset Symbol", 1L, Double.MIN_VALUE, 1L);
-    trades.add(trade);
+    trades.add(new Trade("Asset Symbol", 1L, Double.MIN_VALUE, 1L));
 
     // Act
     tradePeriod.usingTrades(trades);
@@ -592,25 +530,22 @@ class TradePeriodDiffblueTest {
 
   /**
    * Test {@link TradePeriod#usingTrades(List)}.
-   *
    * <ul>
-   *   <li>Then {@link TradePeriod#TradePeriod()} ClosePrice is ten.
+   *   <li>Then {@link TradePeriod#TradePeriod()} ClosePrice is ten.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TradePeriod#usingTrades(List)}
+   * <p>
+   * Method under test: {@link TradePeriod#usingTrades(List)}
    */
   @Test
   @DisplayName("Test usingTrades(List); then TradePeriod() ClosePrice is ten")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"void TradePeriod.usingTrades(List)"})
   void testUsingTrades_thenTradePeriodClosePriceIsTen() {
     // Arrange
     TradePeriod tradePeriod = new TradePeriod();
 
     ArrayList<Trade> trades = new ArrayList<>();
-    Trade trade = new Trade("Asset Symbol", 1L, 10.0d, 1L);
-    trades.add(trade);
+    trades.add(new Trade("Asset Symbol", 1L, 10.0d, 1L));
 
     // Act
     tradePeriod.usingTrades(trades);

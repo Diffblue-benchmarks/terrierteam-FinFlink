@@ -2,7 +2,6 @@ package eu.infinitech.finflink.transformations.technicalIndicators;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.TradePeriod;
 import java.util.ArrayList;
@@ -16,24 +15,19 @@ import org.junit.jupiter.api.Test;
 class CommodityChannelIndexDiffblueTest {
   /**
    * Test {@link CommodityChannelIndex#CommodityChannelIndex(Time)}.
-   *
    * <ul>
-   *   <li>Then return Name is {@code CommodityChannelIndex}.
+   *   <li>Then return Name is {@code CommodityChannelIndex}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CommodityChannelIndex#CommodityChannelIndex(Time)}
+   * <p>
+   * Method under test: {@link CommodityChannelIndex#CommodityChannelIndex(Time)}
    */
   @Test
   @DisplayName("Test new CommodityChannelIndex(Time); then return Name is 'CommodityChannelIndex'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"void CommodityChannelIndex.<init>(Time)"})
   void testNewCommodityChannelIndex_thenReturnNameIsCommodityChannelIndex() {
-    // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-
-    // Act
-    CommodityChannelIndex actualCommodityChannelIndex = new CommodityChannelIndex(timePeriod);
+    // Arrange and Act
+    CommodityChannelIndex actualCommodityChannelIndex = new CommodityChannelIndex(Time.of(3L, TimeUnit.NANOSECONDS));
 
     // Assert
     assertEquals("CommodityChannelIndex", actualCommodityChannelIndex.getName());
@@ -43,25 +37,21 @@ class CommodityChannelIndexDiffblueTest {
 
   /**
    * Test {@link CommodityChannelIndex#calculate(List)}.
-   *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
-   *   <li>Then return {@link Double#NaN}.
+   *   <li>Given {@link TradePeriod#TradePeriod()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.</li>
+   *   <li>Then return {@link Double#NaN}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CommodityChannelIndex#calculate(List)}
+   * <p>
+   * Method under test: {@link CommodityChannelIndex#calculate(List)}
    */
   @Test
-  @DisplayName(
-      "Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return NaN")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @DisplayName("Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return NaN")
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"double CommodityChannelIndex.calculate(List)"})
   void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnNaN() {
     // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-    CommodityChannelIndex commodityChannelIndex = new CommodityChannelIndex(timePeriod);
+    CommodityChannelIndex commodityChannelIndex = new CommodityChannelIndex(Time.of(3L, TimeUnit.NANOSECONDS));
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
     periodsToConsider.add(new TradePeriod());
@@ -74,25 +64,21 @@ class CommodityChannelIndexDiffblueTest {
 
   /**
    * Test {@link CommodityChannelIndex#calculate(List)}.
-   *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
-   *   <li>Then return zero.
+   *   <li>Given {@link TradePeriod#TradePeriod()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.</li>
+   *   <li>Then return zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CommodityChannelIndex#calculate(List)}
+   * <p>
+   * Method under test: {@link CommodityChannelIndex#calculate(List)}
    */
   @Test
-  @DisplayName(
-      "Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @DisplayName("Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return zero")
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"double CommodityChannelIndex.calculate(List)"})
   void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnZero() {
     // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-    CommodityChannelIndex commodityChannelIndex = new CommodityChannelIndex(timePeriod);
+    CommodityChannelIndex commodityChannelIndex = new CommodityChannelIndex(Time.of(3L, TimeUnit.NANOSECONDS));
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
     periodsToConsider.add(new TradePeriod());
@@ -103,25 +89,21 @@ class CommodityChannelIndexDiffblueTest {
 
   /**
    * Test {@link CommodityChannelIndex#calculate(List)}.
-   *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
-   *   <li>Then return zero.
+   *   <li>Given {@link TradePeriod#TradePeriod()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.</li>
+   *   <li>Then return zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CommodityChannelIndex#calculate(List)}
+   * <p>
+   * Method under test: {@link CommodityChannelIndex#calculate(List)}
    */
   @Test
-  @DisplayName(
-      "Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @DisplayName("Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return zero")
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"double CommodityChannelIndex.calculate(List)"})
   void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnZero2() {
     // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-    CommodityChannelIndex commodityChannelIndex = new CommodityChannelIndex(timePeriod);
+    CommodityChannelIndex commodityChannelIndex = new CommodityChannelIndex(Time.of(3L, TimeUnit.NANOSECONDS));
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
     periodsToConsider.add(new TradePeriod());
@@ -133,23 +115,20 @@ class CommodityChannelIndexDiffblueTest {
 
   /**
    * Test {@link CommodityChannelIndex#calculate(List)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return zero.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CommodityChannelIndex#calculate(List)}
+   * <p>
+   * Method under test: {@link CommodityChannelIndex#calculate(List)}
    */
   @Test
   @DisplayName("Test calculate(List); when ArrayList(); then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"double CommodityChannelIndex.calculate(List)"})
   void testCalculate_whenArrayList_thenReturnZero() {
     // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-    CommodityChannelIndex commodityChannelIndex = new CommodityChannelIndex(timePeriod);
+    CommodityChannelIndex commodityChannelIndex = new CommodityChannelIndex(Time.of(3L, TimeUnit.NANOSECONDS));
 
     // Act and Assert
     assertEquals(0.0d, commodityChannelIndex.calculate(new ArrayList<>()));

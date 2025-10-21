@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.Trade;
 import java.util.function.Supplier;
@@ -15,50 +14,41 @@ import org.junit.jupiter.api.Test;
 
 class TechnicalIndicatorDiffblueTest {
   /**
-   * Test {@link TechnicalIndicator#add(Trade, IndicatorState)} with {@code Trade}, {@code
-   * IndicatorState}.
-   *
+   * Test {@link TechnicalIndicator#add(Trade, IndicatorState)} with {@code Trade}, {@code IndicatorState}.
    * <ul>
-   *   <li>When {@link TrueRange} (default constructor).
-   *   <li>Then return {@link TrueRange} (default constructor).
+   *   <li>When {@link TrueRange} (default constructor).</li>
+   *   <li>Then return {@link TrueRange} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TechnicalIndicator#add(Trade, IndicatorState)}
+   * <p>
+   * Method under test: {@link TechnicalIndicator#add(Trade, IndicatorState)}
    */
   @Test
-  @DisplayName(
-      "Test add(Trade, IndicatorState) with 'Trade', 'IndicatorState'; when TrueRange (default constructor); then return TrueRange (default constructor)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @DisplayName("Test add(Trade, IndicatorState) with 'Trade', 'IndicatorState'; when TrueRange (default constructor); then return TrueRange (default constructor)")
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"IndicatorState TechnicalIndicator.add(Trade, IndicatorState)"})
   void testAddWithTradeIndicatorState_whenTrueRange_thenReturnTrueRange() {
     // Arrange
     TechnicalIndicator<IndicatorState> technicalIndicator = new TechnicalIndicator<>();
     Trade value = new Trade("Asset Symbol", 1L, 10.0d, 1L);
+
     TrueRange accumulator = new TrueRange();
 
-    // Act
-    IndicatorState actualAddResult = technicalIndicator.add(value, accumulator);
-
-    // Assert
-    assertSame(accumulator, actualAddResult);
+    // Act and Assert
+    assertSame(accumulator, technicalIndicator.add(value, accumulator));
   }
 
   /**
    * Test {@link TechnicalIndicator#getResult(IndicatorState)} with {@code IndicatorState}.
-   *
    * <ul>
-   *   <li>When {@link TrueRange} (default constructor).
-   *   <li>Then return doubleValue is zero.
+   *   <li>When {@link TrueRange} (default constructor).</li>
+   *   <li>Then return doubleValue is zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TechnicalIndicator#getResult(IndicatorState)}
+   * <p>
+   * Method under test: {@link TechnicalIndicator#getResult(IndicatorState)}
    */
   @Test
-  @DisplayName(
-      "Test getResult(IndicatorState) with 'IndicatorState'; when TrueRange (default constructor); then return doubleValue is zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @DisplayName("Test getResult(IndicatorState) with 'IndicatorState'; when TrueRange (default constructor); then return doubleValue is zero")
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"java.lang.Double TechnicalIndicator.getResult(IndicatorState)"})
   void testGetResultWithIndicatorState_whenTrueRange_thenReturnDoubleValueIsZero() {
     // Arrange
@@ -69,50 +59,39 @@ class TechnicalIndicatorDiffblueTest {
   }
 
   /**
-   * Test {@link TechnicalIndicator#merge(IndicatorState, IndicatorState)} with {@code
-   * IndicatorState}, {@code IndicatorState}.
-   *
+   * Test {@link TechnicalIndicator#merge(IndicatorState, IndicatorState)} with {@code IndicatorState}, {@code IndicatorState}.
    * <ul>
-   *   <li>When {@link TrueRange} (default constructor).
-   *   <li>Then return {@link TrueRange} (default constructor).
+   *   <li>When {@link TrueRange} (default constructor).</li>
+   *   <li>Then return {@link TrueRange} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TechnicalIndicator#merge(IndicatorState, IndicatorState)}
+   * <p>
+   * Method under test: {@link TechnicalIndicator#merge(IndicatorState, IndicatorState)}
    */
   @Test
-  @DisplayName(
-      "Test merge(IndicatorState, IndicatorState) with 'IndicatorState', 'IndicatorState'; when TrueRange (default constructor); then return TrueRange (default constructor)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @DisplayName("Test merge(IndicatorState, IndicatorState) with 'IndicatorState', 'IndicatorState'; when TrueRange (default constructor); then return TrueRange (default constructor)")
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"IndicatorState TechnicalIndicator.merge(IndicatorState, IndicatorState)"})
   void testMergeWithIndicatorStateIndicatorState_whenTrueRange_thenReturnTrueRange() {
     // Arrange
     TechnicalIndicator<IndicatorState> technicalIndicator = new TechnicalIndicator<>();
     TrueRange a = new TrueRange();
 
-    // Act
-    IndicatorState actualMergeResult = technicalIndicator.merge(a, new TrueRange());
-
-    // Assert
-    assertSame(a, actualMergeResult);
+    // Act and Assert
+    assertSame(a, technicalIndicator.merge(a, new TrueRange()));
   }
 
   /**
    * Test {@link TechnicalIndicator#createAccumulator()}.
-   *
    * <ul>
-   *   <li>Given {@link Supplier} {@link Supplier#get()} return {@link TrueRange} (default
-   *       constructor).
-   *   <li>Then return {@link TrueRange} (default constructor).
+   *   <li>Given {@link Supplier} {@link Supplier#get()} return {@link TrueRange} (default constructor).</li>
+   *   <li>Then return {@link TrueRange} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TechnicalIndicator#createAccumulator()}
+   * <p>
+   * Method under test: {@link TechnicalIndicator#createAccumulator()}
    */
   @Test
-  @DisplayName(
-      "Test createAccumulator(); given Supplier get() return TrueRange (default constructor); then return TrueRange (default constructor)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @DisplayName("Test createAccumulator(); given Supplier get() return TrueRange (default constructor); then return TrueRange (default constructor)")
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"IndicatorState TechnicalIndicator.createAccumulator()"})
   void testCreateAccumulator_givenSupplierGetReturnTrueRange_thenReturnTrueRange() {
     // Arrange

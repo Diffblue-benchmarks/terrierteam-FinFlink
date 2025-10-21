@@ -3,7 +3,6 @@ package eu.infinitech.finflink.transformations.technicalIndicators;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.Trade;
 import java.util.ArrayList;
@@ -15,9 +14,8 @@ import org.junit.jupiter.api.Test;
 class TrueRangeDiffblueTest {
   /**
    * Test getters and setters.
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>default or parameterless constructor of {@link TrueRange}
    *   <li>{@link TrueRange#setTrades(List)}
@@ -26,13 +24,8 @@ class TrueRangeDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void TrueRange.<init>()",
-    "List TrueRange.getTrades()",
-    "void TrueRange.setTrades(List)"
-  })
+  @Tag("MaintainedByDiffblue")
+  @MethodsUnderTest({"void TrueRange.<init>()", "List TrueRange.getTrades()", "void TrueRange.setTrades(List)"})
   void testGettersAndSetters() {
     // Arrange and Act
     TrueRange actualTrueRange = new TrueRange();
@@ -47,21 +40,18 @@ class TrueRangeDiffblueTest {
 
   /**
    * Test {@link TrueRange#getResult()}.
-   *
-   * <p>Method under test: {@link TrueRange#getResult()}
+   * <p>
+   * Method under test: {@link TrueRange#getResult()}
    */
   @Test
   @DisplayName("Test getResult()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"java.lang.Double TrueRange.getResult()"})
   void testGetResult() {
     // Arrange
     TrueRange trueRange = new TrueRange();
-    Trade value = new Trade("Asset Symbol", -1L, 10.0d, 1L);
-    trueRange.add(value);
-    Trade value2 = new Trade("Asset Symbol", 2L, 10.0d, 2L);
-    trueRange.add(value2);
+    trueRange.add(new Trade("Asset Symbol", -1L, 10.0d, 1L));
+    trueRange.add(new Trade("Asset Symbol", 2L, 10.0d, 2L));
 
     // Act and Assert
     assertEquals(0.0d, trueRange.getResult().doubleValue());
@@ -69,46 +59,39 @@ class TrueRangeDiffblueTest {
 
   /**
    * Test {@link TrueRange#getResult()}.
-   *
    * <ul>
-   *   <li>Given {@link TrueRange} (default constructor).
-   *   <li>Then return doubleValue is zero.
+   *   <li>Given {@link TrueRange} (default constructor).</li>
+   *   <li>Then return doubleValue is zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TrueRange#getResult()}
+   * <p>
+   * Method under test: {@link TrueRange#getResult()}
    */
   @Test
-  @DisplayName(
-      "Test getResult(); given TrueRange (default constructor); then return doubleValue is zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @DisplayName("Test getResult(); given TrueRange (default constructor); then return doubleValue is zero")
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"java.lang.Double TrueRange.getResult()"})
   void testGetResult_givenTrueRange_thenReturnDoubleValueIsZero() {
     // Arrange, Act and Assert
-    assertEquals(0.0d, new TrueRange().getResult().doubleValue());
+    assertEquals(0.0d, (new TrueRange()).getResult().doubleValue());
   }
 
   /**
    * Test {@link TrueRange#getResult()}.
-   *
    * <ul>
-   *   <li>Then return doubleValue is ten.
+   *   <li>Then return doubleValue is ten.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TrueRange#getResult()}
+   * <p>
+   * Method under test: {@link TrueRange#getResult()}
    */
   @Test
   @DisplayName("Test getResult(); then return doubleValue is ten")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"java.lang.Double TrueRange.getResult()"})
   void testGetResult_thenReturnDoubleValueIsTen() {
     // Arrange
     TrueRange trueRange = new TrueRange();
-    Trade value = new Trade("Asset Symbol", 1L, 10.0d, 1L);
-    trueRange.add(value);
-    Trade value2 = new Trade("Asset Symbol", 2L, 10.0d, 2L);
-    trueRange.add(value2);
+    trueRange.add(new Trade("Asset Symbol", 1L, 10.0d, 1L));
+    trueRange.add(new Trade("Asset Symbol", 2L, 10.0d, 2L));
 
     // Act and Assert
     assertEquals(10.0d, trueRange.getResult().doubleValue());
@@ -116,13 +99,12 @@ class TrueRangeDiffblueTest {
 
   /**
    * Test {@link TrueRange#add(Trade)}.
-   *
-   * <p>Method under test: {@link TrueRange#add(Trade)}
+   * <p>
+   * Method under test: {@link TrueRange#add(Trade)}
    */
   @Test
   @DisplayName("Test add(Trade)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"void TrueRange.add(Trade)"})
   void testAdd() {
     // Arrange
@@ -157,17 +139,16 @@ class TrueRangeDiffblueTest {
 
   /**
    * Test {@link TrueRange#get()}.
-   *
-   * <p>Method under test: {@link TrueRange#get()}
+   * <p>
+   * Method under test: {@link TrueRange#get()}
    */
   @Test
   @DisplayName("Test get()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"IndicatorState TrueRange.get()"})
   void testGet() {
     // Arrange and Act
-    IndicatorState actualGetResult = new TrueRange().get();
+    IndicatorState actualGetResult = (new TrueRange()).get();
 
     // Assert
     assertTrue(actualGetResult instanceof TrueRange);

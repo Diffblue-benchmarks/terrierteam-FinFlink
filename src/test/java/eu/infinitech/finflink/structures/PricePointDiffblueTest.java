@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -13,9 +12,8 @@ import org.junit.jupiter.api.Test;
 class PricePointDiffblueTest {
   /**
    * Test getters and setters.
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link PricePoint#PricePoint()}
    *   <li>{@link PricePoint#setAssetSymbol(String)}
@@ -40,29 +38,14 @@ class PricePointDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void PricePoint.<init>()",
-    "String PricePoint.getAssetSymbol()",
-    "double PricePoint.getClosePrice()",
-    "double PricePoint.getHighPrice()",
-    "double PricePoint.getLowPrice()",
-    "short PricePoint.getOpenInt()",
-    "double PricePoint.getOpenPrice()",
-    "long PricePoint.getUnixDate()",
-    "long PricePoint.getVolume()",
-    "boolean PricePoint.isIgnore()",
-    "void PricePoint.setAssetSymbol(String)",
-    "void PricePoint.setClosePrice(double)",
-    "void PricePoint.setHighPrice(double)",
-    "void PricePoint.setIgnore(boolean)",
-    "void PricePoint.setLowPrice(double)",
-    "void PricePoint.setOpenInt(short)",
-    "void PricePoint.setOpenPrice(double)",
-    "void PricePoint.setUnixDate(long)",
-    "void PricePoint.setVolume(long)"
-  })
+  @Tag("MaintainedByDiffblue")
+  @MethodsUnderTest({"void PricePoint.<init>()", "String PricePoint.getAssetSymbol()",
+      "double PricePoint.getClosePrice()", "double PricePoint.getHighPrice()", "double PricePoint.getLowPrice()",
+      "short PricePoint.getOpenInt()", "double PricePoint.getOpenPrice()", "long PricePoint.getUnixDate()",
+      "long PricePoint.getVolume()", "boolean PricePoint.isIgnore()", "void PricePoint.setAssetSymbol(String)",
+      "void PricePoint.setClosePrice(double)", "void PricePoint.setHighPrice(double)",
+      "void PricePoint.setIgnore(boolean)", "void PricePoint.setLowPrice(double)", "void PricePoint.setOpenInt(short)",
+      "void PricePoint.setOpenPrice(double)", "void PricePoint.setUnixDate(long)", "void PricePoint.setVolume(long)"})
   void testGettersAndSetters() {
     // Arrange and Act
     PricePoint actualPricePoint = new PricePoint();
@@ -98,14 +81,12 @@ class PricePointDiffblueTest {
 
   /**
    * Test {@link PricePoint#PricePoint(long, double, double, double, double, long, short)}.
-   *
-   * <p>Method under test: {@link PricePoint#PricePoint(long, double, double, double, double, long,
-   * short)}
+   * <p>
+   * Method under test: {@link PricePoint#PricePoint(long, double, double, double, double, long, short)}
    */
   @Test
   @DisplayName("Test new PricePoint(long, double, double, double, double, long, short)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"void PricePoint.<init>(long, double, double, double, double, long, short)"})
   void testNewPricePoint() {
     // Arrange and Act
@@ -125,21 +106,16 @@ class PricePointDiffblueTest {
 
   /**
    * Test {@link PricePoint#PricePoint(long, double, double, double, double, long, short, String)}.
-   *
-   * <p>Method under test: {@link PricePoint#PricePoint(long, double, double, double, double, long,
-   * short, String)}
+   * <p>
+   * Method under test: {@link PricePoint#PricePoint(long, double, double, double, double, long, short, String)}
    */
   @Test
   @DisplayName("Test new PricePoint(long, double, double, double, double, long, short, String)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void PricePoint.<init>(long, double, double, double, double, long, short, String)"
-  })
+  @Tag("MaintainedByDiffblue")
+  @MethodsUnderTest({"void PricePoint.<init>(long, double, double, double, double, long, short, String)"})
   void testNewPricePoint2() {
     // Arrange and Act
-    PricePoint actualPricePoint =
-        new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1, "Asset Symbol");
+    PricePoint actualPricePoint = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1, "Asset Symbol");
 
     // Assert
     assertEquals("Asset Symbol", actualPricePoint.getAssetSymbol());
@@ -155,76 +131,59 @@ class PricePointDiffblueTest {
 
   /**
    * Test {@link PricePoint#compareTo(TradingData)} with {@code TradingData}.
-   *
-   * <p>Method under test: {@link PricePoint#compareTo(TradingData)}
+   * <p>
+   * Method under test: {@link PricePoint#compareTo(TradingData)}
    */
   @Test
   @DisplayName("Test compareTo(TradingData) with 'TradingData'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"int PricePoint.compareTo(TradingData)"})
   void testCompareToWithTradingData() {
     // Arrange
     PricePoint pricePoint = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
-    Trade tradingData = new Trade("Asset Symbol", 1L, 10.0d, 1L);
 
-    // Act
-    int actualCompareToResult = pricePoint.compareTo(tradingData);
-
-    // Assert
-    assertEquals(0, actualCompareToResult);
+    // Act and Assert
+    assertEquals(0, pricePoint.compareTo(new Trade("Asset Symbol", 1L, 10.0d, 1L)));
   }
 
   /**
    * Test {@link PricePoint#compareTo(TradingData)} with {@code TradingData}.
-   *
    * <ul>
-   *   <li>Then return minus one.
+   *   <li>Then return minus one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link PricePoint#compareTo(TradingData)}
+   * <p>
+   * Method under test: {@link PricePoint#compareTo(TradingData)}
    */
   @Test
   @DisplayName("Test compareTo(TradingData) with 'TradingData'; then return minus one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"int PricePoint.compareTo(TradingData)"})
   void testCompareToWithTradingData_thenReturnMinusOne() {
     // Arrange
     PricePoint pricePoint = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
     pricePoint.setIgnore(true);
-    PricePoint tradingData = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
 
-    // Act
-    int actualCompareToResult = pricePoint.compareTo(tradingData);
-
-    // Assert
-    assertEquals(-1, actualCompareToResult);
+    // Act and Assert
+    assertEquals(-1, pricePoint.compareTo(new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1)));
   }
 
   /**
    * Test {@link PricePoint#compareTo(TradingData)} with {@code TradingData}.
-   *
    * <ul>
-   *   <li>Then return zero.
+   *   <li>Then return zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link PricePoint#compareTo(TradingData)}
+   * <p>
+   * Method under test: {@link PricePoint#compareTo(TradingData)}
    */
   @Test
   @DisplayName("Test compareTo(TradingData) with 'TradingData'; then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"int PricePoint.compareTo(TradingData)"})
   void testCompareToWithTradingData_thenReturnZero() {
     // Arrange
     PricePoint pricePoint = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
-    PricePoint tradingData = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
 
-    // Act
-    int actualCompareToResult = pricePoint.compareTo(tradingData);
-
-    // Assert
-    assertEquals(0, actualCompareToResult);
+    // Act and Assert
+    assertEquals(0, pricePoint.compareTo(new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1)));
   }
 }

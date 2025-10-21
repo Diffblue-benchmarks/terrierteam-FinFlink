@@ -2,7 +2,6 @@ package eu.infinitech.finflink.transformations.technicalIndicators;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.TradePeriod;
 import java.util.ArrayList;
@@ -16,24 +15,19 @@ import org.junit.jupiter.api.Test;
 class RelativeStrengthIndexDiffblueTest {
   /**
    * Test {@link RelativeStrengthIndex#RelativeStrengthIndex(Time)}.
-   *
    * <ul>
-   *   <li>Then return Name is {@code RelativeStrengthIndex}.
+   *   <li>Then return Name is {@code RelativeStrengthIndex}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link RelativeStrengthIndex#RelativeStrengthIndex(Time)}
+   * <p>
+   * Method under test: {@link RelativeStrengthIndex#RelativeStrengthIndex(Time)}
    */
   @Test
   @DisplayName("Test new RelativeStrengthIndex(Time); then return Name is 'RelativeStrengthIndex'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"void RelativeStrengthIndex.<init>(Time)"})
   void testNewRelativeStrengthIndex_thenReturnNameIsRelativeStrengthIndex() {
-    // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-
-    // Act
-    RelativeStrengthIndex actualRelativeStrengthIndex = new RelativeStrengthIndex(timePeriod);
+    // Arrange and Act
+    RelativeStrengthIndex actualRelativeStrengthIndex = new RelativeStrengthIndex(Time.of(3L, TimeUnit.NANOSECONDS));
 
     // Assert
     assertEquals("RelativeStrengthIndex", actualRelativeStrengthIndex.getName());
@@ -43,24 +37,20 @@ class RelativeStrengthIndexDiffblueTest {
 
   /**
    * Test {@link RelativeStrengthIndex#calculate(List)}.
-   *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()} ClosePrice is two.
-   *   <li>Then return {@code 111.76470588235294}.
+   *   <li>Given {@link TradePeriod#TradePeriod()} ClosePrice is two.</li>
+   *   <li>Then return {@code 111.76470588235294}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link RelativeStrengthIndex#calculate(List)}
+   * <p>
+   * Method under test: {@link RelativeStrengthIndex#calculate(List)}
    */
   @Test
-  @DisplayName(
-      "Test calculate(List); given TradePeriod() ClosePrice is two; then return '111.76470588235294'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @DisplayName("Test calculate(List); given TradePeriod() ClosePrice is two; then return '111.76470588235294'")
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"double RelativeStrengthIndex.calculate(List)"})
   void testCalculate_givenTradePeriodClosePriceIsTwo_thenReturn11176470588235294() {
     // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-    RelativeStrengthIndex relativeStrengthIndex = new RelativeStrengthIndex(timePeriod);
+    RelativeStrengthIndex relativeStrengthIndex = new RelativeStrengthIndex(Time.of(3L, TimeUnit.NANOSECONDS));
 
     TradePeriod tradePeriod = new TradePeriod();
     tradePeriod.setClosePrice(2.0d);
@@ -75,25 +65,21 @@ class RelativeStrengthIndexDiffblueTest {
 
   /**
    * Test {@link RelativeStrengthIndex#calculate(List)}.
-   *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
-   *   <li>Then return one hundred.
+   *   <li>Given {@link TradePeriod#TradePeriod()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.</li>
+   *   <li>Then return one hundred.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link RelativeStrengthIndex#calculate(List)}
+   * <p>
+   * Method under test: {@link RelativeStrengthIndex#calculate(List)}
    */
   @Test
-  @DisplayName(
-      "Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return one hundred")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @DisplayName("Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return one hundred")
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"double RelativeStrengthIndex.calculate(List)"})
   void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnOneHundred() {
     // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-    RelativeStrengthIndex relativeStrengthIndex = new RelativeStrengthIndex(timePeriod);
+    RelativeStrengthIndex relativeStrengthIndex = new RelativeStrengthIndex(Time.of(3L, TimeUnit.NANOSECONDS));
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
     periodsToConsider.add(new TradePeriod());
@@ -105,25 +91,21 @@ class RelativeStrengthIndexDiffblueTest {
 
   /**
    * Test {@link RelativeStrengthIndex#calculate(List)}.
-   *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
-   *   <li>Then return zero.
+   *   <li>Given {@link TradePeriod#TradePeriod()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.</li>
+   *   <li>Then return zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link RelativeStrengthIndex#calculate(List)}
+   * <p>
+   * Method under test: {@link RelativeStrengthIndex#calculate(List)}
    */
   @Test
-  @DisplayName(
-      "Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @DisplayName("Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return zero")
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"double RelativeStrengthIndex.calculate(List)"})
   void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnZero() {
     // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-    RelativeStrengthIndex relativeStrengthIndex = new RelativeStrengthIndex(timePeriod);
+    RelativeStrengthIndex relativeStrengthIndex = new RelativeStrengthIndex(Time.of(3L, TimeUnit.NANOSECONDS));
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
     periodsToConsider.add(new TradePeriod());
@@ -134,23 +116,20 @@ class RelativeStrengthIndexDiffblueTest {
 
   /**
    * Test {@link RelativeStrengthIndex#calculate(List)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return zero.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link RelativeStrengthIndex#calculate(List)}
+   * <p>
+   * Method under test: {@link RelativeStrengthIndex#calculate(List)}
    */
   @Test
   @DisplayName("Test calculate(List); when ArrayList(); then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"double RelativeStrengthIndex.calculate(List)"})
   void testCalculate_whenArrayList_thenReturnZero() {
     // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-    RelativeStrengthIndex relativeStrengthIndex = new RelativeStrengthIndex(timePeriod);
+    RelativeStrengthIndex relativeStrengthIndex = new RelativeStrengthIndex(Time.of(3L, TimeUnit.NANOSECONDS));
 
     // Act and Assert
     assertEquals(0.0d, relativeStrengthIndex.calculate(new ArrayList<>()));

@@ -1,21 +1,21 @@
 {
   "meta" : {
-    "reportVersion" : "2.7"
+    "reportVersion" : "2.6"
   },
   "run" : {
-    "version" : "2025.09.01-44e352d-licensed",
-    "creationTimestamp" : "2025-10-15T15:17:35.173083Z",
+    "version" : "2025.02.02-08b2a5a-licensed",
+    "creationTimestamp" : "2025-10-21T16:02:38.749199Z",
     "command" : "dcover create --coverage-reports --upload http://localhost:8080 --project-name terrierteam-FinFlink --name with-diffblue-tests",
-    "totalTime" : 263.599,
-    "environmentDetectionTime" : 0.516,
-    "indexingTime" : 0.381,
-    "entryPointsTime" : 0.479,
-    "generationTime" : 203.362,
-    "timeToFirstTest" : 54.539,
-    "timeToLastTest" : 243.71,
-    "indexQueryTime" : 12.714,
-    "verificationTime" : 20.992,
-    "validationTime" : 8.278
+    "totalTime" : 234.082,
+    "environmentDetectionTime" : 1.763,
+    "indexingTime" : 0.276,
+    "entryPointsTime" : 1.615,
+    "generationTime" : 175.58,
+    "timeToFirstTest" : 57.686,
+    "timeToLastTest" : 213.05,
+    "indexQueryTime" : 16.653,
+    "verificationTime" : 19.102,
+    "validationTime" : 12.455
   },
   "codes" : {
     "R000" : "Success",
@@ -31,15 +31,14 @@
     "T008" : "Private and never called",
     "T010" : "Abstract or interface method",
     "T012" : "Synthetic method",
-    "T023" : "Testability unknown",
     "V000" : "Validated successfully"
   },
   "summary" : {
     "classesCount" : 55,
     "methodsCount" : 273,
-    "cumulativeDiffblueTestCount" : 226,
+    "cumulativeDiffblueTestCount" : 215,
     "cumulativeManualTestCount" : 0,
-    "completeTestCount" : 226,
+    "completeTestCount" : 215,
     "incompleteTestCount" : 0,
     "skeletonTestCount" : 0,
     "totalPhysicalLineCount" : 1733,
@@ -52,27 +51,25 @@
       "T006" : 1,
       "T008" : 3,
       "T010" : 7,
-      "T012" : 35,
-      "T023" : 4
+      "T012" : 39
     },
     "perMethodOutcome" : {
-      "R000" : 194,
+      "R000" : 193,
       "R002" : 7,
       "R011" : 1,
-      "R013" : 6,
+      "R013" : 7,
       "T003" : 11,
       "T005" : 4,
       "T006" : 1,
       "T008" : 3,
       "T010" : 7,
-      "T012" : 35,
-      "T023" : 4
+      "T012" : 39
     },
     "perTestOutcome" : {
-      "R000" : 226
+      "R000" : 215
     },
     "perTestValidation" : {
-      "V000" : 226
+      "V000" : 215
     }
   },
   "classes" : {
@@ -94,10 +91,10 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
-        "T023" : 1
+        "T012" : 1
       },
       "perMethodOutcome" : {
-        "T023" : 1
+        "T012" : 1
       }
     },
     "eu.infinitech.finflink.apps.FinFlinkExample$Example" : {
@@ -106,13 +103,11 @@
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T003" : 1,
-        "T012" : 2,
-        "T023" : 1
+        "T012" : 3
       },
       "perMethodOutcome" : {
         "T003" : 1,
-        "T012" : 2,
-        "T023" : 1
+        "T012" : 3
       }
     },
     "eu.infinitech.finflink.keys.KeyByAssetID" : {
@@ -200,13 +195,11 @@
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T003" : 1,
-        "T012" : 2,
-        "T023" : 1
+        "T012" : 3
       },
       "perMethodOutcome" : {
         "T003" : 1,
-        "T012" : 2,
-        "T023" : 1
+        "T012" : 3
       }
     },
     "eu.infinitech.finflink.structures.PricePoint" : {
@@ -364,18 +357,15 @@
     },
     "eu.infinitech.finflink.transformations.data.InputParser" : {
       "methodsCount" : 2,
-      "completeTestCount" : 2,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 1,
         "T005" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 1,
+        "R013" : 1,
         "T005" : 1
-      },
-      "perTestOutcome" : {
-        "R000" : 2
       }
     },
     "eu.infinitech.finflink.transformations.data.InputParser$1" : {
@@ -383,10 +373,10 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
-        "T023" : 1
+        "T012" : 1
       },
       "perMethodOutcome" : {
-        "T023" : 1
+        "T012" : 1
       }
     },
     "eu.infinitech.finflink.transformations.data.ToPricePoint" : {
@@ -439,7 +429,7 @@
     },
     "eu.infinitech.finflink.transformations.technicalIndicators.AverageDirectionalIndex" : {
       "methodsCount" : 3,
-      "completeTestCount" : 5,
+      "completeTestCount" : 4,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 2,
@@ -449,7 +439,7 @@
         "R000" : 3
       },
       "perTestOutcome" : {
-        "R000" : 5
+        "R000" : 4
       }
     },
     "eu.infinitech.finflink.transformations.technicalIndicators.AverageTrueRange" : {
@@ -501,7 +491,7 @@
     },
     "eu.infinitech.finflink.transformations.technicalIndicators.DirectionalIndex" : {
       "methodsCount" : 3,
-      "completeTestCount" : 9,
+      "completeTestCount" : 4,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 2,
@@ -511,7 +501,7 @@
         "R000" : 3
       },
       "perTestOutcome" : {
-        "R000" : 9
+        "R000" : 4
       }
     },
     "eu.infinitech.finflink.transformations.technicalIndicators.ForceIndex" : {
@@ -571,7 +561,7 @@
     },
     "eu.infinitech.finflink.transformations.technicalIndicators.LogReturns" : {
       "methodsCount" : 2,
-      "completeTestCount" : 6,
+      "completeTestCount" : 5,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 2
@@ -580,7 +570,7 @@
         "R000" : 2
       },
       "perTestOutcome" : {
-        "R000" : 6
+        "R000" : 5
       }
     },
     "eu.infinitech.finflink.transformations.technicalIndicators.LowPriceDirectionalIndex" : {
@@ -862,7 +852,7 @@
     },
     "eu.infinitech.finflink.transformations.technicalIndicators.Volatility" : {
       "methodsCount" : 4,
-      "completeTestCount" : 7,
+      "completeTestCount" : 5,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 2,
@@ -873,7 +863,7 @@
         "T012" : 2
       },
       "perTestOutcome" : {
-        "R000" : 7
+        "R000" : 5
       }
     },
     "eu.infinitech.finflink.transformations.technicalIndicators.VortexMinus" : {
@@ -929,14 +919,21 @@
     "eu.infinitech.finflink.apps.FinFlinkExample$1.<clinit>:()V" : {
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
-      "perMethodTestability" : "T023",
-      "perMethodOutcome" : "T023"
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        54
+      ]
     },
     "eu.infinitech.finflink.apps.FinFlinkExample$Example.<clinit>:()V" : {
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
-      "perMethodTestability" : "T023",
-      "perMethodOutcome" : "T023"
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        37,
+        36
+      ]
     },
     "eu.infinitech.finflink.apps.FinFlinkExample$Example.<init>:(Ljava/lang/String;I)V" : {
       "completeTestCount" : 0,
@@ -1327,8 +1324,12 @@
     "eu.infinitech.finflink.structures.InputStreamType$Type.<clinit>:()V" : {
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
-      "perMethodTestability" : "T023",
-      "perMethodOutcome" : "T023"
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        7,
+        6
+      ]
     },
     "eu.infinitech.finflink.structures.InputStreamType$Type.<init>:(Ljava/lang/String;I)V" : {
       "completeTestCount" : 0,
@@ -2618,8 +2619,11 @@
     "eu.infinitech.finflink.transformations.data.InputParser$1.<clinit>:()V" : {
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
-      "perMethodTestability" : "T023",
-      "perMethodOutcome" : "T023"
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        7
+      ]
     },
     "eu.infinitech.finflink.transformations.data.InputParser.<init>:()V" : {
       "completeTestCount" : 0,
@@ -2631,13 +2635,10 @@
       ]
     },
     "eu.infinitech.finflink.transformations.data.InputParser.selectMapper:(Leu/infinitech/finflink/structures/InputStreamType;)Leu/infinitech/finflink/transformations/data/InputMapper;" : {
-      "completeTestCount" : 2,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 2
-      },
+      "perMethodOutcome" : "R013",
       "lineNumbers" : [
         7,
         9,
@@ -2832,12 +2833,12 @@
       ]
     },
     "eu.infinitech.finflink.transformations.technicalIndicators.AverageDirectionalIndex.calculate:(Ljava/util/List;)D" : {
-      "completeTestCount" : 3,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 3
+        "R000" : 2
       },
       "lineNumbers" : [
         38,
@@ -3036,12 +3037,12 @@
       ]
     },
     "eu.infinitech.finflink.transformations.technicalIndicators.DirectionalIndex.calculate:(Ljava/util/List;)D" : {
-      "completeTestCount" : 7,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 7
+        "R000" : 2
       },
       "lineNumbers" : [
         34,
@@ -3228,12 +3229,12 @@
       ]
     },
     "eu.infinitech.finflink.transformations.technicalIndicators.LogReturns.calculate:(Ljava/util/List;)D" : {
-      "completeTestCount" : 5,
+      "completeTestCount" : 4,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 5
+        "R000" : 4
       },
       "lineNumbers" : [
         23,
@@ -4480,12 +4481,12 @@
       ]
     },
     "eu.infinitech.finflink.transformations.technicalIndicators.Volatility.calculate:(Ljava/util/List;)D" : {
-      "completeTestCount" : 6,
+      "completeTestCount" : 4,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 6
+        "R000" : 4
       },
       "lineNumbers" : [
         25,
@@ -4656,6 +4657,5 @@
         51
       ]
     }
-  },
-  "validationMetrics" : { }
+  }
 }

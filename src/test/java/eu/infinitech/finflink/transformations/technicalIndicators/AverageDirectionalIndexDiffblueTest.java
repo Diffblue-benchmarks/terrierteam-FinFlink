@@ -3,7 +3,6 @@ package eu.infinitech.finflink.transformations.technicalIndicators;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.TradePeriod;
 import java.util.ArrayList;
@@ -17,13 +16,12 @@ import org.junit.jupiter.api.Test;
 class AverageDirectionalIndexDiffblueTest {
   /**
    * Test {@link AverageDirectionalIndex#AverageDirectionalIndex()}.
-   *
-   * <p>Method under test: {@link AverageDirectionalIndex#AverageDirectionalIndex()}
+   * <p>
+   * Method under test: {@link AverageDirectionalIndex#AverageDirectionalIndex()}
    */
   @Test
   @DisplayName("Test new AverageDirectionalIndex()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"void AverageDirectionalIndex.<init>()"})
   void testNewAverageDirectionalIndex() {
     // Arrange and Act
@@ -36,25 +34,20 @@ class AverageDirectionalIndexDiffblueTest {
 
   /**
    * Test {@link AverageDirectionalIndex#AverageDirectionalIndex(Time)}.
-   *
    * <ul>
-   *   <li>Then return Name is {@code AverageDirectionalIndex}.
+   *   <li>Then return Name is {@code AverageDirectionalIndex}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AverageDirectionalIndex#AverageDirectionalIndex(Time)}
+   * <p>
+   * Method under test: {@link AverageDirectionalIndex#AverageDirectionalIndex(Time)}
    */
   @Test
-  @DisplayName(
-      "Test new AverageDirectionalIndex(Time); then return Name is 'AverageDirectionalIndex'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @DisplayName("Test new AverageDirectionalIndex(Time); then return Name is 'AverageDirectionalIndex'")
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"void AverageDirectionalIndex.<init>(Time)"})
   void testNewAverageDirectionalIndex_thenReturnNameIsAverageDirectionalIndex() {
-    // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-
-    // Act
-    AverageDirectionalIndex actualAverageDirectionalIndex = new AverageDirectionalIndex(timePeriod);
+    // Arrange and Act
+    AverageDirectionalIndex actualAverageDirectionalIndex = new AverageDirectionalIndex(
+        Time.of(3L, TimeUnit.NANOSECONDS));
 
     // Assert
     assertEquals("AverageDirectionalIndex", actualAverageDirectionalIndex.getName());
@@ -64,27 +57,23 @@ class AverageDirectionalIndexDiffblueTest {
 
   /**
    * Test {@link AverageDirectionalIndex#calculate(List)}.
-   *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
-   *   <li>Then return {@link Double#NaN}.
+   *   <li>Given {@code null}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AverageDirectionalIndex#calculate(List)}
+   * <p>
+   * Method under test: {@link AverageDirectionalIndex#calculate(List)}
    */
   @Test
-  @DisplayName(
-      "Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return NaN")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @DisplayName("Test calculate(List); given 'null'; when ArrayList() add 'null'")
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"double AverageDirectionalIndex.calculate(List)"})
-  void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnNaN() {
+  void testCalculate_givenNull_whenArrayListAddNull() {
     // Arrange
     AverageDirectionalIndex averageDirectionalIndex = new AverageDirectionalIndex();
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(new TradePeriod());
+    periodsToConsider.add(null);
 
     // Act and Assert
     assertEquals(Double.NaN, averageDirectionalIndex.calculate(periodsToConsider));
@@ -92,49 +81,17 @@ class AverageDirectionalIndexDiffblueTest {
 
   /**
    * Test {@link AverageDirectionalIndex#calculate(List)}.
-   *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
-   *   <li>Then return {@link Double#NaN}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AverageDirectionalIndex#calculate(List)}
+   * <p>
+   * Method under test: {@link AverageDirectionalIndex#calculate(List)}
    */
   @Test
-  @DisplayName(
-      "Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return NaN")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @DisplayName("Test calculate(List); when ArrayList()")
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"double AverageDirectionalIndex.calculate(List)"})
-  void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnNaN2() {
-    // Arrange
-    AverageDirectionalIndex averageDirectionalIndex = new AverageDirectionalIndex();
-
-    ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(new TradePeriod());
-    periodsToConsider.add(new TradePeriod());
-
-    // Act and Assert
-    assertEquals(Double.NaN, averageDirectionalIndex.calculate(periodsToConsider));
-  }
-
-  /**
-   * Test {@link AverageDirectionalIndex#calculate(List)}.
-   *
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@link Double#NaN}.
-   * </ul>
-   *
-   * <p>Method under test: {@link AverageDirectionalIndex#calculate(List)}
-   */
-  @Test
-  @DisplayName("Test calculate(List); when ArrayList(); then return NaN")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"double AverageDirectionalIndex.calculate(List)"})
-  void testCalculate_whenArrayList_thenReturnNaN() {
+  void testCalculate_whenArrayList() {
     // Arrange
     AverageDirectionalIndex averageDirectionalIndex = new AverageDirectionalIndex();
 

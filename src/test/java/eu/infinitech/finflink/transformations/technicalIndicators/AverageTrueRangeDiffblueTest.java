@@ -3,7 +3,6 @@ package eu.infinitech.finflink.transformations.technicalIndicators;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.TradePeriod;
 import java.util.ArrayList;
@@ -17,13 +16,12 @@ import org.junit.jupiter.api.Test;
 class AverageTrueRangeDiffblueTest {
   /**
    * Test {@link AverageTrueRange#AverageTrueRange()}.
-   *
-   * <p>Method under test: {@link AverageTrueRange#AverageTrueRange()}
+   * <p>
+   * Method under test: {@link AverageTrueRange#AverageTrueRange()}
    */
   @Test
   @DisplayName("Test new AverageTrueRange()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"void AverageTrueRange.<init>()"})
   void testNewAverageTrueRange() {
     // Arrange and Act
@@ -36,24 +34,19 @@ class AverageTrueRangeDiffblueTest {
 
   /**
    * Test {@link AverageTrueRange#AverageTrueRange(Time)}.
-   *
    * <ul>
-   *   <li>Then return Name is {@code AverageTrueRange}.
+   *   <li>Then return Name is {@code AverageTrueRange}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AverageTrueRange#AverageTrueRange(Time)}
+   * <p>
+   * Method under test: {@link AverageTrueRange#AverageTrueRange(Time)}
    */
   @Test
   @DisplayName("Test new AverageTrueRange(Time); then return Name is 'AverageTrueRange'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"void AverageTrueRange.<init>(Time)"})
   void testNewAverageTrueRange_thenReturnNameIsAverageTrueRange() {
-    // Arrange
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
-
-    // Act
-    AverageTrueRange actualAverageTrueRange = new AverageTrueRange(timePeriod);
+    // Arrange and Act
+    AverageTrueRange actualAverageTrueRange = new AverageTrueRange(Time.of(3L, TimeUnit.NANOSECONDS));
 
     // Assert
     assertEquals("AverageTrueRange", actualAverageTrueRange.getName());
@@ -63,18 +56,16 @@ class AverageTrueRangeDiffblueTest {
 
   /**
    * Test {@link AverageTrueRange#calculate(List)}.
-   *
    * <ul>
-   *   <li>Given {@code null}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code null}.
+   *   <li>Given {@code null}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AverageTrueRange#calculate(List)}
+   * <p>
+   * Method under test: {@link AverageTrueRange#calculate(List)}
    */
   @Test
   @DisplayName("Test calculate(List); given 'null'; when ArrayList() add 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"double AverageTrueRange.calculate(List)"})
   void testCalculate_givenNull_whenArrayListAddNull() {
     // Arrange
@@ -89,17 +80,15 @@ class AverageTrueRangeDiffblueTest {
 
   /**
    * Test {@link AverageTrueRange#calculate(List)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AverageTrueRange#calculate(List)}
+   * <p>
+   * Method under test: {@link AverageTrueRange#calculate(List)}
    */
   @Test
   @DisplayName("Test calculate(List); when ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"double AverageTrueRange.calculate(List)"})
   void testCalculate_whenArrayList() {
     // Arrange

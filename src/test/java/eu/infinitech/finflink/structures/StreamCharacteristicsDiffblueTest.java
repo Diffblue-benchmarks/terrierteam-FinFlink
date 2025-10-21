@@ -3,7 +3,6 @@ package eu.infinitech.finflink.structures;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.transformations.technicalIndicators.AccumulationDistributionIndex;
 import eu.infinitech.finflink.transformations.technicalIndicators.AverageDirectionalIndex;
@@ -18,9 +17,8 @@ import org.junit.jupiter.api.Test;
 class StreamCharacteristicsDiffblueTest {
   /**
    * Test getters and setters.
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>default or parameterless constructor of {@link StreamCharacteristics}
    *   <li>{@link StreamCharacteristics#hasClose()}
@@ -32,16 +30,11 @@ class StreamCharacteristicsDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void StreamCharacteristics.<init>()",
-    "StreamCharacteristics StreamCharacteristics.hasClose()",
-    "StreamCharacteristics StreamCharacteristics.hasHigh()",
-    "StreamCharacteristics StreamCharacteristics.hasLow()",
-    "StreamCharacteristics StreamCharacteristics.hasOpen()",
-    "StreamCharacteristics StreamCharacteristics.hasVolume()"
-  })
+  @Tag("MaintainedByDiffblue")
+  @MethodsUnderTest({"void StreamCharacteristics.<init>()", "StreamCharacteristics StreamCharacteristics.hasClose()",
+      "StreamCharacteristics StreamCharacteristics.hasHigh()", "StreamCharacteristics StreamCharacteristics.hasLow()",
+      "StreamCharacteristics StreamCharacteristics.hasOpen()",
+      "StreamCharacteristics StreamCharacteristics.hasVolume()"})
   void testGettersAndSetters() {
     // Arrange and Act
     StreamCharacteristics actualStreamCharacteristics = new StreamCharacteristics();
@@ -49,31 +42,26 @@ class StreamCharacteristicsDiffblueTest {
     StreamCharacteristics actualHasHighResult = actualStreamCharacteristics.hasHigh();
     StreamCharacteristics actualHasLowResult = actualStreamCharacteristics.hasLow();
     StreamCharacteristics actualHasOpenResult = actualStreamCharacteristics.hasOpen();
-    StreamCharacteristics actualHasVolumeResult = actualStreamCharacteristics.hasVolume();
 
     // Assert
     assertSame(actualStreamCharacteristics, actualHasCloseResult);
     assertSame(actualStreamCharacteristics, actualHasHighResult);
     assertSame(actualStreamCharacteristics, actualHasLowResult);
     assertSame(actualStreamCharacteristics, actualHasOpenResult);
-    assertSame(actualStreamCharacteristics, actualHasVolumeResult);
+    assertSame(actualStreamCharacteristics, actualStreamCharacteristics.hasVolume());
   }
 
   /**
-   * Test {@link StreamCharacteristics#meetsRequirements(IndicatorRequirements)} with {@code
-   * indicatorRequirements}.
-   *
+   * Test {@link StreamCharacteristics#meetsRequirements(IndicatorRequirements)} with {@code indicatorRequirements}.
    * <ul>
-   *   <li>Then return {@code true}.
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link StreamCharacteristics#meetsRequirements(IndicatorRequirements)}
+   * <p>
+   * Method under test: {@link StreamCharacteristics#meetsRequirements(IndicatorRequirements)}
    */
   @Test
-  @DisplayName(
-      "Test meetsRequirements(IndicatorRequirements) with 'indicatorRequirements'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @DisplayName("Test meetsRequirements(IndicatorRequirements) with 'indicatorRequirements'; then return 'true'")
+  @Tag("MaintainedByDiffblue")
   @MethodsUnderTest({"boolean StreamCharacteristics.meetsRequirements(IndicatorRequirements)"})
   void testMeetsRequirementsWithIndicatorRequirements_thenReturnTrue() {
     // Arrange
@@ -84,109 +72,71 @@ class StreamCharacteristicsDiffblueTest {
   }
 
   /**
-   * Test {@link StreamCharacteristics#meetsRequirements(TechnicalIndicatorGenerator)} with {@code
-   * technicalIndicatorGenerator}.
-   *
-   * <p>Method under test: {@link
-   * StreamCharacteristics#meetsRequirements(TechnicalIndicatorGenerator)}
+   * Test {@link StreamCharacteristics#meetsRequirements(TechnicalIndicatorGenerator)} with {@code technicalIndicatorGenerator}.
+   * <p>
+   * Method under test: {@link StreamCharacteristics#meetsRequirements(TechnicalIndicatorGenerator)}
    */
   @Test
-  @DisplayName(
-      "Test meetsRequirements(TechnicalIndicatorGenerator) with 'technicalIndicatorGenerator'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "boolean StreamCharacteristics.meetsRequirements(TechnicalIndicatorGenerator)"
-  })
+  @DisplayName("Test meetsRequirements(TechnicalIndicatorGenerator) with 'technicalIndicatorGenerator'")
+  @Tag("MaintainedByDiffblue")
+  @MethodsUnderTest({"boolean StreamCharacteristics.meetsRequirements(TechnicalIndicatorGenerator)"})
   void testMeetsRequirementsWithTechnicalIndicatorGenerator() {
     // Arrange
     StreamCharacteristics streamCharacteristics = new StreamCharacteristics();
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
 
-    // Act
-    boolean actualMeetsRequirementsResult =
-        streamCharacteristics.meetsRequirements(
-            new AccumulationDistributionIndex(timePeriod, 1, 1));
-
-    // Assert
-    assertFalse(actualMeetsRequirementsResult);
+    // Act and Assert
+    assertFalse(streamCharacteristics
+        .meetsRequirements(new AccumulationDistributionIndex(Time.of(3L, TimeUnit.NANOSECONDS), 1, 1)));
   }
 
   /**
-   * Test {@link StreamCharacteristics#meetsRequirements(TechnicalIndicatorGenerator)} with {@code
-   * technicalIndicatorGenerator}.
-   *
-   * <p>Method under test: {@link
-   * StreamCharacteristics#meetsRequirements(TechnicalIndicatorGenerator)}
+   * Test {@link StreamCharacteristics#meetsRequirements(TechnicalIndicatorGenerator)} with {@code technicalIndicatorGenerator}.
+   * <p>
+   * Method under test: {@link StreamCharacteristics#meetsRequirements(TechnicalIndicatorGenerator)}
    */
   @Test
-  @DisplayName(
-      "Test meetsRequirements(TechnicalIndicatorGenerator) with 'technicalIndicatorGenerator'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "boolean StreamCharacteristics.meetsRequirements(TechnicalIndicatorGenerator)"
-  })
+  @DisplayName("Test meetsRequirements(TechnicalIndicatorGenerator) with 'technicalIndicatorGenerator'")
+  @Tag("MaintainedByDiffblue")
+  @MethodsUnderTest({"boolean StreamCharacteristics.meetsRequirements(TechnicalIndicatorGenerator)"})
   void testMeetsRequirementsWithTechnicalIndicatorGenerator2() {
     // Arrange
     StreamCharacteristics streamCharacteristics = new StreamCharacteristics();
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
 
-    // Act
-    boolean actualMeetsRequirementsResult =
-        streamCharacteristics.meetsRequirements(new AverageDirectionalIndex(timePeriod));
-
-    // Assert
-    assertFalse(actualMeetsRequirementsResult);
+    // Act and Assert
+    assertFalse(
+        streamCharacteristics.meetsRequirements(new AverageDirectionalIndex(Time.of(3L, TimeUnit.NANOSECONDS))));
   }
 
   /**
-   * Test {@link StreamCharacteristics#meetsRequirements(TechnicalIndicatorGenerator)} with {@code
-   * technicalIndicatorGenerator}.
-   *
-   * <p>Method under test: {@link
-   * StreamCharacteristics#meetsRequirements(TechnicalIndicatorGenerator)}
+   * Test {@link StreamCharacteristics#meetsRequirements(TechnicalIndicatorGenerator)} with {@code technicalIndicatorGenerator}.
+   * <p>
+   * Method under test: {@link StreamCharacteristics#meetsRequirements(TechnicalIndicatorGenerator)}
    */
   @Test
-  @DisplayName(
-      "Test meetsRequirements(TechnicalIndicatorGenerator) with 'technicalIndicatorGenerator'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "boolean StreamCharacteristics.meetsRequirements(TechnicalIndicatorGenerator)"
-  })
+  @DisplayName("Test meetsRequirements(TechnicalIndicatorGenerator) with 'technicalIndicatorGenerator'")
+  @Tag("MaintainedByDiffblue")
+  @MethodsUnderTest({"boolean StreamCharacteristics.meetsRequirements(TechnicalIndicatorGenerator)"})
   void testMeetsRequirementsWithTechnicalIndicatorGenerator3() {
     // Arrange
     StreamCharacteristics streamCharacteristics = new StreamCharacteristics();
-    Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
 
-    // Act
-    boolean actualMeetsRequirementsResult =
-        streamCharacteristics.meetsRequirements(new HighPriceDirectionalMomentum(timePeriod));
-
-    // Assert
-    assertFalse(actualMeetsRequirementsResult);
+    // Act and Assert
+    assertFalse(
+        streamCharacteristics.meetsRequirements(new HighPriceDirectionalMomentum(Time.of(3L, TimeUnit.NANOSECONDS))));
   }
 
   /**
-   * Test {@link StreamCharacteristics#meetsRequirements(TechnicalIndicatorGenerator)} with {@code
-   * technicalIndicatorGenerator}.
-   *
+   * Test {@link StreamCharacteristics#meetsRequirements(TechnicalIndicatorGenerator)} with {@code technicalIndicatorGenerator}.
    * <ul>
-   *   <li>Then return {@code true}.
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link
-   * StreamCharacteristics#meetsRequirements(TechnicalIndicatorGenerator)}
+   * <p>
+   * Method under test: {@link StreamCharacteristics#meetsRequirements(TechnicalIndicatorGenerator)}
    */
   @Test
-  @DisplayName(
-      "Test meetsRequirements(TechnicalIndicatorGenerator) with 'technicalIndicatorGenerator'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "boolean StreamCharacteristics.meetsRequirements(TechnicalIndicatorGenerator)"
-  })
+  @DisplayName("Test meetsRequirements(TechnicalIndicatorGenerator) with 'technicalIndicatorGenerator'; then return 'true'")
+  @Tag("MaintainedByDiffblue")
+  @MethodsUnderTest({"boolean StreamCharacteristics.meetsRequirements(TechnicalIndicatorGenerator)"})
   void testMeetsRequirementsWithTechnicalIndicatorGenerator_thenReturnTrue() {
     // Arrange
     StreamCharacteristics streamCharacteristics = new StreamCharacteristics();
