@@ -67,23 +67,23 @@ class HighPriceDirectionalIndexDiffblueTest {
    * Test {@link HighPriceDirectionalIndex#calculate(List)}.
    *
    * <ul>
-   *   <li>Given {@code null}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code null}.
+   *   <li>Given {@link TradePeriod#TradePeriod()}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
    * </ul>
    *
    * <p>Method under test: {@link HighPriceDirectionalIndex#calculate(List)}
    */
   @Test
-  @DisplayName("Test calculate(List); given 'null'; when ArrayList() add 'null'")
+  @DisplayName("Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod()")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"double HighPriceDirectionalIndex.calculate(List)"})
-  void testCalculate_givenNull_whenArrayListAddNull() {
+  void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod() {
     // Arrange
     HighPriceDirectionalIndex highPriceDirectionalIndex = new HighPriceDirectionalIndex();
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(null);
+    periodsToConsider.add(new TradePeriod());
 
     // Act and Assert
     assertEquals(Double.NaN, highPriceDirectionalIndex.calculate(periodsToConsider));
