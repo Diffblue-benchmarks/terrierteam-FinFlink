@@ -14,8 +14,7 @@ class InputStreamTypeDiffblueTest {
    * Test getters and setters.
    *
    * <ul>
-   *   <li>When {@code "EUR/USD"}.
-   *   <li>Then return Asset is {@code "EUR/USD"}.
+   *   <li>Then return Asset is {@code "EUR/USD Forex Exchange Rate"}.
    * </ul>
    *
    * <p>Methods under test:
@@ -27,7 +26,7 @@ class InputStreamTypeDiffblueTest {
    * </ul>
    */
   @Test
-  @DisplayName("Test getters and setters; when '\"EUR/USD\"'; then return Asset is '\"EUR/USD\"'")
+  @DisplayName("Test getters and setters; then return Asset is '\"EUR/USD Forex Exchange Rate\"'")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({
@@ -36,13 +35,14 @@ class InputStreamTypeDiffblueTest {
     "String InputStreamType.getAsset()",
     "Type InputStreamType.getType()"
   })
-  void testGettersAndSetters_whenEurUsd_thenReturnAssetIsEurUsd() {
+  void testGettersAndSetters_thenReturnAssetIsEurUsdForexExchangeRate() {
     // Arrange and Act
-    InputStreamType actualInputStreamType = new InputStreamType(Type.Trade, "\"EUR/USD\"");
+    InputStreamType actualInputStreamType =
+        new InputStreamType(Type.Trade, "\"EUR/USD Forex Exchange Rate\"");
     String actualAsset = actualInputStreamType.getAsset();
 
     // Assert
-    assertEquals("\"EUR/USD\"", actualAsset);
+    assertEquals("\"EUR/USD Forex Exchange Rate\"", actualAsset);
     assertEquals(Type.Trade, actualInputStreamType.getType());
   }
 
