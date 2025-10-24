@@ -43,7 +43,7 @@ class TechnicalIndicatorDiffblueTest {
   void testGettersAndSetters() {
     // Arrange and Act
     TechnicalIndicator actualTechnicalIndicator = new TechnicalIndicator();
-    actualTechnicalIndicator.setName("Name");
+    actualTechnicalIndicator.setName("\"Relative Strength Index (RSI)\"");
     HashMap<String, String> properties = new HashMap<>();
     actualTechnicalIndicator.setProperties(properties);
     actualTechnicalIndicator.setValue(10.0d);
@@ -51,7 +51,7 @@ class TechnicalIndicatorDiffblueTest {
     Map<String, String> actualProperties = actualTechnicalIndicator.getProperties();
 
     // Assert
-    assertEquals("Name", actualName);
+    assertEquals("\"Relative Strength Index (RSI)\"", actualName);
     assertEquals(10.0d, actualTechnicalIndicator.getValue());
     assertTrue(actualProperties.isEmpty());
     assertSame(properties, actualProperties);
@@ -70,10 +70,10 @@ class TechnicalIndicatorDiffblueTest {
   void testNewTechnicalIndicator() {
     // Arrange and Act
     TechnicalIndicator actualTechnicalIndicator =
-        new TechnicalIndicator("Name", 10.0d, new HashMap<>());
+        new TechnicalIndicator("\"Relative Strength Index\"", 10.0d, new HashMap<>());
 
     // Assert
-    assertEquals("Name", actualTechnicalIndicator.getName());
+    assertEquals("\"Relative Strength Index\"", actualTechnicalIndicator.getName());
     assertEquals(10.0d, actualTechnicalIndicator.getValue());
     assertTrue(actualTechnicalIndicator.getProperties().isEmpty());
   }

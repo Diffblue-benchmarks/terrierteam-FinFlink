@@ -58,9 +58,9 @@ class TrueRangeDiffblueTest {
   void testGetResult() {
     // Arrange
     TrueRange trueRange = new TrueRange();
-    Trade value = new Trade("Asset Symbol", -1L, 10.0d, 1L);
+    Trade value = new Trade("\"BTCUSD\"", -1L, 10.0d, 1L);
     trueRange.add(value);
-    Trade value2 = new Trade("Asset Symbol", 2L, 10.0d, 2L);
+    Trade value2 = new Trade("\"BTCUSD\"", 2L, 10.0d, 2L);
     trueRange.add(value2);
 
     // Act and Assert
@@ -105,9 +105,9 @@ class TrueRangeDiffblueTest {
   void testGetResult_thenReturnDoubleValueIsTen() {
     // Arrange
     TrueRange trueRange = new TrueRange();
-    Trade value = new Trade("Asset Symbol", 1L, 10.0d, 1L);
+    Trade value = new Trade("\"BTCUSD\"", 1L, 10.0d, 1L);
     trueRange.add(value);
-    Trade value2 = new Trade("Asset Symbol", 2L, 10.0d, 2L);
+    Trade value2 = new Trade("\"BTCUSD\"", 2L, 10.0d, 2L);
     trueRange.add(value2);
 
     // Act and Assert
@@ -127,7 +127,7 @@ class TrueRangeDiffblueTest {
   void testAdd() {
     // Arrange
     TrueRange trueRange = new TrueRange();
-    Trade value = new Trade("Asset Symbol", 1L, 10.0d, 1L);
+    Trade value = new Trade("\"BTCUSD\"", 1L, 10.0d, 1L);
 
     // Act
     trueRange.add(value);

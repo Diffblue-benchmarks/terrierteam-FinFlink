@@ -52,12 +52,13 @@ class TechnicalIndicatorPipelineDiffblueTest {
     TechnicalIndicatorPipeline actualTechnicalIndicatorPipeline = new TechnicalIndicatorPipeline();
     ArrayList<TechnicalIndicatorGenerator> pipeline = new ArrayList<>();
     actualTechnicalIndicatorPipeline.setPipeline(pipeline);
-    actualTechnicalIndicatorPipeline.setPipelineID("Pipeline ID");
+    actualTechnicalIndicatorPipeline.setPipelineID("\"MACD_Indicator_Pipeline_001\"");
     List<TechnicalIndicatorGenerator> actualPipeline =
         actualTechnicalIndicatorPipeline.getPipeline();
 
     // Assert
-    assertEquals("Pipeline ID", actualTechnicalIndicatorPipeline.getPipelineID());
+    assertEquals(
+        "\"MACD_Indicator_Pipeline_001\"", actualTechnicalIndicatorPipeline.getPipelineID());
     assertTrue(actualPipeline.isEmpty());
     assertSame(pipeline, actualPipeline);
   }
@@ -66,7 +67,6 @@ class TechnicalIndicatorPipelineDiffblueTest {
    * Test getters and setters.
    *
    * <ul>
-   *   <li>When {@code Pipeline ID}.
    *   <li>Then return {@link TechnicalIndicatorPipeline#inputStreamType} Asset is {@code null}.
    * </ul>
    *
@@ -82,8 +82,7 @@ class TechnicalIndicatorPipelineDiffblueTest {
    * </ul>
    */
   @Test
-  @DisplayName(
-      "Test getters and setters; when 'Pipeline ID'; then return inputStreamType Asset is 'null'")
+  @DisplayName("Test getters and setters; then return inputStreamType Asset is 'null'")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({
@@ -94,21 +93,23 @@ class TechnicalIndicatorPipelineDiffblueTest {
     "void TechnicalIndicatorPipeline.setPipeline(List)",
     "void TechnicalIndicatorPipeline.setPipelineID(String)"
   })
-  void testGettersAndSetters_whenPipelineId_thenReturnInputStreamTypeAssetIsNull() {
+  void testGettersAndSetters_thenReturnInputStreamTypeAssetIsNull() {
     // Arrange
     InputStreamType inputStreamType = InputStreamType.trade();
 
     // Act
     TechnicalIndicatorPipeline actualTechnicalIndicatorPipeline =
-        new TechnicalIndicatorPipeline("Pipeline ID", inputStreamType, new ArrayList<>());
+        new TechnicalIndicatorPipeline(
+            "\"MACD_Indicator_Pipeline_001\"", inputStreamType, new ArrayList<>());
     ArrayList<TechnicalIndicatorGenerator> pipeline = new ArrayList<>();
     actualTechnicalIndicatorPipeline.setPipeline(pipeline);
-    actualTechnicalIndicatorPipeline.setPipelineID("Pipeline ID");
+    actualTechnicalIndicatorPipeline.setPipelineID("\"MACD_Indicator_Pipeline_001\"");
     List<TechnicalIndicatorGenerator> actualPipeline =
         actualTechnicalIndicatorPipeline.getPipeline();
 
     // Assert
-    assertEquals("Pipeline ID", actualTechnicalIndicatorPipeline.getPipelineID());
+    assertEquals(
+        "\"MACD_Indicator_Pipeline_001\"", actualTechnicalIndicatorPipeline.getPipelineID());
     InputStreamType inputStreamType2 = actualTechnicalIndicatorPipeline.inputStreamType;
     assertNull(inputStreamType2.getAsset());
     assertEquals(Type.Trade, inputStreamType2.getType());
@@ -231,10 +232,11 @@ class TechnicalIndicatorPipelineDiffblueTest {
 
     ArrayList<TechnicalIndicatorGenerator> pipeline = new ArrayList<>();
     pipeline.add(averageDirectionalIndex);
-    InputStreamType inputStreamType = InputStreamType.pricePoint("Asset");
+    InputStreamType inputStreamType = InputStreamType.pricePoint("\"NASDAQ:MSFT\"");
 
     TechnicalIndicatorPipeline technicalIndicatorPipeline =
-        new TechnicalIndicatorPipeline("Pipeline ID", inputStreamType, new ArrayList<>());
+        new TechnicalIndicatorPipeline(
+            "\"MACD_Indicator_Pipeline_001\"", inputStreamType, new ArrayList<>());
     technicalIndicatorPipeline.setPipeline(pipeline);
 
     ArrayList<TradingData> tradingData = new ArrayList<>();
@@ -249,7 +251,9 @@ class TechnicalIndicatorPipelineDiffblueTest {
     List<TechnicalIndicator> indicators = actualResult.getIndicators();
     assertEquals(1, indicators.size());
     TechnicalIndicator getResult = indicators.get(0);
-    assertEquals("Pipeline ID-AverageDirectionalIndex-0.16666666666666666", getResult.getName());
+    assertEquals(
+        "\"MACD_Indicator_Pipeline_001\"-AverageDirectionalIndex-0.16666666666666666",
+        getResult.getName());
     assertTrue(getResult.getProperties().isEmpty());
     assertEquals(Double.NaN, getResult.getValue());
   }
