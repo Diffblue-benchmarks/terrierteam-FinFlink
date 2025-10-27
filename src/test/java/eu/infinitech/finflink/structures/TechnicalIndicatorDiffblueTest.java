@@ -3,17 +3,14 @@ package eu.infinitech.finflink.structures;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
+import static org.mockito.Mockito.mock;
 import java.util.HashMap;
 import java.util.Map;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
+import java.util.function.BiFunction;
 import org.junit.jupiter.api.Test;
 
 class TechnicalIndicatorDiffblueTest {
   /**
-   * Test getters and setters.
-   * <p>
    * Methods under test:
    * <ul>
    *   <li>{@link TechnicalIndicator#TechnicalIndicator()}
@@ -26,12 +23,6 @@ class TechnicalIndicatorDiffblueTest {
    * </ul>
    */
   @Test
-  @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void TechnicalIndicator.<init>()", "String TechnicalIndicator.getName()",
-      "Map TechnicalIndicator.getProperties()", "double TechnicalIndicator.getValue()",
-      "void TechnicalIndicator.setName(String)", "void TechnicalIndicator.setProperties(Map)",
-      "void TechnicalIndicator.setValue(double)"})
   void testGettersAndSetters() {
     // Arrange and Act
     TechnicalIndicator actualTechnicalIndicator = new TechnicalIndicator();
@@ -42,7 +33,7 @@ class TechnicalIndicatorDiffblueTest {
     String actualName = actualTechnicalIndicator.getName();
     Map<String, String> actualProperties = actualTechnicalIndicator.getProperties();
 
-    // Assert
+    // Assert that nothing has changed
     assertEquals("Name", actualName);
     assertEquals(10.0d, actualTechnicalIndicator.getValue());
     assertTrue(actualProperties.isEmpty());
@@ -50,21 +41,43 @@ class TechnicalIndicatorDiffblueTest {
   }
 
   /**
-   * Test {@link TechnicalIndicator#TechnicalIndicator(String, double, Map)}.
-   * <p>
-   * Method under test: {@link TechnicalIndicator#TechnicalIndicator(String, double, Map)}
+   * Method under test:
+   * {@link TechnicalIndicator#TechnicalIndicator(String, double, Map)}
    */
   @Test
-  @DisplayName("Test new TechnicalIndicator(String, double, Map)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void TechnicalIndicator.<init>(String, double, Map)"})
   void testNewTechnicalIndicator() {
-    // Arrange and Act
-    TechnicalIndicator actualTechnicalIndicator = new TechnicalIndicator("Name", 10.0d, new HashMap<>());
+    // Arrange
+    HashMap<String, String> properties = new HashMap<>();
+
+    // Act
+    TechnicalIndicator actualTechnicalIndicator = new TechnicalIndicator("Name", 10.0d, properties);
 
     // Assert
     assertEquals("Name", actualTechnicalIndicator.getName());
     assertEquals(10.0d, actualTechnicalIndicator.getValue());
-    assertTrue(actualTechnicalIndicator.getProperties().isEmpty());
+    Map<String, String> properties2 = actualTechnicalIndicator.getProperties();
+    assertTrue(properties2.isEmpty());
+    assertSame(properties, properties2);
+  }
+
+  /**
+   * Method under test:
+   * {@link TechnicalIndicator#TechnicalIndicator(String, double, Map)}
+   */
+  @Test
+  void testNewTechnicalIndicator2() {
+    // Arrange
+    HashMap<String, String> properties = new HashMap<>();
+    properties.computeIfPresent("foo", mock(BiFunction.class));
+
+    // Act
+    TechnicalIndicator actualTechnicalIndicator = new TechnicalIndicator("Name", 10.0d, properties);
+
+    // Assert
+    assertEquals("Name", actualTechnicalIndicator.getName());
+    assertEquals(10.0d, actualTechnicalIndicator.getValue());
+    Map<String, String> properties2 = actualTechnicalIndicator.getProperties();
+    assertTrue(properties2.isEmpty());
+    assertSame(properties, properties2);
   }
 }

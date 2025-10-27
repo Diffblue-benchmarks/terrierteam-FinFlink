@@ -2,15 +2,55 @@ package eu.infinitech.finflink.structures;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
-import com.diffblue.cover.annotations.MethodsUnderTest;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 class IndicatorRequirementsDiffblueTest {
   /**
-   * Test getters and setters.
-   * <p>
+   * Method under test: {@link IndicatorRequirements#checkVolume()}
+   */
+  @Test
+  void testCheckVolume() {
+    // Arrange, Act and Assert
+    assertFalse((new IndicatorRequirements()).checkVolume());
+  }
+
+  /**
+   * Method under test: {@link IndicatorRequirements#checkOpen()}
+   */
+  @Test
+  void testCheckOpen() {
+    // Arrange, Act and Assert
+    assertFalse((new IndicatorRequirements()).checkOpen());
+  }
+
+  /**
+   * Method under test: {@link IndicatorRequirements#checkClose()}
+   */
+  @Test
+  void testCheckClose() {
+    // Arrange, Act and Assert
+    assertFalse((new IndicatorRequirements()).checkClose());
+  }
+
+  /**
+   * Method under test: {@link IndicatorRequirements#checkHigh()}
+   */
+  @Test
+  void testCheckHigh() {
+    // Arrange, Act and Assert
+    assertFalse((new IndicatorRequirements()).checkHigh());
+  }
+
+  /**
+   * Method under test: {@link IndicatorRequirements#checkLow()}
+   */
+  @Test
+  void testCheckLow() {
+    // Arrange, Act and Assert
+    assertFalse((new IndicatorRequirements()).checkLow());
+  }
+
+  /**
    * Methods under test:
    * <ul>
    *   <li>default or parameterless constructor of {@link IndicatorRequirements}
@@ -22,13 +62,6 @@ class IndicatorRequirementsDiffblueTest {
    * </ul>
    */
   @Test
-  @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void IndicatorRequirements.<init>()", "IndicatorRequirements IndicatorRequirements.needsClose()",
-      "IndicatorRequirements IndicatorRequirements.needsHigh()",
-      "IndicatorRequirements IndicatorRequirements.needsLow()",
-      "IndicatorRequirements IndicatorRequirements.needsOpen()",
-      "IndicatorRequirements IndicatorRequirements.needsVolume()"})
   void testGettersAndSetters() {
     // Arrange and Act
     IndicatorRequirements actualIndicatorRequirements = new IndicatorRequirements();
@@ -43,75 +76,5 @@ class IndicatorRequirementsDiffblueTest {
     assertSame(actualIndicatorRequirements, actualNeedsLowResult);
     assertSame(actualIndicatorRequirements, actualNeedsOpenResult);
     assertSame(actualIndicatorRequirements, actualIndicatorRequirements.needsVolume());
-  }
-
-  /**
-   * Test {@link IndicatorRequirements#checkVolume()}.
-   * <p>
-   * Method under test: {@link IndicatorRequirements#checkVolume()}
-   */
-  @Test
-  @DisplayName("Test checkVolume()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean IndicatorRequirements.checkVolume()"})
-  void testCheckVolume() {
-    // Arrange, Act and Assert
-    assertFalse((new IndicatorRequirements()).checkVolume());
-  }
-
-  /**
-   * Test {@link IndicatorRequirements#checkOpen()}.
-   * <p>
-   * Method under test: {@link IndicatorRequirements#checkOpen()}
-   */
-  @Test
-  @DisplayName("Test checkOpen()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean IndicatorRequirements.checkOpen()"})
-  void testCheckOpen() {
-    // Arrange, Act and Assert
-    assertFalse((new IndicatorRequirements()).checkOpen());
-  }
-
-  /**
-   * Test {@link IndicatorRequirements#checkClose()}.
-   * <p>
-   * Method under test: {@link IndicatorRequirements#checkClose()}
-   */
-  @Test
-  @DisplayName("Test checkClose()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean IndicatorRequirements.checkClose()"})
-  void testCheckClose() {
-    // Arrange, Act and Assert
-    assertFalse((new IndicatorRequirements()).checkClose());
-  }
-
-  /**
-   * Test {@link IndicatorRequirements#checkHigh()}.
-   * <p>
-   * Method under test: {@link IndicatorRequirements#checkHigh()}
-   */
-  @Test
-  @DisplayName("Test checkHigh()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean IndicatorRequirements.checkHigh()"})
-  void testCheckHigh() {
-    // Arrange, Act and Assert
-    assertFalse((new IndicatorRequirements()).checkHigh());
-  }
-
-  /**
-   * Test {@link IndicatorRequirements#checkLow()}.
-   * <p>
-   * Method under test: {@link IndicatorRequirements#checkLow()}
-   */
-  @Test
-  @DisplayName("Test checkLow()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean IndicatorRequirements.checkLow()"})
-  void testCheckLow() {
-    // Arrange, Act and Assert
-    assertFalse((new IndicatorRequirements()).checkLow());
   }
 }
