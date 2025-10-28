@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.InputStreamType;
-import eu.infinitech.finflink.structures.PricePoint;
+import eu.infinitech.finflink.structures.Trade;
 import eu.infinitech.finflink.structures.TradePeriod;
 import eu.infinitech.finflink.structures.TradingData;
 import eu.infinitech.finflink.transformations.data.ToTradeFactory;
@@ -20,44 +20,9 @@ class TradePeriodsGeneratorDiffblueTest {
   /**
    * Test {@link TradePeriodsGenerator#generateTradePeriods(InputStreamType, long, List)}.
    *
-   * <p>Method under test: {@link TradePeriodsGenerator#generateTradePeriods(InputStreamType, long,
-   * List)}
-   */
-  @Test
-  @DisplayName("Test generateTradePeriods(InputStreamType, long, List)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "List TradePeriodsGenerator.generateTradePeriods(InputStreamType, long, List)"
-  })
-  void testGenerateTradePeriods() {
-    // Arrange
-    InputStreamType inputStreamType =
-        InputStreamType.pricePoint(ToTradeFactory.createTradeDataString());
-
-    ArrayList<TradingData> tradingData = new ArrayList<>();
-    PricePoint pricePoint = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
-    tradingData.add(pricePoint);
-
-    // Act
-    List<TradePeriod> actualGenerateTradePeriodsResult =
-        TradePeriodsGenerator.generateTradePeriods(inputStreamType, 10L, tradingData);
-
-    // Assert
-    assertEquals(1, actualGenerateTradePeriodsResult.size());
-    TradePeriod getResult = actualGenerateTradePeriodsResult.get(0);
-    List<TradingData> tradingData2 = getResult.getTradingData();
-    assertEquals(1, tradingData2.size());
-    assertEquals(10.0d, getResult.getHighPrice());
-    assertEquals(10.0d, getResult.getLowPrice());
-    assertSame(pricePoint, tradingData2.get(0));
-  }
-
-  /**
-   * Test {@link TradePeriodsGenerator#generateTradePeriods(InputStreamType, long, List)}.
-   *
    * <ul>
-   *   <li>Then return first HighPrice is {@link Double#MIN_VALUE}.
+   *   <li>Given {@link Trade#Trade()}.
+   *   <li>Then return first ClosePrice is zero.
    * </ul>
    *
    * <p>Method under test: {@link TradePeriodsGenerator#generateTradePeriods(InputStreamType, long,
@@ -65,21 +30,19 @@ class TradePeriodsGeneratorDiffblueTest {
    */
   @Test
   @DisplayName(
-      "Test generateTradePeriods(InputStreamType, long, List); then return first HighPrice is MIN_VALUE")
+      "Test generateTradePeriods(InputStreamType, long, List); given Trade(); then return first ClosePrice is zero")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({
     "List TradePeriodsGenerator.generateTradePeriods(InputStreamType, long, List)"
   })
-  void testGenerateTradePeriods_thenReturnFirstHighPriceIsMin_value() {
+  void testGenerateTradePeriods_givenTrade_thenReturnFirstClosePriceIsZero() {
     // Arrange
-    InputStreamType inputStreamType =
-        InputStreamType.pricePoint(ToTradeFactory.createTradeDataString());
+    InputStreamType inputStreamType = InputStreamType.trade();
 
     ArrayList<TradingData> tradingData = new ArrayList<>();
-    PricePoint pricePoint =
-        new PricePoint(1L, 10.0d, Double.MIN_VALUE, 10.0d, 10.0d, 1L, (short) 1);
-    tradingData.add(pricePoint);
+    Trade trade = new Trade();
+    tradingData.add(trade);
 
     // Act
     List<TradePeriod> actualGenerateTradePeriodsResult =
@@ -88,18 +51,23 @@ class TradePeriodsGeneratorDiffblueTest {
     // Assert
     assertEquals(1, actualGenerateTradePeriodsResult.size());
     TradePeriod getResult = actualGenerateTradePeriodsResult.get(0);
+    assertEquals(0.0d, getResult.getClosePrice());
+    assertEquals(0.0d, getResult.getLowPrice());
+    assertEquals(0.0d, getResult.getOpenPrice());
+    assertEquals(0L, getResult.getStartTime());
+    assertEquals(0L, getResult.getStopTime());
+    assertEquals(0L, getResult.getVolume());
     List<TradingData> tradingData2 = getResult.getTradingData();
     assertEquals(1, tradingData2.size());
-    assertEquals(10.0d, getResult.getLowPrice());
     assertEquals(Double.MIN_VALUE, getResult.getHighPrice());
-    assertSame(pricePoint, tradingData2.get(0));
+    assertSame(trade, tradingData2.get(0));
   }
 
   /**
    * Test {@link TradePeriodsGenerator#generateTradePeriods(InputStreamType, long, List)}.
    *
    * <ul>
-   *   <li>Then return first LowPrice is {@link Double#MAX_VALUE}.
+   *   <li>Then return first ClosePrice is ten.
    * </ul>
    *
    * <p>Method under test: {@link TradePeriodsGenerator#generateTradePeriods(InputStreamType, long,
@@ -107,21 +75,19 @@ class TradePeriodsGeneratorDiffblueTest {
    */
   @Test
   @DisplayName(
-      "Test generateTradePeriods(InputStreamType, long, List); then return first LowPrice is MAX_VALUE")
+      "Test generateTradePeriods(InputStreamType, long, List); then return first ClosePrice is ten")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({
     "List TradePeriodsGenerator.generateTradePeriods(InputStreamType, long, List)"
   })
-  void testGenerateTradePeriods_thenReturnFirstLowPriceIsMax_value() {
+  void testGenerateTradePeriods_thenReturnFirstClosePriceIsTen() {
     // Arrange
-    InputStreamType inputStreamType =
-        InputStreamType.pricePoint(ToTradeFactory.createTradeDataString());
+    InputStreamType inputStreamType = InputStreamType.trade();
 
     ArrayList<TradingData> tradingData = new ArrayList<>();
-    PricePoint pricePoint =
-        new PricePoint(1L, 10.0d, 10.0d, Double.MAX_VALUE, 10.0d, 1L, (short) 1);
-    tradingData.add(pricePoint);
+    Trade trade = new Trade(ToTradeFactory.createTradeDataString(), 1L, 10.0d, 1L);
+    tradingData.add(trade);
 
     // Act
     List<TradePeriod> actualGenerateTradePeriodsResult =
@@ -132,9 +98,14 @@ class TradePeriodsGeneratorDiffblueTest {
     TradePeriod getResult = actualGenerateTradePeriodsResult.get(0);
     List<TradingData> tradingData2 = getResult.getTradingData();
     assertEquals(1, tradingData2.size());
+    assertEquals(10.0d, getResult.getClosePrice());
     assertEquals(10.0d, getResult.getHighPrice());
-    assertEquals(Double.MAX_VALUE, getResult.getLowPrice());
-    assertSame(pricePoint, tradingData2.get(0));
+    assertEquals(10.0d, getResult.getLowPrice());
+    assertEquals(10.0d, getResult.getOpenPrice());
+    assertEquals(1L, getResult.getStartTime());
+    assertEquals(1L, getResult.getStopTime());
+    assertEquals(1L, getResult.getVolume());
+    assertSame(trade, tradingData2.get(0));
   }
 
   /**
@@ -158,8 +129,7 @@ class TradePeriodsGeneratorDiffblueTest {
   })
   void testGenerateTradePeriods_whenArrayList_thenReturnEmpty() {
     // Arrange
-    InputStreamType inputStreamType =
-        InputStreamType.pricePoint(ToTradeFactory.createTradeDataString());
+    InputStreamType inputStreamType = InputStreamType.trade();
 
     // Act
     List<TradePeriod> actualGenerateTradePeriodsResult =

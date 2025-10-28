@@ -44,27 +44,26 @@ class LogReturnsDiffblueTest {
    * Test {@link LogReturns#calculate(List)}.
    *
    * <ul>
-   *   <li>Given createTradePeriod ClosePrice is ten.
+   *   <li>Given createTradePeriod ClosePrice is {@link Double#NaN}.
    *   <li>Then return {@link Double#NaN}.
    * </ul>
    *
    * <p>Method under test: {@link LogReturns#calculate(List)}
    */
   @Test
-  @DisplayName("Test calculate(List); given createTradePeriod ClosePrice is ten; then return NaN")
+  @DisplayName("Test calculate(List); given createTradePeriod ClosePrice is NaN; then return NaN")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"double LogReturns.calculate(List)"})
-  void testCalculate_givenCreateTradePeriodClosePriceIsTen_thenReturnNaN() {
+  void testCalculate_givenCreateTradePeriodClosePriceIsNaN_thenReturnNaN() {
     // Arrange
-    LogReturns logReturns = new LogReturns(TimeFactory.createTime(), 1);
+    LogReturns logReturns = new LogReturns(TimeFactory.createTime(), 0);
 
     TradePeriod createTradePeriodResult = TradePeriodFactory.createTradePeriod();
-    createTradePeriodResult.setClosePrice(10.0d);
+    createTradePeriodResult.setClosePrice(Double.NaN);
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
     periodsToConsider.add(createTradePeriodResult);
-    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
 
     // Act and Assert
     assertEquals(Double.NaN, logReturns.calculate(periodsToConsider));
