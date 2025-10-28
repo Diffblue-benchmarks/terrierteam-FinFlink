@@ -1,6 +1,7 @@
 package eu.infinitech.finflink.transformations.technicalIndicators;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
@@ -64,8 +65,7 @@ class TechnicalIndicatorPipelineDiffblueTest {
    * Test getters and setters.
    *
    * <ul>
-   *   <li>Then return {@link TechnicalIndicatorPipeline#inputStreamType} Asset is {@code
-   *       AAPL,1000000,150.5,1000}.
+   *   <li>Then return {@link TechnicalIndicatorPipeline#inputStreamType} Asset is {@code null}.
    * </ul>
    *
    * <p>Methods under test:
@@ -80,8 +80,7 @@ class TechnicalIndicatorPipelineDiffblueTest {
    * </ul>
    */
   @Test
-  @DisplayName(
-      "Test getters and setters; then return inputStreamType Asset is 'AAPL,1000000,150.5,1000'")
+  @DisplayName("Test getters and setters; then return inputStreamType Asset is 'null'")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({
@@ -92,11 +91,10 @@ class TechnicalIndicatorPipelineDiffblueTest {
     "void TechnicalIndicatorPipeline.setPipeline(List)",
     "void TechnicalIndicatorPipeline.setPipelineID(String)"
   })
-  void testGettersAndSetters_thenReturnInputStreamTypeAssetIsAapl100000015051000() {
+  void testGettersAndSetters_thenReturnInputStreamTypeAssetIsNull() {
     // Arrange
     String pipelineID = ToTradeFactory.createTradeDataString();
-    InputStreamType inputStreamType =
-        InputStreamType.pricePoint(ToTradeFactory.createTradeDataString());
+    InputStreamType inputStreamType = InputStreamType.trade();
 
     // Act
     TechnicalIndicatorPipeline actualTechnicalIndicatorPipeline =
@@ -106,13 +104,12 @@ class TechnicalIndicatorPipelineDiffblueTest {
     actualTechnicalIndicatorPipeline.setPipelineID(ToTradeFactory.createTradeDataString());
     List<TechnicalIndicatorGenerator> actualPipeline =
         actualTechnicalIndicatorPipeline.getPipeline();
-    String actualPipelineID = actualTechnicalIndicatorPipeline.getPipelineID();
 
     // Assert
+    assertEquals("AAPL,1000000,150.5,1000", actualTechnicalIndicatorPipeline.getPipelineID());
     InputStreamType inputStreamType2 = actualTechnicalIndicatorPipeline.inputStreamType;
-    assertEquals("AAPL,1000000,150.5,1000", inputStreamType2.getAsset());
-    assertEquals("AAPL,1000000,150.5,1000", actualPipelineID);
-    assertEquals(Type.PricePoint, inputStreamType2.getType());
+    assertNull(inputStreamType2.getAsset());
+    assertEquals(Type.Trade, inputStreamType2.getType());
     assertTrue(actualPipeline.isEmpty());
     assertSame(pipeline, actualPipeline);
   }
