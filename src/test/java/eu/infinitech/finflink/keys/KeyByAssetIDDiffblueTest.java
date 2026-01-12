@@ -1,6 +1,7 @@
 package eu.infinitech.finflink.keys;
 
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.PricePoint;
@@ -10,6 +11,26 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 class KeyByAssetIDDiffblueTest {
+  /**
+   * Test getters and setters.
+   *
+   * <p>Methods under test:
+   *
+   * <ul>
+   *   <li>default or parameterless constructor of {@link KeyByAssetID}
+   *   <li>{@link KeyByAssetID#isInitialized()}
+   * </ul>
+   */
+  @Test
+  @DisplayName("Test getters and setters")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void KeyByAssetID.<init>()", "boolean KeyByAssetID.isInitialized()"})
+  void testGettersAndSetters() {
+    // Arrange, Act and Assert
+    assertTrue(new KeyByAssetID().isInitialized());
+  }
+
   /**
    * Test {@link KeyByAssetID#getKey(TradingData)} with {@code TradingData}.
    *

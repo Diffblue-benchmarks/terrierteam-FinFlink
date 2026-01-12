@@ -16,6 +16,29 @@ import org.junit.jupiter.api.Test;
 
 class TradingDataTimeAssignerDiffblueTest {
   /**
+   * Test getters and setters.
+   *
+   * <p>Methods under test:
+   *
+   * <ul>
+   *   <li>default or parameterless constructor of {@link TradingDataTimeAssigner}
+   *   <li>{@link TradingDataTimeAssigner#isInitialized()}
+   * </ul>
+   */
+  @Test
+  @DisplayName("Test getters and setters")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void TradingDataTimeAssigner.<init>()",
+    "boolean TradingDataTimeAssigner.isInitialized()"
+  })
+  void testGettersAndSetters() {
+    // Arrange, Act and Assert
+    assertTrue(new TradingDataTimeAssigner().isInitialized());
+  }
+
+  /**
    * Test {@link TradingDataTimeAssigner#extractTimestamp(TradingData, long)} with {@code
    * TradingData}, {@code long}.
    *
@@ -65,5 +88,6 @@ class TradingDataTimeAssignerDiffblueTest {
     // Assert
     assertTrue(actualCreateTimestampAssignerResult instanceof TradingDataTimeAssigner);
     assertEquals(1L, actualExtractTimestampResult);
+    assertTrue(((TradingDataTimeAssigner) actualCreateTimestampAssignerResult).isInitialized());
   }
 }

@@ -53,7 +53,11 @@ class InputParserDiffblueTest {
   @ManagedByDiffblue
   @MethodsUnderTest({"InputMapper InputParser.selectMapper(InputStreamType)"})
   void testSelectMapper_whenTrade_thenReturnToTrade() {
-    // Arrange, Act and Assert
-    assertTrue(InputParser.selectMapper(InputStreamType.trade()) instanceof ToTrade);
+    // Arrange and Act
+    InputMapper actualSelectMapperResult = InputParser.selectMapper(InputStreamType.trade());
+
+    // Assert
+    assertTrue(actualSelectMapperResult instanceof ToTrade);
+    assertTrue(((ToTrade) actualSelectMapperResult).isInitialized());
   }
 }

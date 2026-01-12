@@ -7,6 +7,15 @@ import eu.infinitech.finflink.structures.TechnicalIndicators;
 public class PrintSink implements SinkFunction<TechnicalIndicators>{
 
 	private static final long serialVersionUID = 8125267289665777316L;
+	private final boolean initialized;
+
+	public PrintSink() {
+		this.initialized = true;
+	}
+
+	public boolean isInitialized() {
+		return initialized;
+	}
 
 	public void invoke(TechnicalIndicators value, Context context) throws Exception {
 		System.err.println(value.toString());

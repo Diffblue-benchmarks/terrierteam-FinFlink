@@ -12,6 +12,15 @@ import org.apache.flink.api.common.eventtime.TimestampAssignerSupplier;
 public class TradingDataTimeAssigner implements TimestampAssigner<TradingData>, TimestampAssignerSupplier<TradingData> {
 
 	private static final long serialVersionUID = 9031211879131780647L;
+	private final boolean initialized;
+
+	public TradingDataTimeAssigner() {
+		this.initialized = true;
+	}
+
+	public boolean isInitialized() {
+		return initialized;
+	}
 
 	@Override
 	public long extractTimestamp(TradingData tradingData, long recordTimestamp) {

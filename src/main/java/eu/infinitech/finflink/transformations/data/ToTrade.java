@@ -12,6 +12,15 @@ import eu.infinitech.finflink.structures.Trade;
 public class ToTrade implements InputMapper{
 
 	private static final long serialVersionUID = 4819959066683219070L;
+	private final boolean initialized;
+
+	public ToTrade() {
+		this.initialized = true;
+	}
+
+	public boolean isInitialized() {
+		return initialized;
+	}
 
 	@Override
 	public Trade map(String tradeData) throws Exception {

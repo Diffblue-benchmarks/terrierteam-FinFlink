@@ -13,6 +13,15 @@ import eu.infinitech.finflink.structures.Trade;
 public class KeyByAssetID implements KeySelector<TradingData, String>{
 
 	private static final long serialVersionUID = -1428294311796298639L;
+	private final boolean initialized;
+
+	public KeyByAssetID() {
+		this.initialized = true;
+	}
+
+	public boolean isInitialized() {
+		return initialized;
+	}
 
 	@Override
 	public String getKey(TradingData value) throws Exception {
