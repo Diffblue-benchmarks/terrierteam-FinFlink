@@ -1,0 +1,9 @@
+name: com.diffblue.cover.refactoring.Recipe
+recipeList:
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: eu.infinitech.finflink.sinks.QuestDBSink,
+    fieldName: columNames}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: eu.infinitech.finflink.sinks.QuestDBSink,
+    fieldName: dbUrl}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: eu.infinitech.finflink.transformations.technicalIndicators.TechnicalIndicator,
+    fieldName: supplier}
+type: specs.openrewrite.org/v1beta/recipe
