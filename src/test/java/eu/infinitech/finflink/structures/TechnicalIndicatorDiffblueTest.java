@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
+import eu.infinitech.finflink.transformations.data.ToTradeFactory;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
@@ -43,7 +44,7 @@ class TechnicalIndicatorDiffblueTest {
   void testGettersAndSetters() {
     // Arrange and Act
     TechnicalIndicator actualTechnicalIndicator = new TechnicalIndicator();
-    actualTechnicalIndicator.setName("Name");
+    actualTechnicalIndicator.setName(ToTradeFactory.createValidTradeDataString());
     HashMap<String, String> properties = new HashMap<>();
     actualTechnicalIndicator.setProperties(properties);
     actualTechnicalIndicator.setValue(10.0d);
@@ -51,7 +52,7 @@ class TechnicalIndicatorDiffblueTest {
     Map<String, String> actualProperties = actualTechnicalIndicator.getProperties();
 
     // Assert
-    assertEquals("Name", actualName);
+    assertEquals("BTC,1640000000,50000.0,100", actualName);
     assertEquals(10.0d, actualTechnicalIndicator.getValue());
     assertTrue(actualProperties.isEmpty());
     assertSame(properties, actualProperties);
@@ -68,12 +69,15 @@ class TechnicalIndicatorDiffblueTest {
   @ManagedByDiffblue
   @MethodsUnderTest({"void TechnicalIndicator.<init>(String, double, Map)"})
   void testNewTechnicalIndicator() {
-    // Arrange and Act
+    // Arrange
+    String name = ToTradeFactory.createValidTradeDataString();
+
+    // Act
     TechnicalIndicator actualTechnicalIndicator =
-        new TechnicalIndicator("Name", 10.0d, new HashMap<>());
+        new TechnicalIndicator(name, 10.0d, new HashMap<>());
 
     // Assert
-    assertEquals("Name", actualTechnicalIndicator.getName());
+    assertEquals("BTC,1640000000,50000.0,100", actualTechnicalIndicator.getName());
     assertEquals(10.0d, actualTechnicalIndicator.getValue());
     assertTrue(actualTechnicalIndicator.getProperties().isEmpty());
   }

@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.Trade;
+import eu.infinitech.finflink.transformations.data.ToTradeFactory;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -58,9 +59,9 @@ class TrueRangeDiffblueTest {
   void testGetResult() {
     // Arrange
     TrueRange trueRange = new TrueRange();
-    Trade value = new Trade("Asset Symbol", -1L, 10.0d, 1L);
+    Trade value = new Trade(ToTradeFactory.createValidTradeDataString(), -1L, 10.0d, 1L);
     trueRange.add(value);
-    Trade value2 = new Trade("Asset Symbol", 2L, 10.0d, 2L);
+    Trade value2 = new Trade(ToTradeFactory.createValidTradeDataString(), 2L, 10.0d, 2L);
     trueRange.add(value2);
 
     // Act and Assert
@@ -105,9 +106,9 @@ class TrueRangeDiffblueTest {
   void testGetResult_thenReturnDoubleValueIsTen() {
     // Arrange
     TrueRange trueRange = new TrueRange();
-    Trade value = new Trade("Asset Symbol", 1L, 10.0d, 1L);
+    Trade value = new Trade(ToTradeFactory.createValidTradeDataString(), 1L, 10.0d, 1L);
     trueRange.add(value);
-    Trade value2 = new Trade("Asset Symbol", 2L, 10.0d, 2L);
+    Trade value2 = new Trade(ToTradeFactory.createValidTradeDataString(), 2L, 10.0d, 2L);
     trueRange.add(value2);
 
     // Act and Assert
@@ -127,7 +128,7 @@ class TrueRangeDiffblueTest {
   void testAdd() {
     // Arrange
     TrueRange trueRange = new TrueRange();
-    Trade value = new Trade("Asset Symbol", 1L, 10.0d, 1L);
+    Trade value = new Trade(ToTradeFactory.createValidTradeDataString(), 1L, 10.0d, 1L);
 
     // Act
     trueRange.add(value);

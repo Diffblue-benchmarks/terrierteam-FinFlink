@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
+import eu.infinitech.finflink.transformations.data.ToTradeFactory;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -16,28 +17,28 @@ class QuestDBSinkDiffblueTest {
    * Test {@link QuestDBSink#QuestDBSink(String, List)}.
    *
    * <ul>
-   *   <li>Given {@code foo}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code foo}.
+   *   <li>Given createValidTradeDataString.
    * </ul>
    *
    * <p>Method under test: {@link QuestDBSink#QuestDBSink(String, List)}
    */
   @Test
-  @DisplayName("Test new QuestDBSink(String, List); given 'foo'; when ArrayList() add 'foo'")
+  @DisplayName("Test new QuestDBSink(String, List); given createValidTradeDataString")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"void QuestDBSink.<init>(String, List)"})
-  void testNewQuestDBSink_givenFoo_whenArrayListAddFoo() {
+  void testNewQuestDBSink_givenCreateValidTradeDataString() {
     // Arrange
+    String dbUrl = ToTradeFactory.createValidTradeDataString();
+
     ArrayList<String> columNames = new ArrayList<>();
-    columNames.add("foo");
-    columNames.add("QUESTDB_SERVICE");
+    columNames.add(ToTradeFactory.createValidTradeDataString());
 
     // Act
-    QuestDBSink actualQuestDBSink = new QuestDBSink("https://example.org/example", columNames);
+    QuestDBSink actualQuestDBSink = new QuestDBSink(dbUrl, columNames);
 
     // Assert
-    assertEquals("https://example.org/example", actualQuestDBSink.getDbUrl());
+    assertEquals("BTC,1640000000,50000.0,100", actualQuestDBSink.getDbUrl());
     assertSame(columNames, actualQuestDBSink.getColumNames());
   }
 
@@ -59,14 +60,17 @@ class QuestDBSinkDiffblueTest {
   @MethodsUnderTest({"void QuestDBSink.<init>(String, List)"})
   void testNewQuestDBSink_givenQuestdbService_whenArrayListAddQuestdbService() {
     // Arrange
+    String dbUrl = ToTradeFactory.createValidTradeDataString();
+
     ArrayList<String> columNames = new ArrayList<>();
     columNames.add("QUESTDB_SERVICE");
+    columNames.add(ToTradeFactory.createValidTradeDataString());
 
     // Act
-    QuestDBSink actualQuestDBSink = new QuestDBSink("https://example.org/example", columNames);
+    QuestDBSink actualQuestDBSink = new QuestDBSink(dbUrl, columNames);
 
     // Assert
-    assertEquals("https://example.org/example", actualQuestDBSink.getDbUrl());
+    assertEquals("BTC,1640000000,50000.0,100", actualQuestDBSink.getDbUrl());
     assertSame(columNames, actualQuestDBSink.getColumNames());
   }
 
@@ -87,13 +91,14 @@ class QuestDBSinkDiffblueTest {
   @MethodsUnderTest({"void QuestDBSink.<init>(String, List)"})
   void testNewQuestDBSink_whenArrayList_thenReturnColumNamesEmpty() {
     // Arrange
+    String dbUrl = ToTradeFactory.createValidTradeDataString();
     ArrayList<String> columNames = new ArrayList<>();
 
     // Act
-    QuestDBSink actualQuestDBSink = new QuestDBSink("https://example.org/example", columNames);
+    QuestDBSink actualQuestDBSink = new QuestDBSink(dbUrl, columNames);
 
     // Assert
-    assertEquals("https://example.org/example", actualQuestDBSink.getDbUrl());
+    assertEquals("BTC,1640000000,50000.0,100", actualQuestDBSink.getDbUrl());
     List columNames2 = actualQuestDBSink.getColumNames();
     assertTrue(columNames2.isEmpty());
     assertSame(columNames, columNames2);
@@ -116,14 +121,16 @@ class QuestDBSinkDiffblueTest {
   @MethodsUnderTest({"List QuestDBSink.getColumNames()", "String QuestDBSink.getDbUrl()"})
   void testGettersAndSetters() {
     // Arrange
+    String dbUrl = ToTradeFactory.createValidTradeDataString();
     ArrayList<String> columNames = new ArrayList<>();
-    QuestDBSink questDBSink = new QuestDBSink("https://example.org/example", columNames);
+
+    QuestDBSink questDBSink = new QuestDBSink(dbUrl, columNames);
 
     // Act
     List actualColumNames = questDBSink.getColumNames();
 
     // Assert
-    assertEquals("https://example.org/example", questDBSink.getDbUrl());
+    assertEquals("BTC,1640000000,50000.0,100", questDBSink.getDbUrl());
     assertSame(columNames, actualColumNames);
   }
 }

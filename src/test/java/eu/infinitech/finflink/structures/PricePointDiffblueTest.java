@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
+import eu.infinitech.finflink.transformations.data.ToTradeFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -66,7 +67,7 @@ class PricePointDiffblueTest {
   void testGettersAndSetters() {
     // Arrange and Act
     PricePoint actualPricePoint = new PricePoint();
-    actualPricePoint.setAssetSymbol("Asset Symbol");
+    actualPricePoint.setAssetSymbol(ToTradeFactory.createValidTradeDataString());
     actualPricePoint.setClosePrice(10.0d);
     actualPricePoint.setHighPrice(10.0d);
     actualPricePoint.setIgnore(true);
@@ -85,7 +86,7 @@ class PricePointDiffblueTest {
     long actualVolume = actualPricePoint.getVolume();
 
     // Assert
-    assertEquals("Asset Symbol", actualAssetSymbol);
+    assertEquals("BTC,1640000000,50000.0,100", actualAssetSymbol);
     assertEquals(10.0d, actualClosePrice);
     assertEquals(10.0d, actualHighPrice);
     assertEquals(10.0d, actualLowPrice);
@@ -139,10 +140,18 @@ class PricePointDiffblueTest {
   void testNewPricePoint2() {
     // Arrange and Act
     PricePoint actualPricePoint =
-        new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1, "Asset Symbol");
+        new PricePoint(
+            1L,
+            10.0d,
+            10.0d,
+            10.0d,
+            10.0d,
+            1L,
+            (short) 1,
+            ToTradeFactory.createValidTradeDataString());
 
     // Assert
-    assertEquals("Asset Symbol", actualPricePoint.getAssetSymbol());
+    assertEquals("BTC,1640000000,50000.0,100", actualPricePoint.getAssetSymbol());
     assertEquals(10.0d, actualPricePoint.getClosePrice());
     assertEquals(10.0d, actualPricePoint.getHighPrice());
     assertEquals(10.0d, actualPricePoint.getLowPrice());
@@ -166,7 +175,7 @@ class PricePointDiffblueTest {
   void testCompareToWithTradingData() {
     // Arrange
     PricePoint pricePoint = new PricePoint(1L, 10.0d, 10.0d, 10.0d, 10.0d, 1L, (short) 1);
-    Trade tradingData = new Trade("Asset Symbol", 1L, 10.0d, 1L);
+    Trade tradingData = new Trade(ToTradeFactory.createValidTradeDataString(), 1L, 10.0d, 1L);
 
     // Act
     int actualCompareToResult = pricePoint.compareTo(tradingData);

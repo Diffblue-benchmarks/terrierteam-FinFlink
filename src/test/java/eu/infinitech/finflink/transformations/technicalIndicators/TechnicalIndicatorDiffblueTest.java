@@ -9,6 +9,7 @@ import static org.mockito.Mockito.when;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.Trade;
+import eu.infinitech.finflink.transformations.data.ToTradeFactory;
 import java.util.function.Supplier;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -102,7 +103,7 @@ class TechnicalIndicatorDiffblueTest {
   void testAddWithTradeIndicatorState_whenTrueRange_thenReturnTrueRange() {
     // Arrange
     TechnicalIndicator<IndicatorState> technicalIndicator = new TechnicalIndicator<>();
-    Trade value = new Trade("Asset Symbol", 1L, 10.0d, 1L);
+    Trade value = new Trade(ToTradeFactory.createValidTradeDataString(), 1L, 10.0d, 1L);
     TrueRange accumulator = new TrueRange();
 
     // Act

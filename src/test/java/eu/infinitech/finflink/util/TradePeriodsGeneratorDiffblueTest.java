@@ -9,6 +9,7 @@ import eu.infinitech.finflink.structures.InputStreamType;
 import eu.infinitech.finflink.structures.Trade;
 import eu.infinitech.finflink.structures.TradePeriod;
 import eu.infinitech.finflink.structures.TradingData;
+import eu.infinitech.finflink.transformations.data.ToTradeFactory;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -85,7 +86,7 @@ class TradePeriodsGeneratorDiffblueTest {
     InputStreamType inputStreamType = InputStreamType.trade();
 
     ArrayList<TradingData> tradingData = new ArrayList<>();
-    Trade trade = new Trade("Asset Symbol", 1L, 10.0d, 1L);
+    Trade trade = new Trade(ToTradeFactory.createValidTradeDataString(), 1L, 10.0d, 1L);
     tradingData.add(trade);
 
     // Act

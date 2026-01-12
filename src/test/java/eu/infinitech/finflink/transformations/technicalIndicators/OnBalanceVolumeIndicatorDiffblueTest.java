@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.TradePeriod;
+import eu.infinitech.finflink.structures.TradePeriodFactory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -47,28 +48,28 @@ class OnBalanceVolumeIndicatorDiffblueTest {
    * Test {@link OnBalanceVolumeIndicator#calculate(List)}.
    *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()} ClosePrice is ten.
+   *   <li>Given createTradePeriod ClosePrice is ten.
    *   <li>Then return zero.
    * </ul>
    *
    * <p>Method under test: {@link OnBalanceVolumeIndicator#calculate(List)}
    */
   @Test
-  @DisplayName("Test calculate(List); given TradePeriod() ClosePrice is ten; then return zero")
+  @DisplayName("Test calculate(List); given createTradePeriod ClosePrice is ten; then return zero")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"double OnBalanceVolumeIndicator.calculate(List)"})
-  void testCalculate_givenTradePeriodClosePriceIsTen_thenReturnZero() {
+  void testCalculate_givenCreateTradePeriodClosePriceIsTen_thenReturnZero() {
     // Arrange
     Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
     OnBalanceVolumeIndicator onBalanceVolumeIndicator = new OnBalanceVolumeIndicator(timePeriod);
 
-    TradePeriod tradePeriod = new TradePeriod();
-    tradePeriod.setClosePrice(10.0d);
+    TradePeriod createTradePeriodResult = TradePeriodFactory.createTradePeriod();
+    createTradePeriodResult.setClosePrice(10.0d);
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(tradePeriod);
-    periodsToConsider.add(new TradePeriod());
+    periodsToConsider.add(createTradePeriodResult);
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
 
     // Act and Assert
     assertEquals(0.0d, onBalanceVolumeIndicator.calculate(periodsToConsider));
@@ -78,28 +79,28 @@ class OnBalanceVolumeIndicatorDiffblueTest {
    * Test {@link OnBalanceVolumeIndicator#calculate(List)}.
    *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()} ClosePrice is ten.
+   *   <li>Given createTradePeriod ClosePrice is ten.
    *   <li>Then return zero.
    * </ul>
    *
    * <p>Method under test: {@link OnBalanceVolumeIndicator#calculate(List)}
    */
   @Test
-  @DisplayName("Test calculate(List); given TradePeriod() ClosePrice is ten; then return zero")
+  @DisplayName("Test calculate(List); given createTradePeriod ClosePrice is ten; then return zero")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"double OnBalanceVolumeIndicator.calculate(List)"})
-  void testCalculate_givenTradePeriodClosePriceIsTen_thenReturnZero2() {
+  void testCalculate_givenCreateTradePeriodClosePriceIsTen_thenReturnZero2() {
     // Arrange
     Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
     OnBalanceVolumeIndicator onBalanceVolumeIndicator = new OnBalanceVolumeIndicator(timePeriod);
 
-    TradePeriod tradePeriod = new TradePeriod();
-    tradePeriod.setClosePrice(10.0d);
+    TradePeriod createTradePeriodResult = TradePeriodFactory.createTradePeriod();
+    createTradePeriodResult.setClosePrice(10.0d);
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(new TradePeriod());
-    periodsToConsider.add(tradePeriod);
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
+    periodsToConsider.add(createTradePeriodResult);
 
     // Act and Assert
     assertEquals(0.0d, onBalanceVolumeIndicator.calculate(periodsToConsider));
@@ -109,26 +110,24 @@ class OnBalanceVolumeIndicatorDiffblueTest {
    * Test {@link OnBalanceVolumeIndicator#calculate(List)}.
    *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
+   *   <li>Given createTradePeriod.
    *   <li>Then return zero.
    * </ul>
    *
    * <p>Method under test: {@link OnBalanceVolumeIndicator#calculate(List)}
    */
   @Test
-  @DisplayName(
-      "Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return zero")
+  @DisplayName("Test calculate(List); given createTradePeriod; then return zero")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"double OnBalanceVolumeIndicator.calculate(List)"})
-  void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnZero() {
+  void testCalculate_givenCreateTradePeriod_thenReturnZero() {
     // Arrange
     Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
     OnBalanceVolumeIndicator onBalanceVolumeIndicator = new OnBalanceVolumeIndicator(timePeriod);
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(new TradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
 
     // Act and Assert
     assertEquals(0.0d, onBalanceVolumeIndicator.calculate(periodsToConsider));
@@ -138,27 +137,25 @@ class OnBalanceVolumeIndicatorDiffblueTest {
    * Test {@link OnBalanceVolumeIndicator#calculate(List)}.
    *
    * <ul>
-   *   <li>Given {@link TradePeriod#TradePeriod()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link TradePeriod#TradePeriod()}.
+   *   <li>Given createTradePeriod.
    *   <li>Then return zero.
    * </ul>
    *
    * <p>Method under test: {@link OnBalanceVolumeIndicator#calculate(List)}
    */
   @Test
-  @DisplayName(
-      "Test calculate(List); given TradePeriod(); when ArrayList() add TradePeriod(); then return zero")
+  @DisplayName("Test calculate(List); given createTradePeriod; then return zero")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"double OnBalanceVolumeIndicator.calculate(List)"})
-  void testCalculate_givenTradePeriod_whenArrayListAddTradePeriod_thenReturnZero2() {
+  void testCalculate_givenCreateTradePeriod_thenReturnZero2() {
     // Arrange
     Time timePeriod = Time.of(3L, TimeUnit.NANOSECONDS);
     OnBalanceVolumeIndicator onBalanceVolumeIndicator = new OnBalanceVolumeIndicator(timePeriod);
 
     ArrayList<TradePeriod> periodsToConsider = new ArrayList<>();
-    periodsToConsider.add(new TradePeriod());
-    periodsToConsider.add(new TradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
+    periodsToConsider.add(TradePeriodFactory.createTradePeriod());
 
     // Act and Assert
     assertEquals(0.0d, onBalanceVolumeIndicator.calculate(periodsToConsider));

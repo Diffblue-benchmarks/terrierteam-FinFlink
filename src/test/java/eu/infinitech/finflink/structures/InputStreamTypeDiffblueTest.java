@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import eu.infinitech.finflink.structures.InputStreamType.Type;
+import eu.infinitech.finflink.transformations.data.ToTradeFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -14,8 +15,7 @@ class InputStreamTypeDiffblueTest {
    * Test getters and setters.
    *
    * <ul>
-   *   <li>When {@code Asset}.
-   *   <li>Then return {@code Asset}.
+   *   <li>Then return Asset is {@code BTC,1640000000,50000.0,100}.
    * </ul>
    *
    * <p>Methods under test:
@@ -27,7 +27,7 @@ class InputStreamTypeDiffblueTest {
    * </ul>
    */
   @Test
-  @DisplayName("Test getters and setters; when 'Asset'; then return 'Asset'")
+  @DisplayName("Test getters and setters; then return Asset is 'BTC,1640000000,50000.0,100'")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({
@@ -36,13 +36,14 @@ class InputStreamTypeDiffblueTest {
     "String InputStreamType.getAsset()",
     "Type InputStreamType.getType()"
   })
-  void testGettersAndSetters_whenAsset_thenReturnAsset() {
+  void testGettersAndSetters_thenReturnAssetIsBtc1640000000500000100() {
     // Arrange and Act
-    InputStreamType actualInputStreamType = new InputStreamType(Type.Trade, "Asset");
+    InputStreamType actualInputStreamType =
+        new InputStreamType(Type.Trade, ToTradeFactory.createValidTradeDataString());
     String actualAsset = actualInputStreamType.getAsset();
 
     // Assert
-    assertEquals("Asset", actualAsset);
+    assertEquals("BTC,1640000000,50000.0,100", actualAsset);
     assertEquals(Type.Trade, actualInputStreamType.getType());
   }
 
@@ -113,10 +114,11 @@ class InputStreamTypeDiffblueTest {
   @MethodsUnderTest({"InputStreamType InputStreamType.pricePoint(String)"})
   void testPricePoint() {
     // Arrange and Act
-    InputStreamType actualPricePointResult = InputStreamType.pricePoint("Asset");
+    InputStreamType actualPricePointResult =
+        InputStreamType.pricePoint(ToTradeFactory.createValidTradeDataString());
 
     // Assert
-    assertEquals("Asset", actualPricePointResult.getAsset());
+    assertEquals("BTC,1640000000,50000.0,100", actualPricePointResult.getAsset());
     assertEquals(Type.PricePoint, actualPricePointResult.getType());
   }
 }
