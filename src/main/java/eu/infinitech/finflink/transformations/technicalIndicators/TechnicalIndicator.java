@@ -43,6 +43,11 @@ public class TechnicalIndicator<T extends IndicatorState> implements AggregateFu
 		return accumulator.getResult();
 	}
 
+  /** For testing purposes only */
+  public Supplier getSupplier() {
+    return supplier;
+  }
+
 	@Override
 	public IndicatorState merge(IndicatorState a, IndicatorState b) {
 		a.merge(b);

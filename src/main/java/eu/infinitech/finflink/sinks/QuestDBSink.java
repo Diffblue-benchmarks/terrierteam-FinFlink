@@ -24,6 +24,16 @@ public class QuestDBSink implements SinkFunction<TechnicalIndicators>{
 		}
 	}
 
+  /** For testing purposes only */
+  public List getColumNames() {
+    return columNames;
+  }
+
+  /** For testing purposes only */
+  public String getDbUrl() {
+    return dbUrl;
+  }
+
 	public void invoke(TechnicalIndicators value, Context context) throws Exception {
 		try (Sender sender = Sender.builder().address(this.dbUrl).build()) {
 			double time = value.getIndicators().get(0).getValue();

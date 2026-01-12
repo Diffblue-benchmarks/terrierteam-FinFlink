@@ -1,6 +1,7 @@
 package eu.infinitech.finflink.transformations.technicalIndicators;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -14,6 +15,73 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 class TechnicalIndicatorDiffblueTest {
+  /**
+   * Test getters and setters.
+   *
+   * <ul>
+   *   <li>Then return Supplier is {@code null}.
+   * </ul>
+   *
+   * <p>Methods under test:
+   *
+   * <ul>
+   *   <li>{@link TechnicalIndicator#TechnicalIndicator()}
+   *   <li>{@link TechnicalIndicator#getSupplier()}
+   * </ul>
+   */
+  @Test
+  @DisplayName("Test getters and setters; then return Supplier is 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void TechnicalIndicator.<init>()",
+    "void TechnicalIndicator.<init>(Supplier)",
+    "Supplier TechnicalIndicator.getSupplier()"
+  })
+  void testGettersAndSetters_thenReturnSupplierIsNull() {
+    // Arrange and Act
+    TechnicalIndicator<IndicatorState> actualTechnicalIndicator = new TechnicalIndicator<>();
+
+    // Assert
+    assertNull(actualTechnicalIndicator.getSupplier());
+  }
+
+  /**
+   * Test getters and setters.
+   *
+   * <ul>
+   *   <li>When {@link Supplier}.
+   *   <li>Then return {@link Supplier}.
+   * </ul>
+   *
+   * <p>Methods under test:
+   *
+   * <ul>
+   *   <li>{@link TechnicalIndicator#TechnicalIndicator(Supplier)}
+   *   <li>{@link TechnicalIndicator#getSupplier()}
+   * </ul>
+   */
+  @Test
+  @DisplayName("Test getters and setters; when Supplier; then return Supplier")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void TechnicalIndicator.<init>()",
+    "void TechnicalIndicator.<init>(Supplier)",
+    "Supplier TechnicalIndicator.getSupplier()"
+  })
+  void testGettersAndSetters_whenSupplier_thenReturnSupplier() {
+    // Arrange
+    Supplier<IndicatorState> supplier = mock(Supplier.class);
+
+    // Act
+    TechnicalIndicator<IndicatorState> actualTechnicalIndicator =
+        new TechnicalIndicator<>(supplier);
+
+    // Assert
+    assertSame(supplier, actualTechnicalIndicator.getSupplier());
+  }
+
   /**
    * Test {@link TechnicalIndicator#add(Trade, IndicatorState)} with {@code Trade}, {@code
    * IndicatorState}.
