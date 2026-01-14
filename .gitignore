@@ -1,4 +1,5 @@
 target/
+.diffblue/
 bin/
 .settings/
 dependency-reduced-pom.xml
