@@ -4,3 +4,9 @@ bin/
 dependency-reduced-pom.xml
 data2/
 .idea
+
+.diffblue/cache
+**.diffblue/cache
+**/.diffblue/cache
+**/**.diffblue/cache
+**/**/.diffblue/cache
